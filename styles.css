@@ -1,13 +1,15 @@
 :root {
   color-scheme: light;
-  --ink: #171512;
-  --muted: #6e675f;
-  --line: #ded8cf;
-  --paper: #faf8f3;
+  --ink: #101312;
+  --muted: #68716d;
+  --line: #dfe7e2;
+  --paper: #ffffff;
   --panel: #ffffff;
-  --accent: #9f3f2f;
-  --accent-dark: #6f261c;
-  --shadow: 0 18px 45px rgba(31, 24, 17, 0.1);
+  --soft: #f5faf6;
+  --accent: #19e66a;
+  --accent-dark: #078a3b;
+  --accent-wash: #dfffeb;
+  --shadow: 0 18px 45px rgba(15, 35, 24, 0.08);
 }
 
 * {
@@ -40,7 +42,7 @@ a {
   justify-content: space-between;
   gap: 24px;
   padding: 18px clamp(20px, 5vw, 64px);
-  background: rgba(250, 248, 243, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(18px);
 }
@@ -57,8 +59,9 @@ a {
   height: 42px;
   place-items: center;
   background: var(--ink);
-  color: var(--paper);
-  border-radius: 50%;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 24px;
 }
@@ -86,7 +89,7 @@ a {
 
 .nav-links a:hover,
 .site-footer a:hover {
-  color: var(--accent);
+  color: var(--accent-dark);
 }
 
 main {
@@ -97,7 +100,7 @@ main {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
   gap: clamp(28px, 5vw, 72px);
-  align-items: end;
+  align-items: center;
   min-height: 72vh;
   padding: 80px 0 64px;
 }
@@ -106,6 +109,7 @@ main {
   margin: 0 0 12px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
+  color: var(--accent-dark);
 }
 
 h1,
@@ -125,7 +129,7 @@ h2 {
 
 h1 {
   margin-bottom: 24px;
-  font-size: clamp(3rem, 8vw, 7.5rem);
+  font-size: clamp(3.4rem, 8vw, 8rem);
 }
 
 h2 {
@@ -172,7 +176,7 @@ h3 {
 .filter-button[aria-pressed="true"] {
   border-color: var(--accent);
   background: var(--accent);
-  color: #fff;
+  color: #082312;
 }
 
 .button:hover,
@@ -181,14 +185,22 @@ h3 {
 }
 
 .hero-panel {
-  min-height: 360px;
+  min-height: 380px;
   padding: 28px;
-  border: 1px solid var(--line);
+  border: 1px solid #cdebd8;
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(159, 63, 47, 0.18), transparent 38%),
-    linear-gradient(160deg, #fff 0%, #efe7dc 100%);
+    radial-gradient(circle at 78% 18%, rgba(25, 230, 106, 0.42), transparent 26%),
+    linear-gradient(160deg, #ffffff 0%, #f2fff7 100%);
   box-shadow: var(--shadow);
+}
+
+.panel-kicker {
+  margin-bottom: 40px;
+  color: var(--accent-dark);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .stats {
@@ -199,7 +211,7 @@ h3 {
 
 .stats div {
   padding-bottom: 18px;
-  border-bottom: 1px solid rgba(23, 21, 18, 0.14);
+  border-bottom: 1px solid rgba(7, 138, 59, 0.18);
 }
 
 .stats dt {
@@ -244,6 +256,13 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel);
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.archive-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 18px 40px rgba(7, 138, 59, 0.09);
+  transform: translateY(-3px);
 }
 
 .archive-card-image {
@@ -251,8 +270,10 @@ h3 {
   aspect-ratio: 4 / 3;
   place-items: center;
   overflow: hidden;
-  background: #e7dfd4;
-  color: var(--muted);
+  background:
+    linear-gradient(135deg, rgba(25, 230, 106, 0.28), transparent 44%),
+    var(--soft);
+  color: var(--accent-dark);
   font-family: Georgia, "Times New Roman", serif;
   font-size: 3rem;
 }
@@ -297,7 +318,7 @@ h3 {
   margin-top: 10px;
   padding: 4px 10px;
   border-radius: 999px;
-  background: #f1e8df;
+  background: var(--accent-wash);
   color: var(--accent-dark);
   font-size: 0.82rem;
 }
@@ -313,7 +334,17 @@ h3 {
   padding: 20px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--panel);
+  background: linear-gradient(180deg, #ffffff 0%, var(--soft) 100%);
+}
+
+.index-grid article::before {
+  display: block;
+  width: 28px;
+  height: 6px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  content: "";
 }
 
 .index-grid p {

@@ -29,10 +29,10 @@
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">Online archive and exhibition room</p>
-          <h1 id="hero-title">把帕斯卡画廊的作品、展览与文献放到线上。</h1>
+          <p class="eyebrow">Pascal Gallery Online Archive</p>
+          <h1 id="hero-title">帕斯卡画廊线上档案。</h1>
           <p>
-            这是一个先行搭建的归档框架。真实图片和作品资料上传后，页面会按作品、展览、艺术家、文献和媒体资料自动分类展示。
+            一个白底、鲜绿点缀的 GitHub Pages 静态网页。之后上传的作品、展览、艺术家、文献和媒体资料，会在这里被清晰分类、持续归档。
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#archive">查看归档</a>
@@ -40,6 +40,7 @@
           </div>
         </div>
         <div class="hero-panel" aria-label="归档概览">
+          <p class="panel-kicker">Live structure</p>
           <dl class="stats">
             <div>
               <dt id="stat-count">0</dt>
@@ -60,8 +61,8 @@
       <section id="archive" class="archive-section" aria-labelledby="archive-title">
         <div class="section-heading">
           <p class="eyebrow">Archive</p>
-          <h2 id="archive-title">作品与项目</h2>
-          <p>按档案类别筛选，系列、年份、媒介和资料状态作为卡片信息显示。</p>
+          <h2 id="archive-title">归档入口</h2>
+          <p>当前先放占位条目，确认网站形态和分类方法。真实内容上传后，会替换这里的卡片。</p>
         </div>
         <div id="filters" class="filters" aria-label="归档筛选"></div>
         <div id="archive-grid" class="archive-grid" aria-live="polite"></div>
@@ -70,7 +71,7 @@
       <section id="index" class="index-section" aria-labelledby="index-title">
         <div class="section-heading">
           <p class="eyebrow">Index</p>
-          <h2 id="index-title">归档索引</h2>
+          <h2 id="index-title">内容分类</h2>
         </div>
         <div class="index-grid">
           <article data-category-card="works">
@@ -99,10 +100,10 @@
       <section id="about" class="about-section" aria-labelledby="about-title">
         <div>
           <p class="eyebrow">About</p>
-          <h2 id="about-title">一个可持续补充的线上展厅。</h2>
+          <h2 id="about-title">所有内容都先有地方放。</h2>
         </div>
         <p>
-          当前版本先建立信息架构和视觉秩序：作品数据集中保存在 JSON 文件中，网页自动读取并渲染。后续可以继续加入详情页、搜索、展览时间线、艺术家页面和多语言内容。
+          原始上传保存在 content/uploads，分类素材放在 content/archive，网页调用的图像放在 assets，公开展示的数据放在 data。这样以后无论是你上传的内容，还是我生成的草稿、页面和整理文件，都不会混在一起。
         </p>
       </section>
     </main>

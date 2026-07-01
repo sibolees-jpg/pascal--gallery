@@ -26,6 +26,7 @@ Edit `data/artworks.json` and add records with this shape:
   "artist": "Artist Name",
   "year": "2026",
   "medium": "Mixed media",
+  "category": "works",
   "series": "Open Archive",
   "status": "Coming soon",
   "image": "",
