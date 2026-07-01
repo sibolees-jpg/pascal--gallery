@@ -1,0 +1,27 @@
+[
+  {
+    "id": "works",
+    "label": "作品",
+    "description": "绘画、影像、装置、摄影、手稿和跨媒介项目。"
+  },
+  {
+    "id": "exhibitions",
+    "label": "展览",
+    "description": "个展、群展、驻留、公共活动和项目现场记录。"
+  },
+  {
+    "id": "artists",
+    "label": "艺术家",
+    "description": "艺术家简介、作品脉络、合作项目和相关链接。"
+  },
+  {
+    "id": "texts",
+    "label": "文献",
+    "description": "策展文字、访谈、研究札记、手稿和新闻稿。"
+  },
+  {
+    "id": "media",
+    "label": "媒体资料",
+    "description": "海报、现场图、新闻图片、视频链接与可下载资料。"
+  }
+]

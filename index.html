@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="帕斯卡画廊线上归档与网页展示，收录作品、展览、艺术家与项目文献。"
+    >
+    <title>帕斯卡画廊 | Pascal Gallery Archive</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="帕斯卡画廊首页">
+        <span class="brand-mark">P</span>
+        <span>
+          <strong>帕斯卡画廊</strong>
+          <small>Pascal Gallery Archive</small>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="主要导航">
+        <a href="#archive">归档</a>
+        <a href="#index">索引</a>
+        <a href="#about">关于</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Online archive and exhibition room</p>
+          <h1 id="hero-title">把帕斯卡画廊的作品、展览与文献放到线上。</h1>
+          <p>
+            这是一个先行搭建的归档框架。真实图片和作品资料上传后，页面会按作品、展览、艺术家、文献和媒体资料自动分类展示。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#archive">查看归档</a>
+            <a class="button" href="#about">归档说明</a>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="归档概览">
+          <dl class="stats">
+            <div>
+              <dt id="stat-count">0</dt>
+              <dd>Archive items</dd>
+            </div>
+            <div>
+              <dt id="stat-categories">0</dt>
+              <dd>Categories</dd>
+            </div>
+            <div>
+              <dt id="stat-years">0</dt>
+              <dd>Years</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section id="archive" class="archive-section" aria-labelledby="archive-title">
+        <div class="section-heading">
+          <p class="eyebrow">Archive</p>
+          <h2 id="archive-title">作品与项目</h2>
+          <p>按档案类别筛选，系列、年份、媒介和资料状态作为卡片信息显示。</p>
+        </div>
+        <div id="filters" class="filters" aria-label="归档筛选"></div>
+        <div id="archive-grid" class="archive-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="index" class="index-section" aria-labelledby="index-title">
+        <div class="section-heading">
+          <p class="eyebrow">Index</p>
+          <h2 id="index-title">归档索引</h2>
+        </div>
+        <div class="index-grid">
+          <article data-category-card="works">
+            <h3>作品</h3>
+            <p>绘画、影像、装置、文献和跨媒介项目。</p>
+          </article>
+          <article data-category-card="exhibitions">
+            <h3>展览</h3>
+            <p>个展、群展、驻留项目与公共活动记录。</p>
+          </article>
+          <article data-category-card="artists">
+            <h3>艺术家</h3>
+            <p>艺术家简介、作品脉络和合作项目。</p>
+          </article>
+          <article data-category-card="texts">
+            <h3>文献</h3>
+            <p>策展文字、访谈、手稿和现场档案。</p>
+          </article>
+          <article data-category-card="media">
+            <h3>媒体资料</h3>
+            <p>海报、现场图、新闻图片、视频链接与下载资料。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="about-section" aria-labelledby="about-title">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2 id="about-title">一个可持续补充的线上展厅。</h2>
+        </div>
+        <p>
+          当前版本先建立信息架构和视觉秩序：作品数据集中保存在 JSON 文件中，网页自动读取并渲染。后续可以继续加入详情页、搜索、展览时间线、艺术家页面和多语言内容。
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© <span id="year"></span> Pascal Gallery</span>
+      <a href="#top">返回顶部</a>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

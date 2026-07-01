@@ -1,0 +1,62 @@
+[
+  {
+    "id": "archive-001",
+    "title": "归档占位作品一",
+    "artist": "帕斯卡画廊",
+    "year": "2026",
+    "medium": "Archive record",
+    "category": "works",
+    "series": "Open Archive",
+    "status": "Coming soon",
+    "image": "",
+    "description": "用于确认作品卡片、筛选器和统计信息的占位条目。"
+  },
+  {
+    "id": "archive-002",
+    "title": "展览项目占位",
+    "artist": "Pascal Gallery",
+    "year": "2026",
+    "medium": "Exhibition file",
+    "category": "exhibitions",
+    "series": "Exhibitions",
+    "status": "Draft",
+    "image": "",
+    "description": "后续可替换为真实展览现场、策展文字和相关文献。"
+  },
+  {
+    "id": "archive-003",
+    "title": "艺术家档案占位",
+    "artist": "Artist Archive",
+    "year": "2025",
+    "medium": "Artist profile",
+    "category": "artists",
+    "series": "Artists",
+    "status": "Draft",
+    "image": "",
+    "description": "用于展示艺术家条目、年份索引和资料状态。"
+  },
+  {
+    "id": "archive-004",
+    "title": "策展文献占位",
+    "artist": "Curatorial Desk",
+    "year": "2025",
+    "medium": "Text record",
+    "category": "texts",
+    "series": "Documents",
+    "status": "Draft",
+    "image": "",
+    "description": "用于放置策展文字、访谈、手稿和研究资料。"
+  },
+  {
+    "id": "archive-005",
+    "title": "媒体资料占位",
+    "artist": "Pascal Gallery",
+    "year": "2026",
+    "medium": "Media asset",
+    "category": "media",
+    "series": "Press Kit",
+    "status": "Draft",
+    "image": "",
+    "description": "用于整理海报、现场图、新闻图片、视频链接和下载资料。"
+  }
+]
