@@ -1,6 +1,6 @@
-# Repository Structure
+# 仓库结构
 
-This repository keeps public website files, original uploads, source archive material, and generated drafts separate.
+本仓库把公开网页、原始上传、分类档案素材和生成草稿分开放置。
 
 ```text
 /
@@ -24,23 +24,23 @@ This repository keeps public website files, original uploads, source archive mat
 └── docs/
 ```
 
-## What Goes Where
+## 文件放置规则
 
-| Folder | Purpose |
+| 文件夹 | 用途 |
 | --- | --- |
-| `/` | Public static website for GitHub Pages |
-| `data/` | Structured public data consumed by the website |
-| `assets/` | Optimized public images and media |
-| `content/uploads/` | Untouched user uploads |
-| `content/archive/` | Sorted source material by archive category |
-| `content/notes/` | Working notes and editorial drafts |
-| `generated/` | AI-generated drafts, previews, and exports |
-| `docs/` | Repository rules, taxonomy, and publishing notes |
+| `/` | GitHub 静态网页服务使用的公开页面 |
+| `data/` | 网页读取的结构化公开数据 |
+| `assets/` | 优化后的公开图片和媒体素材 |
+| `content/uploads/` | 未改动的用户原始上传 |
+| `content/archive/` | 按归档类别整理后的素材 |
+| `content/notes/` | 工作笔记和编辑草稿 |
+| `generated/` | 生成草稿、预览和导出文件 |
+| `docs/` | 仓库规则、分类说明和发布说明 |
 
-## Promotion Flow
+## 内容进入网页的流程
 
-1. Upload originals to `content/uploads/`.
-2. Sort source files into `content/archive/<category>/`.
-3. Create edited web assets in `assets/`.
-4. Add public records to `data/artworks.json`.
-5. Keep process notes in `content/notes/` or `docs/`.
+1. 原始文件先放入 `content/uploads/`。
+2. 分类后的素材放入 `content/archive/<category>/`。
+3. 适合网页展示的编辑版素材放入 `assets/`。
+4. 公开展示的记录写入 `data/artworks.json`。
+5. 过程说明和工作笔记放入 `content/notes/` 或 `docs/`。

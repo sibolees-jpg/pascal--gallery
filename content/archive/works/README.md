@@ -1,3 +1,3 @@
-# Works
+# 作品
 
-Artwork source files, object metadata, artwork descriptions, and related documentation.
+用于存放作品源文件、对象元数据、作品说明和相关文档。

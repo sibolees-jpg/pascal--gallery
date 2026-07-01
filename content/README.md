@@ -1,9 +1,9 @@
-# Content Workspace
+# 内容工作区
 
-Use this folder for source material before it is turned into website data or final web assets.
+这里存放尚未转成网页数据或最终网页素材的源材料。
 
-- `uploads/` keeps original user uploads unchanged.
-- `archive/` sorts source material by archive category.
-- `notes/` stores captions, metadata drafts, curatorial notes, and working text.
+- `uploads/` 保存未经改动的用户原始上传。
+- `archive/` 按归档类别整理源材料。
+- `notes/` 保存题注、元数据草稿、策展笔记和工作文字。
 
-Keep original files here even after optimized images are created in `assets/`.
+即使已经在 `assets/` 中生成优化图片，也要在这里保留原始文件。

@@ -1,20 +1,20 @@
-# Pascal Gallery Content Taxonomy
+# 帕斯卡画廊内容分类
 
-This repository organizes archive material into five top-level categories.
+本仓库把归档材料分成五个一级类别。
 
-## Categories
+## 分类
 
-| Category ID | Label | Use for |
+| 分类编号 | 中文名称 | 用途 |
 | --- | --- | --- |
-| `works` | 作品 | Artwork records, images, object metadata, project notes |
-| `exhibitions` | 展览 | Exhibition pages, installation views, dates, venues, press text |
-| `artists` | 艺术家 | Artist profiles, biographies, portraits, related works |
-| `texts` | 文献 | Curatorial essays, interviews, research notes, manuscripts |
-| `media` | 媒体资料 | Posters, event photos, press kits, videos, downloadable assets |
+| `works` | 作品 | 作品记录、图像、对象元数据和项目说明 |
+| `exhibitions` | 展览 | 展览页面、现场图、日期、地点和新闻稿 |
+| `artists` | 艺术家 | 艺术家简介、履历、肖像和相关作品 |
+| `texts` | 文献 | 策展文章、访谈、研究笔记和手稿 |
+| `media` | 媒体资料 | 海报、活动照片、媒体包、视频和下载资料 |
 
-## Data Rules
+## 数据规则
 
-- Every record in `data/artworks.json` must include `id`, `title`, `artist`, `year`, `medium`, `category`, `series`, `status`, `image`, and `description`.
-- `category` must match one of the IDs in `data/categories.json`.
-- Store uploaded images in `assets/` and reference them with relative paths such as `assets/work-001.jpg`.
-- Keep placeholder records until real archive material is ready, then replace them one by one.
+- `data/artworks.json` 中每条记录都必须包含 `id`、`title`、`artist`、`year`、`medium`、`category`、`series`、`status`、`image` 和 `description`。
+- `category` 必须对应 `data/categories.json` 里的某个分类编号。
+- 上传后用于网页展示的图片放在 `assets/`，路径可写成 `assets/work-001.jpg`。
+- 真实归档材料准备好之前，可以保留占位记录，之后逐条替换。

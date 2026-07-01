@@ -1,11 +1,11 @@
-# Categorized Archive Source Material
+# 分类档案素材
 
-Sort uploaded or collected source material into the matching folder:
+上传或收集到的源材料按类别放入对应文件夹：
 
-- `works/` for artwork records and object files
-- `exhibitions/` for exhibition and event material
-- `artists/` for artist profiles and biographies
-- `texts/` for essays, interviews, manuscripts, and research notes
-- `media/` for posters, press kits, photos, video links, and promotional assets
+- `works/` 存放作品记录和作品文件
+- `exhibitions/` 存放展览和活动资料
+- `artists/` 存放艺术家简介和履历资料
+- `texts/` 存放文章、访谈、手稿和研究笔记
+- `media/` 存放海报、媒体包、照片、视频链接和宣传素材
 
-When a source item is ready for the public website, add or update the corresponding record in `data/artworks.json`.
+当某个素材准备进入公开网页时，在 `data/artworks.json` 中添加或更新对应记录。

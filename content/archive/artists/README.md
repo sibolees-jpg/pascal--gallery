@@ -1,3 +1,3 @@
-# Artists
+# 艺术家
 
-Artist biographies, portraits, CVs, statements, interview notes, and related links.
+用于存放艺术家简介、肖像、履历、艺术家陈述、访谈笔记和相关链接。

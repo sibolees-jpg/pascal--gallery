@@ -1,3 +1,3 @@
-# Notes
+# 工作笔记
 
-Working notes for metadata, captions, exhibition descriptions, translation drafts, and editorial decisions.
+用于存放元数据、题注、展览说明、翻译草稿和编辑决策等工作笔记。

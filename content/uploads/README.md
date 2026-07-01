@@ -1,13 +1,13 @@
-# Uploads
+# 原始上传
 
-Put original uploaded files here first.
+用户上传的原始文件先放在这里。
 
-Examples:
+例子：
 
-- raw artwork photos
-- exhibition installation views
-- artist portraits
-- Word, PDF, spreadsheet, or slide source files
-- unprocessed video or audio files
+- 未处理的作品照片
+- 展览现场图
+- 艺术家肖像
+- Word、PDF、表格或幻灯片源文件
+- 未处理的视频或音频文件
 
-Do not rename or overwrite originals unless the user asks.
+除非用户明确要求，不要重命名或覆盖原始文件。

@@ -1,3 +1,3 @@
-# Exhibitions
+# 展览
 
-Exhibition source files, installation views, dates, venue notes, checklists, and press material.
+用于存放展览源文件、现场图、日期、地点说明、作品清单和新闻资料。

@@ -1,5 +1,5 @@
-# Web Assets
+# 网页素材
 
-Store optimized images and media used by the public website.
+用于存放公开网页实际调用的优化图片和媒体素材。
 
-Original uploads belong in `content/uploads/`; this folder is for resized, compressed, renamed, or edited public-facing assets.
+原始上传文件放在 `content/uploads/`；这里放调整尺寸、压缩、重命名或编辑后的公开展示素材。

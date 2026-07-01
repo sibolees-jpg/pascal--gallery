@@ -1,49 +1,49 @@
-# Pascal Gallery Online Archive
+# 帕斯卡画廊线上档案
 
-Pascal Gallery is a lightweight online archive and web exhibition framework. It is designed for GitHub Pages and uses plain HTML, CSS, and JavaScript, so the site can be published without a build step.
+这是帕斯卡画廊的线上归档与网页展示仓库。网页使用纯静态网页文件，可直接通过 GitHub 的静态网页服务发布，不需要构建步骤。
 
-The repository is also the long-term working archive. User uploads, edited web assets, generated drafts, structured data, and documentation each have their own folder so future material stays easy to find.
+这个仓库也是长期工作档案。用户上传的原始文件、网页素材、生成草稿、结构化数据和说明文档各自放在固定位置，后续材料不会混在一起。
 
-## Structure
+## 仓库结构
 
-- `index.html`, `styles.css`, and `app.js` are the public website.
-- `data/` stores structured website data.
-- `assets/` stores web-ready images and media referenced by the site.
-- `content/uploads/` stores original files uploaded by the user.
-- `content/archive/` stores categorized source material before it becomes website data.
-- `content/notes/` stores working notes, captions, metadata drafts, and curatorial notes.
-- `generated/` stores AI-assisted drafts, exports, previews, and temporary production outputs.
-- `docs/` stores repository rules, taxonomy, and publishing notes.
+- `index.html`、`styles.css`、`app.js` 是公开网页。
+- `data/` 存放网页读取的结构化数据。
+- `assets/` 存放网页使用的图片和媒体素材。
+- `content/uploads/` 存放用户上传的原始文件。
+- `content/archive/` 存放整理后的分类档案素材。
+- `content/notes/` 存放说明、题注、元数据草稿和策展笔记。
+- `generated/` 存放生成草稿、导出文件、预览图和临时成果。
+- `docs/` 存放仓库规则、分类说明和发布说明。
 
-## Add Archive Items
+## 添加归档条目
 
-Edit `data/artworks.json` and add records with this shape:
+编辑 `data/artworks.json`，按下面格式添加条目：
 
 ```json
 {
   "id": "work-001",
-  "title": "Untitled Archive Entry",
-  "artist": "Artist Name",
+  "title": "未命名归档条目",
+  "artist": "艺术家姓名",
   "year": "2026",
-  "medium": "Mixed media",
+  "medium": "综合媒介",
   "category": "works",
-  "series": "Open Archive",
-  "status": "Coming soon",
+  "series": "开放归档",
+  "status": "待补充",
   "image": "",
-  "description": "Short curatorial note."
+  "description": "简短的策展说明。"
 }
 ```
 
-If `image` is empty, the page shows a clean placeholder. Keep original uploads in `content/uploads/`, place optimized web images in `assets/`, and reference web images with paths like `assets/work-001.jpg`.
+如果 `image` 为空，网页会显示简洁占位图。原始上传文件保存在 `content/uploads/`，网页用的优化图片放在 `assets/`，图片路径可写成 `assets/work-001.jpg`。
 
-## Filing Rules
+## 文件归档规则
 
-1. Put untouched uploaded files in `content/uploads/`.
-2. Sort source material into `content/archive/works`, `content/archive/exhibitions`, `content/archive/artists`, `content/archive/texts`, or `content/archive/media`.
-3. Put edited or compressed website assets in `assets/`.
-4. Put AI-generated drafts and previews in `generated/`.
-5. Promote only finalized public metadata into `data/`.
+1. 原始上传文件先放进 `content/uploads/`。
+2. 分类整理后的素材放进 `content/archive/works`、`content/archive/exhibitions`、`content/archive/artists`、`content/archive/texts` 或 `content/archive/media`。
+3. 编辑、压缩、适合网页展示的素材放进 `assets/`。
+4. 生成草稿、预览图和临时输出放进 `generated/`。
+5. 只有确定公开展示的元数据才写入 `data/`。
 
-## Publish
+## 发布
 
-In GitHub, open **Settings > Pages**, choose the `main` branch and root folder, then save. The static site will publish directly from this repository.
+当前网页已通过 `gh-pages` 分支发布。正式访问地址是 `https://sibolees-jpg.github.io/pascal--gallery/`。

@@ -1,3 +1,3 @@
-# Media
+# 媒体资料
 
-Posters, press kits, event photos, video links, social images, and downloadable media.
+用于存放海报、媒体包、活动照片、视频链接、社交媒体图片和可下载资料。

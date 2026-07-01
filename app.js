@@ -12,7 +12,7 @@ async function loadArchive() {
     ]);
 
     if (!itemsResponse.ok || !categoriesResponse.ok) {
-      throw new Error("Archive request failed");
+      throw new Error("归档数据请求失败");
     }
 
     const items = await itemsResponse.json();

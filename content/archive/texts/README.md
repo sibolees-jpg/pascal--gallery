@@ -1,3 +1,3 @@
-# Texts
+# 文献
 
-Curatorial essays, interviews, research notes, manuscripts, captions, and draft copy.
+用于存放策展文章、访谈、研究笔记、手稿、题注和文字草稿。

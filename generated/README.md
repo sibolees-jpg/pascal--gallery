@@ -1,5 +1,5 @@
-# Generated Outputs
+# 生成成果
 
-Store AI-assisted drafts, previews, exports, screenshots, and temporary production files here.
+用于存放 AI 辅助生成的草稿、预览、导出文件、截图和临时制作文件。
 
-Move polished public assets into `assets/` and finalized metadata into `data/`.
+整理完成的公开素材移入 `assets/`，最终元数据写入 `data/`。
