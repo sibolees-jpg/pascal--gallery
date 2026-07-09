@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="帕斯卡画廊线上归档与网页展示，收录作品、展览、艺术家与项目文献。"
+      content="帕斯卡画廊线上展示档案，展示艺术品销售、空间租赁、文旅策划、设计与景观艺术施工项目。"
     >
-    <title>帕斯卡画廊 | 线上档案</title>
+    <title>帕斯卡画廊 | 线上展示档案</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -16,7 +16,7 @@
         <span class="brand-mark">帕</span>
         <span>
           <strong>帕斯卡画廊</strong>
-          <small>线上档案</small>
+          <small>线上展示档案</small>
         </span>
       </a>
       <nav class="nav-links" aria-label="主要导航">
@@ -29,14 +29,14 @@
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">帕斯卡画廊线上档案</p>
-          <h1 id="hero-title">帕斯卡画廊线上档案。</h1>
+          <p class="eyebrow">帕斯卡画廊线上展示</p>
+          <h1 id="hero-title">过往项目与服务能力档案。</h1>
           <p>
-            一个白底、鲜绿点缀的线上静态网页。之后上传的作品、展览、艺术家、文献和媒体资料，会在这里被清晰分类、持续归档。
+            基于过往资料整理的项目展示网页，集中呈现艺术品销售、艺术品与场地租赁、文旅项目策划、设计、景观艺术品制作施工五类服务能力。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#archive">查看归档</a>
-            <a class="button" href="#about">归档说明</a>
+            <a class="button primary" href="#archive">查看服务归档</a>
+            <a class="button" href="#index">查看项目案例</a>
           </div>
         </div>
         <div class="hero-panel" aria-label="归档概览">
@@ -44,15 +44,15 @@
           <dl class="stats">
             <div>
               <dt id="stat-count">0</dt>
-              <dd>归档条目</dd>
+              <dd>案例项目</dd>
             </div>
             <div>
               <dt id="stat-categories">0</dt>
-              <dd>内容分类</dd>
+              <dd>服务板块</dd>
             </div>
             <div>
-              <dt id="stat-years">0</dt>
-              <dd>年份</dd>
+              <dt id="stat-sources">0</dt>
+              <dd>资料来源</dd>
             </div>
           </dl>
         </div>
@@ -60,41 +60,21 @@
 
       <section id="archive" class="archive-section" aria-labelledby="archive-title">
         <div class="section-heading">
-          <p class="eyebrow">线上归档</p>
-          <h2 id="archive-title">归档入口</h2>
-          <p>当前先放占位条目，确认网站形态和分类方法。真实内容上传后，会替换这里的卡片。</p>
+          <p class="eyebrow">服务内容</p>
+          <h2 id="archive-title">五类服务构成帕斯卡画廊的项目能力。</h2>
+          <p>每个服务板块都对应已有资料中的真实项目和可交付内容。</p>
         </div>
         <div id="filters" class="filters" aria-label="归档筛选"></div>
-        <div id="archive-grid" class="archive-grid" aria-live="polite"></div>
+        <div id="service-grid" class="index-grid" aria-live="polite"></div>
       </section>
 
       <section id="index" class="index-section" aria-labelledby="index-title">
         <div class="section-heading">
-          <p class="eyebrow">分类索引</p>
-          <h2 id="index-title">内容分类</h2>
+          <p class="eyebrow">项目展示</p>
+          <h2 id="index-title">过往项目按服务能力重新整理。</h2>
+          <p>每个案例都保留来源文件、项目背景、主要工作和可展示成果，便于后续继续补充图片、视频和详情页。</p>
         </div>
-        <div class="index-grid">
-          <article data-category-card="works">
-            <h3>作品</h3>
-            <p>绘画、影像、装置、文献和跨媒介项目。</p>
-          </article>
-          <article data-category-card="exhibitions">
-            <h3>展览</h3>
-            <p>个展、群展、驻留项目与公共活动记录。</p>
-          </article>
-          <article data-category-card="artists">
-            <h3>艺术家</h3>
-            <p>艺术家简介、作品脉络和合作项目。</p>
-          </article>
-          <article data-category-card="texts">
-            <h3>文献</h3>
-            <p>策展文字、访谈、手稿和现场档案。</p>
-          </article>
-          <article data-category-card="media">
-            <h3>媒体资料</h3>
-            <p>海报、现场图、新闻图片、视频链接与下载资料。</p>
-          </article>
-        </div>
+        <div id="project-grid" class="project-grid"></div>
       </section>
 
       <section id="about" class="about-section" aria-labelledby="about-title">
@@ -103,7 +83,7 @@
           <h2 id="about-title">所有内容都先有地方放。</h2>
         </div>
         <p>
-          原始上传、分类素材、网页图片、公开数据和生成草稿都有各自的位置。这样以后无论是你上传的内容，还是我生成的草稿、页面和整理文件，都不会混在一起。
+          原始资料已经按服务内容重新阅读和归类。后续新增文件会继续进入对应板块，网页和 PPT 也会围绕同一套分类体系更新。
         </p>
       </section>
     </main>

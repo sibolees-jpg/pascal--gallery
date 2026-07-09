@@ -1,0 +1,244 @@
+{
+  "services": [
+    {
+      "id": "art_sales",
+      "title": "艺术品销售",
+      "summary": "以画廊资源、艺术家资源和策展能力为基础，为商业空间、酒店、文旅目的地和收藏场景提供作品选择、展陈、销售转化与艺术资产配置。",
+      "capabilities": ["艺术家与作品资源组织", "展览策划与作品销售", "酒店与商业空间艺术品配置", "收藏与消费场景培育"]
+    },
+    {
+      "id": "art_and_space_rental",
+      "title": "艺术品与场地租赁",
+      "summary": "围绕美术馆、艺术空间、商业空间和临时展场，提供艺术内容植入、场地运营、展览落位、艺术品租赁与空间活化。",
+      "capabilities": ["艺术空间运营", "展览与活动落位", "艺术品短期租赁与陈列", "场地内容化与传播话题制造"]
+    },
+    {
+      "id": "cultural_tourism",
+      "title": "文旅项目策划",
+      "summary": "将地方文化、生态资源、公共活动和艺术内容整合成可传播、可体验、可运营的文旅项目。",
+      "capabilities": ["文旅定位与产品体系", "活动策划与节庆设计", "研学与美育内容", "城市文化传播与 IP 延展"]
+    },
+    {
+      "id": "design",
+      "title": "设计",
+      "summary": "覆盖商业美陈、艺术空间改造、展览视觉、品牌活动和文化场景设计，把艺术内容转化为可落地的视觉与空间体验。",
+      "capabilities": ["空间概念设计", "商业美陈提升", "展览视觉系统", "IP 衍生品与传播物料设计"]
+    },
+    {
+      "id": "landscape_art",
+      "title": "景观艺术品制作施工",
+      "summary": "面向街区、园区、酒店、生态城市和公共节点，提供雕塑、装置、公共艺术、景观艺术品的概念、深化、制作与施工协同。",
+      "capabilities": ["公共艺术雕塑方案", "景观节点艺术装置", "材料与工艺建议", "制作施工协同与现场呈现"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "pascal-gallery-profile",
+      "title": "帕斯卡画廊综合介绍",
+      "source": "帕斯卡画廊(1)_加水印.pdf",
+      "year": "过往资料",
+      "services": ["art_sales", "design", "cultural_tourism"],
+      "cover": "assets/xu/project-02-03.jpg",
+      "overview": "资料强调画廊是城市文化风景，也是艺术消费、艺术家合作和城市文化升级的连接器。内容包含画廊定位、策展人和艺术家资源、藏品展、在地性项目和城市文化论述。",
+      "details": [
+        "以高素质艺术消费人群和城市文化风景为叙事入口，说明画廊在城市更新与文化消费中的价值。",
+        "呈现三三藏品展、策展人资源、艺术家资源和“在地性”表达，适合作为艺术品销售和合作背书。",
+        "可用于网站首页的机构介绍、艺术资源介绍和商业合作说明。"
+      ],
+      "deliverables": ["画廊定位说明", "艺术家与策展资源", "展览与藏品展示", "艺术消费场景叙事"],
+      "images": []
+    },
+    {
+      "id": "exhibition-work-plan-2023",
+      "title": "展览工作计划与画廊合作方案",
+      "source": "2023.2 展览工作计划完整版(1).pptx",
+      "year": "2023",
+      "services": ["art_sales", "art_and_space_rental", "cultural_tourism", "design"],
+      "cover": "assets/xu/project-02-01.jpg",
+      "overview": "资料围绕展览前期策划、展场条件、展品预算、策展周期、展墙和灯光、展厅监控安保、展览方案和预算展开，体现画廊承接展览和场地合作的完整工作方法。",
+      "details": [
+        "展览方案包含潮流艺术展、夜晚灯光秀、暗黑系展、儿童美术展等方向。",
+        "明确场地选择、展线长度、展墙材质、灯光设计、库房和运输物流等落地条件。",
+        "资料展示画廊与园区合作的优势、案例与预算结构，可支撑对外招商和场地租赁沟通。"
+      ],
+      "deliverables": ["展览前期策划", "展陈条件清单", "展览主题方案", "预算与执行周期"],
+      "images": ["assets/xu/project-02-01.jpg", "assets/xu/project-02-02.jpg", "assets/xu/project-02-03.jpg"]
+    },
+    {
+      "id": "louvre-art-framework",
+      "title": "罗浮宫艺术、展览、活动策划框架",
+      "source": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "year": "过往资料",
+      "services": ["art_sales", "cultural_tourism", "design"],
+      "cover": "assets/xu/project-14-01.jpg",
+      "overview": "252 页资料系统梳理艺术资源、作品类别、展览预案、文化沙龙、品牌活动和合作方式，是艺术品销售、活动策划和高端空间艺术合作的完整资源库。",
+      "details": [
+        "艺术资源包含国内外高等艺术院校、著名艺术家、画廊机构、艺术协会、博览会和多国文化资源。",
+        "作品类型覆盖具象、抽象、雕塑、材料语言、新水墨、摄影、版画等，适合不同商业空间与收藏需求。",
+        "框架把艺术品、展览、文化沙龙和品牌活动放在同一合作体系中，适合高端商业、酒店和文旅场景。"
+      ],
+      "deliverables": ["艺术资源库", "作品类型库", "展览预案", "文化沙龙与品牌活动方案"],
+      "images": ["assets/xu/project-14-01.jpg", "assets/xu/project-14-02.jpg", "assets/xu/project-14-03.jpg"]
+    },
+    {
+      "id": "patina-tianjin-artwork",
+      "title": "柏典酒店天津样板间艺术品方案",
+      "source": "柏典tianjin.pptx / 柏典tianjin.pdf",
+      "year": "过往资料",
+      "services": ["art_sales", "design", "landscape_art"],
+      "cover": "assets/xu/project-12-03.jpg",
+      "overview": "方案以天津历史、意大利文化和酒店空间为背景，提出样板间、走廊、入户厅堂、客房走廊等区域的艺术品配置。作品媒介包含布面丙烯、布上油画、综合材料等。",
+      "details": [
+        "用天津开埠、五大道、意租界、北洋机器局等城市线索建立酒店艺术叙事。",
+        "针对走廊、休息区、客房与入户空间给出作品陈列和空间氛围建议。",
+        "体现艺术品销售、租赁、酒店空间艺术配置和定制艺术品落地能力。"
+      ],
+      "deliverables": ["酒店艺术品配置", "空间分区陈列", "作品媒介与尺寸建议", "城市文化叙事"],
+      "images": ["assets/xu/project-12-01.jpg", "assets/xu/project-12-02.jpg", "assets/xu/project-12-03.jpg"]
+    },
+    {
+      "id": "wuxi-new-space",
+      "title": "无锡艺术空间与古街更新方案",
+      "source": "无锡NEW空间.pptx",
+      "year": "2023",
+      "services": ["art_sales", "art_and_space_rental", "design"],
+      "cover": "assets/xu/project-10-02.jpg",
+      "overview": "方案以惠山古街的千年文脉、宗祠文化和文人雅趣为背景，提出用画廊、书店、咖啡馆、餐吧等公共空间塑造年轻态消费氛围。",
+      "details": [
+        "强调城市更新不只是物质形态变化，更要吸引年轻消费群体并带动业态更新。",
+        "把画廊定义为城市更新中的文化亮色，具备制造话题、吸引流量、提升区域文化的价值。",
+        "提出在地性艺术创作和艺术空间运营，为未来艺术节、艺术季和全域文化活动做铺垫。"
+      ],
+      "deliverables": ["艺术空间定位", "业态组合建议", "在地性艺术策略", "古街文化更新叙事"],
+      "images": ["assets/xu/project-10-01.jpg", "assets/xu/project-10-02.jpg", "assets/xu/project-10-03.jpg"]
+    },
+    {
+      "id": "tuanbo-art-space",
+      "title": "团泊艺术空间改造策划",
+      "source": "2025.05.20-团泊艺术空间 xu.pptx",
+      "year": "2025",
+      "services": ["art_and_space_rental", "cultural_tourism", "design"],
+      "cover": "assets/xu/project-03-03.jpg",
+      "overview": "方案围绕团泊艺术空间改造，提出以运营为导向的强内容目的地，通过自然环境、青少年交流、大学合作、美育游学和艺术家驻留形成空间内容。",
+      "details": [
+        "指出项目有自然、有场地，但缺少文质、静愈叙事和可传播的文化项目。",
+        "提出以艺术空间运营、内容策划和建筑升级绑定自然环境，形成强记忆点。",
+        "可承接游学、美育、校企合作、实训基地、艺术家驻留和空间租赁等多种运营模式。"
+      ],
+      "deliverables": ["空间改造策划", "运营内容植入", "美育游学体系", "艺术家驻留项目"],
+      "images": ["assets/xu/project-03-01.jpg", "assets/xu/project-03-02.jpg", "assets/xu/project-03-03.jpg"]
+    },
+    {
+      "id": "heguang-museum",
+      "title": "和光美术馆命名与生态艺术定位",
+      "source": "和光美术馆.docx",
+      "year": "过往资料",
+      "services": ["art_and_space_rental", "cultural_tourism", "design"],
+      "cover": "assets/xu/project-01-02.jpg",
+      "overview": "资料从“和光美术馆”的命名解析出发，建立生态、艺术与在地性和谐共生的空间定位，并提出建筑、视觉系统和商业衍生方向。",
+      "details": [
+        "“和”对应生态和谐与文化共融，“光”对应自然之光和艺术之光。",
+        "名称与光合谷项目形成呼应，可延展为和光市集、和光艺术节等子品牌。",
+        "提出透光光伏玻璃幕墙、中庭湿地植物、光字水波纹与叶脉视觉系统等设计策略。"
+      ],
+      "deliverables": ["美术馆命名策略", "生态艺术定位", "视觉系统方向", "文旅与商业衍生建议"],
+      "images": ["assets/xu/project-01-01.jpg", "assets/xu/project-01-02.jpg", "assets/xu/project-01-03.jpg"]
+    },
+    {
+      "id": "tuanbowa-cultural-tourism",
+      "title": "团泊洼文旅项目可行性分析",
+      "source": "2022.8.23团泊洼文旅项目可行性分析.pptx",
+      "year": "2022",
+      "services": ["cultural_tourism", "design", "art_and_space_rental", "landscape_art"],
+      "cover": "assets/xu/project-01-01.jpg",
+      "overview": "138 页资料包含项目背景、愿景、案例分析、SWOT、规划理念、产品构成、总体设计、游线服务、交通、景观、节庆、研学、农庄和汽车市集等内容。",
+      "details": [
+        "提出“一文一野”的整体布局，强调郊野休闲营地和产业差异化。",
+        "工作框架覆盖资料收集、现场踏勘、规划解读、宏观研判、产品构成和总体设计。",
+        "可形成文化项目、节庆活动、研学项目、农庄定制、汽车市集和绿色基础设施等复合产品。"
+      ],
+      "deliverables": ["可行性分析", "文旅产品体系", "游线与交通规划", "景观规划与节庆设计"],
+      "images": ["assets/xu/project-01-01.jpg", "assets/xu/project-01-02.jpg", "assets/xu/project-01-03.jpg"]
+    },
+    {
+      "id": "sino-singapore-eco-city",
+      "title": "中新生态城艺术展览概念案",
+      "source": "中新生态城(xu).pptx",
+      "year": "过往资料",
+      "services": ["cultural_tourism", "art_sales", "design", "landscape_art"],
+      "cover": "assets/xu/project-06-01.jpg",
+      "overview": "方案以中新天津生态城从盐碱荒滩到绿色新城的转变为背景，提出“咸土之上—生态、城市、未来”的展览主题。",
+      "details": [
+        "以盐碱地为叙事起点，聚焦自然与城市共生、生态修复和未来人居想象。",
+        "通过艺术表达、科技呈现与在地叙事融合，让观众看见生态韧性与城市生长。",
+        "作品类型和宣推延展可服务生态城市展示、公共艺术、文旅传播和艺术品合作。"
+      ],
+      "deliverables": ["展览主题策划", "生态城市叙事", "艺术作品类型建议", "宣推与延展"],
+      "images": ["assets/xu/project-06-01.jpg", "assets/xu/project-06-02.jpg", "assets/xu/project-06-03.jpg"]
+    },
+    {
+      "id": "drone-competition-ip",
+      "title": "全国青少年无人机大赛传播与 IP 衍生",
+      "source": "让大赛被传播(1).pptx",
+      "year": "过往资料",
+      "services": ["cultural_tourism", "design"],
+      "cover": "assets/xu/project-15-01.jpg",
+      "overview": "方案以“让大赛被传播、被记住、被回味”为目标，将城市文化与大赛精神双向赋能，提出“梦津津”IP 与衍生品方向。",
+      "details": [
+        "从人类对飞行的向往切入，将无人机大赛转化为可感知的城市文化记忆。",
+        "提出体验需要锚点、情感需要容器、记忆需要传播者的 IP 逻辑。",
+        "通过吉祥物、衍生品和传播物料，把赛事体验变成实体记忆和持续传播内容。"
+      ],
+      "deliverables": ["赛事传播策略", "城市文化 IP", "衍生品概念", "视觉设计过程"],
+      "images": ["assets/xu/project-15-01.jpg", "assets/xu/project-15-02.jpg", "assets/xu/project-15-03.jpg"]
+    },
+    {
+      "id": "zhongyuan-display-upgrade",
+      "title": "天津中原百货美陈提升概念设计",
+      "source": "天津中原百货美陈提升概念设计方案.pptx / xu中原百货设计理念.ppt",
+      "year": "过往资料",
+      "services": ["design", "art_and_space_rental"],
+      "cover": "assets/xu/project-08-02.jpg",
+      "overview": "方案围绕天津中原百货的场地现状和商业美陈提升，提出两个概念设计方向，并配合灵感来源、手绘稿和空间效果表达。",
+      "details": [
+        "资料包含场地现状、概念设计方案、灵感来源、手绘稿和改造后效果。",
+        "以商业空间美陈为切入，强调视觉更新、空间体验和消费场景提升。",
+        "旧版设计理念文件因格式限制无法完整抽取文字，但与新版美陈方案共同归入设计服务。"
+      ],
+      "deliverables": ["场地现状分析", "美陈概念设计", "手绘稿与效果表达", "商业空间视觉提升"],
+      "images": ["assets/xu/project-08-01.jpg", "assets/xu/project-08-02.jpg", "assets/xu/project-08-03.jpg"]
+    },
+    {
+      "id": "mian-3-sculpture",
+      "title": "棉三创意街区公共艺术雕塑方案",
+      "source": "棉三雕塑.pptx",
+      "year": "2025",
+      "services": ["landscape_art", "design", "art_sales"],
+      "cover": "assets/xu/project-13-03.jpg",
+      "overview": "方案围绕棉3创意街区的工业遗存和海河东岸文旅场景，提出公共艺术雕塑概念、故事、灵感、艺术概念、艺术品案例和线下展览。",
+      "details": [
+        "街区保留大量工业建筑群，形成独特工业风景观，方案以“破茧成蝶”“变锈为秀”等概念回应更新语境。",
+        "内容包含作品征集、设计师、艺术品案例、艺术展览和公共艺术概念补充。",
+        "可服务公共艺术雕塑、景观节点装置、艺术展览联动和制作施工协同。"
+      ],
+      "deliverables": ["公共艺术雕塑概念", "艺术品案例库", "线下展览方案", "制作施工方向"],
+      "images": ["assets/xu/project-13-01.jpg", "assets/xu/project-13-02.jpg", "assets/xu/project-13-03.jpg"]
+    },
+    {
+      "id": "short-video-material",
+      "title": "短视频现场资料",
+      "source": "xhs_live_photo_1693284518917.mp4",
+      "year": "过往资料",
+      "services": ["cultural_tourism", "design"],
+      "cover": "assets/xu/project-15-02.jpg",
+      "overview": "视频文件体量较小，可作为后续网页媒体区、项目现场记录或社交传播素材保留。",
+      "details": [
+        "当前文件作为媒体资料进入归档，后续可截取封面、转码为网页可播放素材。",
+        "适合服务活动传播、项目现场展示、短视频平台内容延展。",
+        "在正式网站中可与项目图片、活动介绍和传播成果放在同一案例页面。"
+      ],
+      "deliverables": ["视频归档", "传播素材", "现场记录"],
+      "images": []
+    }
+  ]
+}

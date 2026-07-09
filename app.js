@@ -1,102 +1,118 @@
-const archiveGrid = document.querySelector("#archive-grid");
 const filters = document.querySelector("#filters");
 const year = document.querySelector("#year");
+const serviceGrid = document.querySelector("#service-grid");
+const projectGrid = document.querySelector("#project-grid");
 
 year.textContent = new Date().getFullYear();
 
 async function loadArchive() {
   try {
-    const [itemsResponse, categoriesResponse] = await Promise.all([
-      fetch("data/artworks.json"),
-      fetch("data/categories.json"),
-    ]);
+    const archiveResponse = await fetch("data/xu-services.json");
 
-    if (!itemsResponse.ok || !categoriesResponse.ok) {
+    if (!archiveResponse.ok) {
       throw new Error("归档数据请求失败");
     }
 
-    const items = await itemsResponse.json();
-    const categories = await categoriesResponse.json();
-    renderArchive(items, categories);
+    const archiveData = await archiveResponse.json();
+    renderArchive(archiveData.services, archiveData.projects);
   } catch (error) {
-    archiveGrid.innerHTML = `
-      <p class="empty-state">归档数据暂时无法加载。请检查 data/artworks.json 和 data/categories.json 是否存在。</p>
+    projectGrid.innerHTML = `
+      <p class="empty-state">归档数据暂时无法加载。请检查 data/xu-services.json 是否存在。</p>
     `;
     console.error(error);
   }
 }
 
-function renderArchive(items, categories) {
-  const filterOptions = [{ id: "all", label: "全部" }, ...categories];
-  updateStats(items);
-  renderCategoryIndex(categories);
-  renderFilters(filterOptions, items, categories);
-  renderCards(items, categories);
+function renderArchive(services, projects) {
+  const filterOptions = [{ id: "all", title: "全部项目" }, ...services];
+  updateStats(services, projects);
+  renderServices(services, projects);
+  renderFilters(filterOptions, services, projects);
+  renderProjects(projects, services);
 }
 
-function updateStats(items) {
-  document.querySelector("#stat-count").textContent = items.length;
-  document.querySelector("#stat-categories").textContent = new Set(items.map((item) => item.category)).size;
-  document.querySelector("#stat-years").textContent = new Set(items.map((item) => item.year)).size;
+function updateStats(services, projects) {
+  document.querySelector("#stat-count").textContent = projects.length;
+  document.querySelector("#stat-categories").textContent = services.length;
+  document.querySelector("#stat-sources").textContent = 15;
 }
 
-function renderCategoryIndex(categories) {
-  categories.forEach((category) => {
-    const card = document.querySelector(`[data-category-card="${category.id}"]`);
-    if (!card) return;
-    card.querySelector("h3").textContent = category.label;
-    card.querySelector("p").textContent = category.description;
-  });
+function renderServices(services, projects) {
+  serviceGrid.innerHTML = services
+    .map((service) => {
+      const count = projects.filter((project) => project.services.includes(service.id)).length;
+      return `
+        <article>
+          <span class="service-count">${count} 个相关项目</span>
+          <h3>${service.title}</h3>
+          <p>${service.summary}</p>
+          <ul>
+            ${service.capabilities.map((item) => `<li>${item}</li>`).join("")}
+          </ul>
+        </article>
+      `;
+    })
+    .join("");
 }
 
-function renderFilters(options, items, categories) {
+function renderFilters(options, services, projects) {
   filters.innerHTML = options
     .map((option, index) => {
       const pressed = index === 0 ? "true" : "false";
-      return `<button class="filter-button" type="button" data-category="${option.id}" aria-pressed="${pressed}">${option.label}</button>`;
+      return `<button class="filter-button" type="button" data-service="${option.id}" aria-pressed="${pressed}">${option.title}</button>`;
     })
     .join("");
 
   filters.addEventListener("click", (event) => {
-    const button = event.target.closest("button[data-category]");
+    const button = event.target.closest("button[data-service]");
     if (!button) return;
 
-    const activeCategory = button.dataset.category;
+    const activeService = button.dataset.service;
     filters.querySelectorAll("button").forEach((filterButton) => {
       filterButton.setAttribute("aria-pressed", String(filterButton === button));
     });
 
-    const visibleItems = activeCategory === "all"
-      ? items
-      : items.filter((item) => item.category === activeCategory);
+    const visibleProjects = activeService === "all"
+      ? projects
+      : projects.filter((project) => project.services.includes(activeService));
 
-    renderCards(visibleItems, categories);
+    renderProjects(visibleProjects, services);
   });
 }
 
-function renderCards(items, categories) {
-  archiveGrid.innerHTML = items.map((item) => createCard(item, categories)).join("");
+function renderProjects(projects, services) {
+  projectGrid.innerHTML = projects.map((project) => createProject(project, services)).join("");
 }
 
-function createCard(item, categories) {
-  const category = categories.find((entry) => entry.id === item.category);
-  const image = item.image
-    ? `<img src="${item.image}" alt="${item.title}">`
-    : `<span aria-hidden="true">${item.title.slice(0, 1)}</span>`;
+function createProject(project, services) {
+  const serviceLabels = project.services
+    .map((serviceId) => services.find((service) => service.id === serviceId)?.title)
+    .filter(Boolean);
+  const gallery = (project.images || [])
+    .map((image) => `<img src="${image}" alt="${project.title}项目图片">`)
+    .join("");
+  const image = project.cover
+    ? `<img src="${project.cover}" alt="${project.title}">`
+    : `<span aria-hidden="true">${project.title.slice(0, 1)}</span>`;
 
   return `
-    <article class="archive-card">
-      <div class="archive-card-image">${image}</div>
-      <div class="archive-card-body">
-        <span class="category-label">${category ? category.label : item.category}</span>
+    <article class="project-card">
+      <div class="project-cover">${image}</div>
+      <div class="project-content">
+        <span class="category-label">${serviceLabels.join(" / ")}</span>
+        <h3>${project.title}</h3>
+        <p>${project.overview}</p>
         <div class="archive-card-meta">
-          <span>${item.artist}</span>
-          <span>${item.year}</span>
-          <span>${item.medium}</span>
+          <span>${project.year}</span>
+          <span>${project.source}</span>
         </div>
-        <h3>${item.title}</h3>
-        <p>${item.description}</p>
-        <span class="status-pill">${item.status}</span>
+        <h4>主要工作</h4>
+        <ul>${project.details.map((item) => `<li>${item}</li>`).join("")}</ul>
+        <h4>可交付成果</h4>
+        <div class="deliverables">
+          ${project.deliverables.map((item) => `<span>${item}</span>`).join("")}
+        </div>
+        ${gallery ? `<div class="mini-gallery">${gallery}</div>` : ""}
       </div>
     </article>
   `;
