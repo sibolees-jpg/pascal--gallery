@@ -1,59 +1,32 @@
-# 帕斯卡画廊线上展示档案
+# 帕斯卡画廊网站
 
-这是帕斯卡画廊的线上归档与网页展示仓库。网页使用纯静态网页文件，可直接通过 GitHub 的静态网页服务发布，不需要构建步骤。
+这是帕斯卡画廊的公开介绍网站。网页使用纯静态文件，可直接通过 GitHub Pages 或其他静态托管服务发布，不需要构建步骤。
 
-当前网页只放公开展示内容。服务内容按五类整理：艺术品销售、艺术品与场地租赁、文旅项目策划、设计、景观艺术品制作施工。
-
-这个仓库也是长期工作档案。用户上传的原始文件、网页素材、生成草稿、结构化数据和说明文档各自放在固定位置，后续材料不会混在一起。
+当前版本采用无版权风险策略：公开网页不引用未确认授权的图片、PPT、截图、客户资料或第三方项目原文，只展示帕斯卡画廊自己的服务体系与概括性能力说明。
 
 ## 仓库结构
 
 - `index.html`、`styles.css`、`app.js` 是公开网页。
-- `data/` 存放网页读取的结构化数据。
-- `assets/` 存放网页使用的图片和媒体素材。
-- `outputs/` 存放最终导出的展示类 PPT。
-- `content/uploads/` 存放用户上传的原始文件。
-- `content/archive/` 存放整理后的分类档案素材。
-- `content/notes/` 存放说明、题注、元数据草稿和策展笔记。
-- `generated/` 存放本地生成草稿、预览图和临时成果；大体量抽取缓存不提交到 GitHub。
+- `data/xu-services.json` 存放网页读取的服务与案例类型数据。
+- `assets/` 只用于放置已确认可公开使用的自有或授权图片；当前网站不依赖图片素材。
+- `content/` 只保留目录说明，不放公开页面会直接读取的资料。
+- `generated/` 只保留目录说明，不提交抽取缓存、截图、PPT 或临时素材。
 - `docs/` 存放仓库规则、分类说明和发布说明。
 
 ## 当前成果
 
 - 展示网页：`index.html`
-- 服务与项目数据：`data/xu-services.json`
-- 网页精选图片：`assets/xu/`
-- 服务案例 PPT：`outputs/帕斯卡画廊服务案例集.pptx`
+- 样式文件：`styles.css`
+- 页面脚本：`app.js`
+- 服务与案例类型数据：`data/xu-services.json`
 
-## 添加归档条目
+## 内容规则
 
-编辑 `data/artworks.json`，按下面格式添加条目：
-
-```json
-{
-  "id": "work-001",
-  "title": "未命名归档条目",
-  "artist": "艺术家姓名",
-  "year": "2026",
-  "medium": "综合媒介",
-  "category": "works",
-  "series": "开放归档",
-  "status": "待补充",
-  "image": "",
-  "description": "简短的策展说明。"
-}
-```
-
-如果 `image` 为空，网页会显示简洁占位图。原始上传文件保存在 `content/uploads/`，网页用的优化图片放在 `assets/`，图片路径可写成 `assets/work-001.jpg`。
-
-## 文件归档规则
-
-1. 原始上传文件先放进 `content/uploads/`。
-2. 分类整理后的素材放进 `content/archive/works`、`content/archive/exhibitions`、`content/archive/artists`、`content/archive/texts` 或 `content/archive/media`。
-3. 编辑、压缩、适合网页展示的素材放进 `assets/`。
-4. 生成草稿、预览图和临时输出放进 `generated/`。
-5. 只有确定公开展示的元数据才写入 `data/`。
+1. 公开网站只使用确认授权的文字和图片。
+2. 未确认权属的图片、PPT、截图、合同、客户资料和抽取缓存不得进入公开目录。
+3. 需要展示项目时，先写成概括性案例类型；具体客户名称、来源文件名、原图和原文摘录只在获得授权后补充。
+4. 如果将来使用图片，必须放入 `assets/` 并在提交前确认授权状态。
 
 ## 发布
 
-当前网页已通过 `gh-pages` 分支发布。正式访问地址是 `https://sibolees-jpg.github.io/pascal--gallery/`。
+当前网页可作为静态网站发布。正式访问地址曾配置为 `https://sibolees-jpg.github.io/pascal--gallery/`，发布前请确认仓库中没有未授权素材。

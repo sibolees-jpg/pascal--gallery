@@ -34,7 +34,7 @@ function renderArchive(services, projects) {
 function updateStats(services, projects) {
   document.querySelector("#stat-count").textContent = projects.length;
   document.querySelector("#stat-categories").textContent = services.length;
-  document.querySelector("#stat-sources").textContent = 15;
+  document.querySelector("#stat-sources").textContent = "0";
 }
 
 function renderServices(services, projects) {
@@ -88,23 +88,20 @@ function createProject(project, services) {
   const serviceLabels = project.services
     .map((serviceId) => services.find((service) => service.id === serviceId)?.title)
     .filter(Boolean);
-  const gallery = (project.images || [])
-    .map((image) => `<img src="${image}" alt="${project.title}项目图片">`)
-    .join("");
-  const image = project.cover
-    ? `<img src="${project.cover}" alt="${project.title}">`
-    : `<span aria-hidden="true">${project.title.slice(0, 1)}</span>`;
+  const initials = project.title.slice(0, 2);
 
   return `
     <article class="project-card">
-      <div class="project-cover">${image}</div>
+      <div class="project-cover">
+        <span aria-hidden="true">${initials}</span>
+      </div>
       <div class="project-content">
         <span class="category-label">${serviceLabels.join(" / ")}</span>
         <h3>${project.title}</h3>
         <p>${project.overview}</p>
         <div class="archive-card-meta">
           <span>${project.year}</span>
-          <span>${project.source}</span>
+          <span>无第三方图片展示</span>
         </div>
         <h4>主要工作</h4>
         <ul>${project.details.map((item) => `<li>${item}</li>`).join("")}</ul>
@@ -112,7 +109,6 @@ function createProject(project, services) {
         <div class="deliverables">
           ${project.deliverables.map((item) => `<span>${item}</span>`).join("")}
         </div>
-        ${gallery ? `<div class="mini-gallery">${gallery}</div>` : ""}
       </div>
     </article>
   `;
