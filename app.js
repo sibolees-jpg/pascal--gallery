@@ -34,9 +34,16 @@ function renderArchive(services, projects) {
 }
 
 function updateStats(services, projects) {
-  document.querySelector("#stat-count").textContent = projects.length;
-  document.querySelector("#stat-categories").textContent = services.length;
-  document.querySelector("#stat-sources").textContent = "0";
+  setOptionalText("#stat-count", projects.length);
+  setOptionalText("#stat-categories", services.length);
+  setOptionalText("#stat-sources", "0");
+}
+
+function setOptionalText(selector, value) {
+  const element = document.querySelector(selector);
+  if (element) {
+    element.textContent = value;
+  }
 }
 
 function renderServices(services, projects) {
