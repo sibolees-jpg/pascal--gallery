@@ -348,6 +348,60 @@ h3 {
   color: var(--muted);
 }
 
+.case-matrix {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 34px;
+}
+
+.case-group {
+  min-height: 220px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.case-group header {
+  padding: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.case-group header span {
+  display: inline-flex;
+  margin-bottom: 8px;
+  color: var(--accent-dark);
+  font-size: 0.78rem;
+}
+
+.case-list {
+  display: grid;
+}
+
+.case-list a {
+  display: grid;
+  gap: 4px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.case-list a:last-child {
+  border-bottom: 0;
+}
+
+.case-list a:hover {
+  background: var(--soft);
+}
+
+.case-list strong {
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.case-list small {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -403,6 +457,39 @@ h3 {
 
 .project-content h4 {
   margin: 22px 0 8px;
+}
+
+.case-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 22px 0 8px;
+}
+
+.case-facts div {
+  padding: 14px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.case-facts strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent-dark);
+  font-size: 0.86rem;
+}
+
+.case-facts p,
+.public-note {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.public-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 0.92rem;
 }
 
 .category-label {
@@ -475,6 +562,7 @@ h3 {
 
   .service-grid,
   .logic-grid,
+  .case-matrix,
   .proof-band dl {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -505,6 +593,10 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .case-facts {
+    grid-template-columns: 1fr;
+  }
+
   .project-cover {
     min-height: 220px;
     border-right: 0;
@@ -519,6 +611,7 @@ h3 {
 
   .service-grid,
   .logic-grid,
+  .case-matrix,
   .proof-band dl {
     grid-template-columns: 1fr;
   }

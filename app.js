@@ -1,6 +1,7 @@
 const filters = document.querySelector("#filters");
 const year = document.querySelector("#year");
 const serviceGrid = document.querySelector("#service-grid");
+const caseMatrix = document.querySelector("#case-matrix");
 const projectGrid = document.querySelector("#project-grid");
 
 year.textContent = new Date().getFullYear();
@@ -27,6 +28,7 @@ function renderArchive(services, projects) {
   const filterOptions = [{ id: "all", title: "全部项目" }, ...services];
   updateStats(services, projects);
   renderServices(services, projects);
+  renderCaseMatrix(services, projects);
   renderFilters(filterOptions, services, projects);
   renderProjects(projects, services);
 }
@@ -49,6 +51,30 @@ function renderServices(services, projects) {
           <ul>
             ${service.capabilities.map((item) => `<li>${item}</li>`).join("")}
           </ul>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function renderCaseMatrix(services, projects) {
+  caseMatrix.innerHTML = services
+    .map((service) => {
+      const relatedProjects = projects.filter((project) => project.services.includes(service.id));
+      return `
+        <article class="case-group">
+          <header>
+            <span>${relatedProjects.length} 个案例类型</span>
+            <h3>${service.title}</h3>
+          </header>
+          <div class="case-list">
+            ${relatedProjects.map((project) => `
+              <a href="#case-${project.id}">
+                <strong>${project.title}</strong>
+                <small>${project.type} / ${project.scene}</small>
+              </a>
+            `).join("")}
+          </div>
         </article>
       `;
     })
@@ -91,7 +117,7 @@ function createProject(project, services) {
   const initials = project.title.slice(0, 2);
 
   return `
-    <article class="project-card">
+    <article class="project-card" id="case-${project.id}">
       <div class="project-cover">
         <span aria-hidden="true">${initials}</span>
       </div>
@@ -100,8 +126,19 @@ function createProject(project, services) {
         <h3>${project.title}</h3>
         <p>${project.overview}</p>
         <div class="archive-card-meta">
-          <span>${project.year}</span>
+          <span>${project.stage || project.year}</span>
+          <span>${project.type}</span>
           <span>无第三方图片展示</span>
+        </div>
+        <div class="case-facts">
+          <div>
+            <strong>适用场景</strong>
+            <p>${project.scene}</p>
+          </div>
+          <div>
+            <strong>核心问题</strong>
+            <p>${project.problem}</p>
+          </div>
         </div>
         <h4>主要工作</h4>
         <ul>${project.details.map((item) => `<li>${item}</li>`).join("")}</ul>
@@ -109,6 +146,7 @@ function createProject(project, services) {
         <div class="deliverables">
           ${project.deliverables.map((item) => `<span>${item}</span>`).join("")}
         </div>
+        <p class="public-note">${project.publicNote}</p>
       </div>
     </article>
   `;
