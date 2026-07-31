@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="帕斯卡画廊在售作品目录，包含推荐作品与详细作品清单。"
+    >
+    <meta property="og:title" content="帕斯卡画廊 | 在售作品">
+    <meta
+      property="og:description"
+      content="推荐作品、在售目录、媒介分类、价格状态与作品信息。"
+    >
+    <title>帕斯卡画廊 | 在售作品</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="帕斯卡画廊首页">
+        <span class="brand-mark">P</span>
+        <span>
+          <strong>帕斯卡画廊</strong>
+          <small>Pascal Gallery</small>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="主要导航">
+        <a href="index.html#services">服务</a>
+        <a href="index.html#projects">案例</a>
+        <a href="works.html" aria-current="page">在售作品</a>
+        <a href="index.html#contact">合作</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="page-hero sales-hero" aria-labelledby="works-title">
+        <div>
+          <p class="eyebrow">在售作品</p>
+          <h1 id="works-title">在售作品</h1>
+          <p class="hero-lede">
+            这里用于集中展示帕斯卡画廊可销售、可洽谈或待确认的作品。当前先搭建公开页面结构，真实作品图片和价格可在授权确认后逐步补充。
+          </p>
+        </div>
+        <aside class="sales-note">
+          <span>更新日期</span>
+          <strong id="works-updated">读取中</strong>
+          <p>价格、库存状态和图片以画廊最终确认为准。</p>
+        </aside>
+      </section>
+
+      <section class="section recommended-section" aria-labelledby="recommended-title">
+        <div class="section-heading">
+          <p class="eyebrow">重点推荐</p>
+          <h2 id="recommended-title">推荐板块</h2>
+          <p>适合优先对外沟通、放在页面前部的重点作品。后续可换成真实高清图、艺术家介绍和收藏建议。</p>
+        </div>
+        <div id="recommended-works" class="recommended-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="section catalog-section" aria-labelledby="catalog-title">
+        <div class="section-heading">
+          <p class="eyebrow">详细目录</p>
+          <h2 id="catalog-title">详细目录</h2>
+          <p>按媒介和状态维护全部在售作品，方便后续替换真实作品资料、导出报价单或制作客户清单。</p>
+        </div>
+        <div id="work-filters" class="filters" aria-label="在售作品筛选"></div>
+        <div id="work-catalog" class="work-catalog" aria-live="polite"></div>
+      </section>
+
+      <section class="contact-section" aria-labelledby="works-contact-title">
+        <div>
+          <p class="eyebrow">作品咨询</p>
+          <h2 id="works-contact-title">如需作品清单、价格或空间配置建议，可单独沟通。</h2>
+        </div>
+        <div class="contact-panel">
+          <p>
+            页面当前为公开展示框架，不展示未确认授权的作品图片。可根据客户空间、预算、尺寸和媒介偏好整理独立推荐清单。
+          </p>
+          <a class="button primary" href="mailto:hello@pascal.gallery">咨询在售作品</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© <span id="year"></span> 帕斯卡画廊</span>
+      <a href="#top">返回顶部</a>
+    </footer>
+
+    <script src="works.js" defer></script>
+  </body>
+</html>
