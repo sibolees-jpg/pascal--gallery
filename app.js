@@ -50,15 +50,14 @@ function renderServices(services, projects) {
   serviceGrid.innerHTML = services
     .map((service) => {
       const count = projects.filter((project) => project.services.includes(service.id)).length;
+      const detailUrl = `services/${service.slug}.html`;
       return `
-        <article>
+        <a class="service-card" href="${detailUrl}">
           <span class="service-count">${count} 个相关项目</span>
           <h3>${service.title}</h3>
           <p>${service.summary}</p>
-          <ul>
-            ${service.capabilities.map((item) => `<li>${item}</li>`).join("")}
-          </ul>
-        </article>
+          <span class="text-link">查看服务详情</span>
+        </a>
       `;
     })
     .join("");

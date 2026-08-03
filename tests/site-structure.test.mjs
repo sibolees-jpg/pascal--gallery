@@ -1,0 +1,39 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+
+const index = await readFile(new URL("../index.html", import.meta.url), "utf8");
+const works = await readFile(new URL("../works.html", import.meta.url), "utf8");
+
+test("首页使用正式完整标志和中文定位", () => {
+  assert.ok(
+    (index.match(/assets\/brand\/pascal-gallery-logo\.svg/g) ?? []).length >= 2
+  );
+  assert.match(index, /assets\/brand\/favicon\.svg/);
+  assert.match(index, /综合艺术服务机构/);
+  assert.match(index, /艺术家与作品资源/);
+  assert.match(index, /公共艺术制作落地服务/);
+});
+
+test("首页包含四类需求入口和五阶段工作链", () => {
+  for (const text of [
+    "购买或租赁艺术品",
+    "空间、商业或文旅项目",
+    "艺术家或机构合作",
+    "了解帕斯卡的发展与能力",
+    "需求诊断",
+    "艺术资源组织",
+    "策划与设计",
+    "制作与施工",
+    "展示与运营"
+  ]) {
+    assert.match(index, new RegExp(text));
+  }
+});
+
+test("现有在售作品页也使用正式标志和完整 favicon", () => {
+  assert.ok(
+    (works.match(/assets\/brand\/pascal-gallery-logo\.svg/g) ?? []).length >= 2
+  );
+  assert.match(works, /assets\/brand\/favicon\.svg/);
+});
