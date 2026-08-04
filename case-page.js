@@ -1,4 +1,5 @@
-import { getCaseById, getRelatedCases } from "./case-tools.mjs";
+import { getRelatedCases } from "./case-tools.mjs";
+import { getCaseDetailViewModel } from "./case-page-view-model.mjs";
 
 const year = document.querySelector("#year");
 const caseDetail = document.querySelector("#case-detail");
@@ -21,14 +22,14 @@ async function loadCase() {
       servicesResponse.json(),
     ]);
     const caseId = new URLSearchParams(window.location.search).get("id");
-    const currentCase = getCaseById(cases, caseId);
+    const viewModel = getCaseDetailViewModel(cases, caseId);
 
-    if (!currentCase) {
-      renderMissingCase();
+    if (!viewModel.currentCase) {
+      renderMissingCase(viewModel.notFoundMessage);
       return;
     }
 
-    renderCaseDetail(cases, services, currentCase);
+    renderCaseDetail(cases, services, viewModel.currentCase, viewModel.imageMessage);
   } catch (error) {
     caseDetail.innerHTML = `
       <section class="section case-error-state">
@@ -40,18 +41,18 @@ async function loadCase() {
   }
 }
 
-function renderMissingCase() {
+function renderMissingCase(message = "未找到这个案例") {
   caseDetail.innerHTML = `
     <section class="section case-error-state" aria-labelledby="missing-case-title">
       <p class="eyebrow">案例目录</p>
-      <h1 id="missing-case-title">未找到这个案例</h1>
+      <h1 id="missing-case-title">${message}</h1>
       <p class="hero-lede">该案例编号无效，或项目暂未公开。</p>
       <a class="button primary" href="cases.html">返回案例目录</a>
     </section>
   `;
 }
 
-function renderCaseDetail(cases, services, currentCase) {
+function renderCaseDetail(cases, services, currentCase, imageMessage) {
   const relatedCases = getRelatedCases(cases, currentCase, 3);
   const relatedServices = currentCase.services
     .map((id) => services.find((service) => service.id === id))
@@ -135,7 +136,7 @@ function renderCaseDetail(cases, services, currentCase) {
         <p class="eyebrow">项目图片</p>
         <h2 id="images-title">项目影像</h2>
       </div>
-      ${createImageGallery(currentCase.images)}
+      ${createImageGallery(currentCase.images, imageMessage)}
     </section>
 
     <section class="section" aria-labelledby="services-title">
@@ -178,9 +179,9 @@ function createContentList(items, className, ordered = false) {
   `;
 }
 
-function createImageGallery(images) {
+function createImageGallery(images, emptyMessage) {
   if (!images.length) {
-    return `<p class="empty-state">项目影像资料正在整理。</p>`;
+    return `<p class="empty-state">${emptyMessage}</p>`;
   }
 
   return `

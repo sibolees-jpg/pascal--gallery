@@ -1,4 +1,4 @@
-import { filterCasesByService, isKnownService } from "./case-tools.mjs";
+import { getCaseListViewModel } from "./case-page-view-model.mjs";
 
 const year = document.querySelector("#year");
 const caseFilters = document.querySelector("#case-filters");
@@ -31,64 +31,57 @@ async function loadCases() {
 }
 
 function renderCasesPage(cases, services) {
-  const requestedService = new URLSearchParams(window.location.search).get("service");
-  let activeService = isKnownService(services, requestedService) ? requestedService : null;
+  let requestedService = new URLSearchParams(window.location.search).get("service");
 
   const render = () => {
-    renderFilters(services, cases, activeService);
-    renderCaseGrid(filterCasesByService(cases, activeService));
+    const viewModel = getCaseListViewModel(cases, services, requestedService);
+    renderFilters(viewModel.filters);
+    renderCaseGrid(viewModel.cases, viewModel.notice, viewModel.emptyMessage);
   };
 
   caseFilters.addEventListener("click", (event) => {
     const button = event.target.closest("button[data-service]");
     if (!button) return;
 
-    activeService = button.dataset.service || null;
-    updateServiceUrl(activeService);
+    requestedService = button.dataset.service || null;
+    updateServiceUrl(requestedService);
     render();
   });
 
   render();
 }
 
-function renderFilters(services, cases, activeService) {
-  const publicCases = filterCasesByService(cases, null);
-  const allFilter = createFilterButton("", "全部案例", publicCases.length, activeService === null);
-  const serviceFilters = services.map((service) => {
-    const count = filterCasesByService(cases, service.id).length;
-    return createFilterButton(
-      service.id,
-      service.title,
-      count,
-      activeService === service.id,
-    );
-  });
-
-  caseFilters.innerHTML = [allFilter, ...serviceFilters].join("");
+function renderFilters(filters) {
+  caseFilters.innerHTML = filters.map((filter) => createFilterButton(filter)).join("");
 }
 
-function createFilterButton(id, title, count, isActive) {
+function createFilterButton(filter) {
   return `
     <button
       class="filter-button"
       type="button"
-      data-service="${id}"
-      aria-pressed="${isActive}"
+      data-service="${filter.id ?? ""}"
+      aria-pressed="${filter.isActive}"
     >
-      ${title} ${count}
+      ${filter.title} ${filter.count}
     </button>
   `;
 }
 
-function renderCaseGrid(cases) {
+function renderCaseGrid(cases, notice, emptyMessage) {
+  const noticeMarkup = notice
+    ? `<p class="empty-state case-filter-notice">${notice}</p>`
+    : "";
+
   if (!cases.length) {
     caseGrid.innerHTML = `
-      <p class="empty-state">该分类的公开案例正在整理。</p>
+      ${noticeMarkup}
+      <p class="empty-state">${emptyMessage ?? "当前暂无公开案例。"}</p>
     `;
     return;
   }
 
-  caseGrid.innerHTML = cases.map((item) => createCaseCard(item)).join("");
+  caseGrid.innerHTML = `${noticeMarkup}${cases.map((item) => createCaseCard(item)).join("")}`;
 }
 
 function createCaseCard(item) {
