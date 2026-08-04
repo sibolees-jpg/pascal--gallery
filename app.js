@@ -31,10 +31,12 @@ async function loadArchive() {
 }
 
 function renderArchive(services, cases) {
-  updateStats(services, cases);
-  renderServices(services, cases);
-  renderCaseMatrix(services, cases);
-  renderProjects(cases, services);
+  const publicCases = cases.filter((item) => item.publicStatus === "public");
+
+  updateStats(services, publicCases);
+  renderServices(services, publicCases);
+  renderCaseMatrix(services, publicCases);
+  renderProjects(publicCases, services);
 }
 
 function updateStats(services, cases) {

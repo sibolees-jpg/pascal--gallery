@@ -1,10 +1,17 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import vm from "node:vm";
 
 const index = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const works = await readFile(new URL("../works.html", import.meta.url), "utf8");
 const appJs = await readFile(new URL("../app.js", import.meta.url), "utf8");
+const { cases } = JSON.parse(
+  await readFile(new URL("../data/cases.json", import.meta.url), "utf8"),
+);
+const { services } = JSON.parse(
+  await readFile(new URL("../data/xu-services.json", import.meta.url), "utf8"),
+);
 
 test("首页使用正式完整标志和中文定位", () => {
   assert.ok(
@@ -81,4 +88,42 @@ test("服务页导航均进入案例目录", async () => {
     const html = await readFile(new URL(`../${path}`, import.meta.url), "utf8");
     assert.match(html, /href="\.\.\/cases\.html">案例<\/a>/);
   }
+});
+
+test("首页仅统计和渲染公开案例", async () => {
+  const publicCase = {
+    ...cases[0],
+    title: "公开测试案例",
+    services: ["design"],
+  };
+  const privateCase = {
+    ...publicCase,
+    id: "internal-case",
+    title: "内部待审核案例",
+    publicStatus: "review",
+  };
+  const designService = services.find((service) => service.id === "design");
+  const elements = new Map(
+    ["#year", "#service-grid", "#case-matrix", "#project-grid", "#stat-count", "#stat-categories", "#stat-sources"]
+      .map((selector) => [selector, { innerHTML: "", textContent: "" }]),
+  );
+  const responseFor = (data) => ({ ok: true, json: async () => data });
+
+  vm.runInNewContext(appJs, {
+    Date,
+    console: { error() {} },
+    document: { querySelector: (selector) => elements.get(selector) ?? null },
+    fetch: async (url) => responseFor(
+      url === "data/cases.json" ? { cases: [publicCase, privateCase] } : { services: [designService] },
+    ),
+  });
+  await new Promise((resolve) => setImmediate(resolve));
+
+  assert.equal(elements.get("#stat-count").textContent, 1);
+  assert.match(elements.get("#service-grid").innerHTML, /1 个相关项目/);
+  assert.doesNotMatch(elements.get("#service-grid").innerHTML, /2 个相关项目/);
+  assert.match(elements.get("#case-matrix").innerHTML, /1 个公开案例/);
+  assert.doesNotMatch(elements.get("#case-matrix").innerHTML, /2 个公开案例/);
+  assert.match(elements.get("#project-grid").innerHTML, /公开测试案例/);
+  assert.doesNotMatch(elements.get("#project-grid").innerHTML, /内部待审核案例/);
 });
