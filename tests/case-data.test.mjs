@@ -57,3 +57,14 @@ test("公开案例均为真实项目并具备详情页字段", async () => {
     assert.equal(item.publicStatus, "public");
   }
 });
+
+test("罗浮宫艺术、展览与活动策划归入文旅项目策划并保留设计服务", async () => {
+  const { cases } = JSON.parse(
+    await readFile(new URL("../data/cases.json", import.meta.url), "utf8"),
+  );
+  const louvreCase = cases.find((item) => item.id === "louvre-art-programming");
+
+  assert.ok(louvreCase);
+  assert.ok(louvreCase.services.includes("cultural_tourism"));
+  assert.ok(louvreCase.services.includes("design"));
+});
