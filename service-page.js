@@ -1,4 +1,5 @@
-import { getRelatedProjects, getServiceById } from "./service-tools.mjs";
+import { filterCasesByService } from "./case-tools.mjs";
+import { getServiceById } from "./service-tools.mjs";
 
 const serviceId = document.body.dataset.serviceId;
 const year = document.querySelector("#year");
@@ -7,9 +8,16 @@ year.textContent = new Date().getFullYear();
 
 async function loadServicePage() {
   try {
-    const response = await fetch(new URL("./data/xu-services.json", import.meta.url));
-    if (!response.ok) throw new Error("服务数据请求失败");
-    renderServicePage(await response.json(), serviceId);
+    const [servicesResponse, casesResponse] = await Promise.all([
+      fetch(new URL("./data/xu-services.json", import.meta.url)),
+      fetch(new URL("./data/cases.json", import.meta.url)),
+    ]);
+    if (!servicesResponse.ok || !casesResponse.ok) throw new Error("服务数据请求失败");
+    const [serviceData, { cases }] = await Promise.all([
+      servicesResponse.json(),
+      casesResponse.json(),
+    ]);
+    renderServicePage(serviceData, cases, serviceId);
   } catch (error) {
     document.querySelector("main").innerHTML = `
       <section class="section empty-state">
@@ -22,10 +30,10 @@ async function loadServicePage() {
   }
 }
 
-export function renderServicePage(data, id) {
+export function renderServicePage(data, cases, id) {
   const service = getServiceById(data, id);
   if (!service) throw new Error("未找到对应服务");
-  const projects = getRelatedProjects(data, id);
+  const relatedCases = filterCasesByService(cases, id);
 
   document.querySelector("#service-title").textContent = service.title;
   document.querySelector("#service-lead").textContent = service.pageLead;
@@ -34,7 +42,7 @@ export function renderServicePage(data, id) {
   renderList("#service-capabilities", "帕斯卡具体负责什么", service.capabilities);
   renderSteps("#service-process", service.process);
   renderTags("#service-deliverables", "可以交付什么", service.deliverables);
-  renderRelatedProjects("#service-projects", projects);
+  renderRelatedProjects("#service-projects", relatedCases);
 }
 
 function renderList(selector, title, items) {
@@ -66,13 +74,14 @@ function renderTags(selector, title, items) {
   `;
 }
 
-function renderRelatedProjects(selector, projects) {
-  const content = projects.length
-    ? projects.map((project) => `
+function renderRelatedProjects(selector, cases) {
+  const content = cases.length
+    ? cases.map((item) => `
         <article>
-          <span class="category-label">${project.type}</span>
-          <h3>${project.title}</h3>
-          <p>${project.overview}</p>
+          <span class="category-label">${item.type}</span>
+          <h3>${item.title}</h3>
+          <p>${item.summary}</p>
+          <a class="button" href="../case.html?id=${item.id}">查看案例</a>
         </article>
       `).join("")
     : '<p class="empty-state">相关案例正在整理。</p>';

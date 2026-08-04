@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 
 const index = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const works = await readFile(new URL("../works.html", import.meta.url), "utf8");
+const appJs = await readFile(new URL("../app.js", import.meta.url), "utf8");
 
 test("首页使用正式完整标志和中文定位", () => {
   assert.ok(
@@ -55,5 +56,29 @@ test("五个服务二级页具有固定服务编号和完整品牌标志", async
     );
     assert.match(html, /\.\.\/assets\/brand\/favicon\.svg/);
     assert.match(html, /\.\.\/service-page\.js/);
+  }
+});
+
+test("首页分类和主导航均进入真实案例库", async () => {
+  for (const serviceId of [
+    "art_sales",
+    "art_and_space_rental",
+    "cultural_tourism",
+    "design",
+    "landscape_art",
+  ]) {
+    assert.match(index, new RegExp(`cases\\.html\\?service=${serviceId}`));
+  }
+  assert.match(index, /href="cases\.html">案例<\/a>/);
+  assert.match(works, /href="cases\.html">案例<\/a>/);
+  assert.match(appJs, /data\/cases\.json/);
+  assert.match(appJs, /case\.html\?id=/);
+  assert.doesNotMatch(appJs, /href="#case-/);
+});
+
+test("服务页导航均进入案例目录", async () => {
+  for (const [path] of servicePages) {
+    const html = await readFile(new URL(`../${path}`, import.meta.url), "utf8");
+    assert.match(html, /href="\.\.\/cases\.html">案例<\/a>/);
   }
 });

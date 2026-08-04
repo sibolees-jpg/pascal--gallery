@@ -1,4 +1,3 @@
-const filters = document.querySelector("#filters");
 const year = document.querySelector("#year");
 const serviceGrid = document.querySelector("#service-grid");
 const caseMatrix = document.querySelector("#case-matrix");
@@ -8,33 +7,38 @@ year.textContent = new Date().getFullYear();
 
 async function loadArchive() {
   try {
-    const archiveResponse = await fetch("data/xu-services.json");
+    const [servicesResponse, casesResponse] = await Promise.all([
+      fetch("data/xu-services.json"),
+      fetch("data/cases.json"),
+    ]);
 
-    if (!archiveResponse.ok) {
+    if (!servicesResponse.ok || !casesResponse.ok) {
       throw new Error("归档数据请求失败");
     }
 
-    const archiveData = await archiveResponse.json();
-    renderArchive(archiveData.services, archiveData.projects);
+    const [{ services }, { cases }] = await Promise.all([
+      servicesResponse.json(),
+      casesResponse.json(),
+    ]);
+    renderArchive(services, cases);
   } catch (error) {
+    caseMatrix.innerHTML = '<p class="empty-state">案例资料暂时无法加载，请稍后再试。</p>';
     projectGrid.innerHTML = `
-      <p class="empty-state">归档数据暂时无法加载。请检查 data/xu-services.json 是否存在。</p>
+      <p class="empty-state">代表案例暂时无法加载，请稍后再试。</p>
     `;
     console.error(error);
   }
 }
 
-function renderArchive(services, projects) {
-  const filterOptions = [{ id: "all", title: "全部项目" }, ...services];
-  updateStats(services, projects);
-  renderServices(services, projects);
-  renderCaseMatrix(services, projects);
-  renderFilters(filterOptions, services, projects);
-  renderProjects(projects, services);
+function renderArchive(services, cases) {
+  updateStats(services, cases);
+  renderServices(services, cases);
+  renderCaseMatrix(services, cases);
+  renderProjects(cases, services);
 }
 
-function updateStats(services, projects) {
-  setOptionalText("#stat-count", projects.length);
+function updateStats(services, cases) {
+  setOptionalText("#stat-count", cases.length);
   setOptionalText("#stat-categories", services.length);
   setOptionalText("#stat-sources", "0");
 }
@@ -46,10 +50,10 @@ function setOptionalText(selector, value) {
   }
 }
 
-function renderServices(services, projects) {
+function renderServices(services, cases) {
   serviceGrid.innerHTML = services
     .map((service) => {
-      const count = projects.filter((project) => project.services.includes(service.id)).length;
+      const count = cases.filter((item) => item.services.includes(service.id)).length;
       const detailUrl = `services/${service.slug}.html`;
       return `
         <a class="service-card" href="${detailUrl}">
@@ -63,23 +67,21 @@ function renderServices(services, projects) {
     .join("");
 }
 
-function renderCaseMatrix(services, projects) {
+function renderCaseMatrix(services, cases) {
   caseMatrix.innerHTML = services
     .map((service) => {
-      const relatedProjects = projects.filter((project) => project.services.includes(service.id));
+      const relatedCases = cases.filter((item) => item.services.includes(service.id));
       return `
         <article class="case-group">
           <header>
-            <span>${relatedProjects.length} 个案例类型</span>
+            <span>${relatedCases.length} 个公开案例</span>
             <h3>${service.title}</h3>
           </header>
           <div class="case-list">
-            ${relatedProjects.map((project) => `
-              <a href="#case-${project.id}">
-                <strong>${project.title}</strong>
-                <small>${project.type} / ${project.scene}</small>
-              </a>
-            `).join("")}
+            <a href="cases.html?service=${service.id}">
+              <strong>浏览相关案例</strong>
+              <small>查看${service.title}的真实项目</small>
+            </a>
           </div>
         </article>
       `;
@@ -87,72 +89,31 @@ function renderCaseMatrix(services, projects) {
     .join("");
 }
 
-function renderFilters(options, services, projects) {
-  filters.innerHTML = options
-    .map((option, index) => {
-      const pressed = index === 0 ? "true" : "false";
-      return `<button class="filter-button" type="button" data-service="${option.id}" aria-pressed="${pressed}">${option.title}</button>`;
-    })
-    .join("");
-
-  filters.addEventListener("click", (event) => {
-    const button = event.target.closest("button[data-service]");
-    if (!button) return;
-
-    const activeService = button.dataset.service;
-    filters.querySelectorAll("button").forEach((filterButton) => {
-      filterButton.setAttribute("aria-pressed", String(filterButton === button));
-    });
-
-    const visibleProjects = activeService === "all"
-      ? projects
-      : projects.filter((project) => project.services.includes(activeService));
-
-    renderProjects(visibleProjects, services);
-  });
+function renderProjects(cases, services) {
+  projectGrid.innerHTML = cases.map((item) => createProject(item, services)).join("");
 }
 
-function renderProjects(projects, services) {
-  projectGrid.innerHTML = projects.map((project) => createProject(project, services)).join("");
-}
-
-function createProject(project, services) {
-  const serviceLabels = project.services
+function createProject(item, services) {
+  const serviceLabels = item.services
     .map((serviceId) => services.find((service) => service.id === serviceId)?.title)
     .filter(Boolean);
-  const initials = project.title.slice(0, 2);
+  const initials = item.title.slice(0, 2);
 
   return `
-    <article class="project-card" id="case-${project.id}">
+    <article class="project-card case-card">
       <div class="project-cover">
         <span aria-hidden="true">${initials}</span>
       </div>
       <div class="project-content">
         <span class="category-label">${serviceLabels.join(" / ")}</span>
-        <h3>${project.title}</h3>
-        <p>${project.overview}</p>
+        <h3>${item.title}</h3>
+        <p>${item.summary}</p>
         <div class="archive-card-meta">
-          <span>${project.stage || project.year}</span>
-          <span>${project.type}</span>
-          <span>无第三方图片展示</span>
+          <span>${item.year}</span>
+          <span>${item.location}</span>
+          <span>${item.type}</span>
         </div>
-        <div class="case-facts">
-          <div>
-            <strong>适用场景</strong>
-            <p>${project.scene}</p>
-          </div>
-          <div>
-            <strong>核心问题</strong>
-            <p>${project.problem}</p>
-          </div>
-        </div>
-        <h4>主要工作</h4>
-        <ul>${project.details.map((item) => `<li>${item}</li>`).join("")}</ul>
-        <h4>可交付成果</h4>
-        <div class="deliverables">
-          ${project.deliverables.map((item) => `<span>${item}</span>`).join("")}
-        </div>
-        <p class="public-note">${project.publicNote}</p>
+        <a class="button case-card-link" href="case.html?id=${item.id}">查看案例</a>
       </div>
     </article>
   `;

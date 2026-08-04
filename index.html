@@ -29,7 +29,7 @@
       </a>
       <nav class="nav-links" aria-label="主要导航">
         <a href="#services">服务</a>
-        <a href="#projects">案例</a>
+        <a href="cases.html">案例</a>
         <a href="works.html">在售作品</a>
         <a href="#development">关于帕斯卡</a>
         <a href="#contact">合作</a>
@@ -159,11 +159,11 @@
           <h2 id="scenario-title">服务可以进入不同空间，也可以贯穿项目的不同阶段。</h2>
         </div>
         <div class="scenario-grid">
-          <a href="#projects"><span>酒店与商业空间</span><small>作品配置、艺术氛围与空间更新</small></a>
-          <a href="#projects"><span>文旅目的地与城市活动</span><small>主题策划、体验内容与运营节奏</small></a>
-          <a href="#projects"><span>街区、园区与公共空间</span><small>公共艺术、景观装置与现场落地</small></a>
-          <a href="#projects"><span>企业收藏与艺术配置</span><small>作品选择、预算匹配与陈列建议</small></a>
-          <a href="#projects"><span>展览、品牌活动与临时场地</span><small>内容组织、展陈设计与布撤展</small></a>
+          <a href="cases.html?service=design"><span>酒店与商业空间</span><small>作品配置、艺术氛围与空间更新</small></a>
+          <a href="cases.html?service=cultural_tourism"><span>文旅目的地与城市活动</span><small>主题策划、体验内容与运营节奏</small></a>
+          <a href="cases.html?service=landscape_art"><span>街区、园区与公共空间</span><small>公共艺术、景观装置与现场落地</small></a>
+          <a href="cases.html?service=art_sales"><span>企业收藏与艺术配置</span><small>作品选择、预算匹配与陈列建议</small></a>
+          <a href="cases.html?service=art_and_space_rental"><span>展览、品牌活动与临时场地</span><small>内容组织、展陈设计与布撤展</small></a>
         </div>
       </section>
 
@@ -175,8 +175,13 @@
             当前公开版本只展示获得授权或可概括的项目信息，不使用未经授权的客户名称、作品图片和第三方材料。
           </p>
         </div>
-        <div id="case-matrix" class="case-matrix" aria-live="polite"></div>
-        <div id="filters" class="filters" aria-label="案例筛选"></div>
+        <div id="case-matrix" class="case-matrix" aria-live="polite">
+          <article class="case-group"><header><span>案例分类</span><h3>艺术品销售</h3></header><div class="case-list"><a href="cases.html?service=art_sales"><strong>浏览相关案例</strong><small>作品配置与艺术项目</small></a></div></article>
+          <article class="case-group"><header><span>案例分类</span><h3>艺术品与场地租赁</h3></header><div class="case-list"><a href="cases.html?service=art_and_space_rental"><strong>浏览相关案例</strong><small>展览与空间合作</small></a></div></article>
+          <article class="case-group"><header><span>案例分类</span><h3>文旅项目策划</h3></header><div class="case-list"><a href="cases.html?service=cultural_tourism"><strong>浏览相关案例</strong><small>目的地与城市活动</small></a></div></article>
+          <article class="case-group"><header><span>案例分类</span><h3>设计</h3></header><div class="case-list"><a href="cases.html?service=design"><strong>浏览相关案例</strong><small>空间、视觉与美陈</small></a></div></article>
+          <article class="case-group"><header><span>案例分类</span><h3>景观艺术品制作施工</h3></header><div class="case-list"><a href="cases.html?service=landscape_art"><strong>浏览相关案例</strong><small>公共艺术与景观装置</small></a></div></article>
+        </div>
         <div id="project-grid" class="project-grid"></div>
       </section>
 

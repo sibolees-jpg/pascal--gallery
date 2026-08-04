@@ -6,6 +6,10 @@ import { getRelatedProjects, getServiceById } from "../service-tools.mjs";
 const data = JSON.parse(
   await readFile(new URL("../data/xu-services.json", import.meta.url), "utf8")
 );
+const servicePageJs = await readFile(
+  new URL("../service-page.js", import.meta.url),
+  "utf8",
+);
 const expectedIds = [
   "art_sales",
   "art_and_space_rental",
@@ -30,4 +34,11 @@ test("按编号读取服务并关联案例", () => {
   assert.equal(getServiceById(data, "design").title, "设计");
   assert.ok(getRelatedProjects(data, "design").length >= 1);
   assert.equal(getServiceById(data, "missing"), null);
+});
+
+test("服务页相关项目使用真实案例数据、详情链接和中文空状态", () => {
+  assert.match(servicePageJs, /data\/cases\.json/);
+  assert.match(servicePageJs, /case\.html\?id=/);
+  assert.match(servicePageJs, /href="\.\.\/case\.html\?id=/);
+  assert.match(servicePageJs, /相关案例正在整理/);
 });
