@@ -46,3 +46,11 @@
 1. `publicStatus: "public"` 表示本数据已按公开边界整理，不是客户或权利人的发布授权证明；上线前仍应确认每个项目名称、客户信息和图片的公开许可。
 2. 多数来源是概念案、策划案或工作计划，数据已明确使用“方案”表述，未声称实施或效果。
 3. 外接盘未挂载；恢复后应只读补充完成状态、公开授权和确属项目的图片。
+
+## Round 1 review fixes
+
+- 已从 `data/cases.json` 的全部 10 条公开案例移除 `sourceFiles`；完整来源路径仅保留在 `docs/case-source-audit.md`。
+- 审计口径已更新：用户提供资料用于网站，`publicStatus: "public"` 表示项目名称和审计后的文字事实获准进入本站公开数据集；这不确认任何图片权利，所有图片继续保持未使用状态。
+- 已移除没有租赁职责证据的全部 `art_and_space_rental` 标签，移除罗浮宫案例中没有销售/配置职责证据的 `art_sales` 标签，并移除团泊洼案例中没有制作施工职责证据的 `landscape_art` 标签；柏典天津保留 `art_sales`，因为资料明确为样板间艺术品点位及作品配置方案。
+- 已扩展 `tests/case-data.test.mjs`：逐条校验全部必填字段及类型、五项已知服务编号、必填字符串数组、图片对象的 `src`/`alt`/`caption` 字段，以及公开数据不含 `sourceFiles`。
+- TDD 证据：扩展测试在修改数据前因 `mian-san-sculpture` 含 `sourceFiles` 按预期失败；移除后通过（1 passed、0 failed）。`git diff --check` 通过。

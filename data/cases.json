@@ -5,7 +5,7 @@
       "title": "棉三雕塑",
       "year": "2025",
       "location": "天津市河东区棉3创意街区",
-      "services": ["landscape_art", "design", "art_and_space_rental"],
+      "services": ["landscape_art", "design"],
       "type": "公共艺术雕塑方案",
       "summary": "为棉3创意街区形成以“破茧成蝶”为主题的公共艺术雕塑方案。",
       "background": "资料将棉3创意街区描述为由百年厂房与新建城市综合体构成的天津文化旅游聚集区，并保留工业建筑景观。",
@@ -15,7 +15,6 @@
       "outcomes": ["形成《公共艺术雕塑方案》资料", "明确“破茧成蝶”主题及公共艺术征集流程"],
       "deliverables": ["公共艺术雕塑方案", "艺术概念说明", "作品征集与评选流程", "线下展览建议"],
       "images": [],
-      "sourceFiles": ["棉三雕塑.pptx"],
       "publicStatus": "public"
     },
     {
@@ -23,7 +22,7 @@
       "title": "和光美术馆",
       "year": "未注明",
       "location": "天津市静海区光合谷",
-      "services": ["cultural_tourism", "design", "art_and_space_rental"],
+      "services": ["cultural_tourism", "design"],
       "type": "美术馆命名与理念方案",
       "summary": "围绕光合谷的生态、艺术与在地性，提出“和光美术馆”的命名解析与理念方向。",
       "background": "资料将项目定位为与湿地生态、艺术及旅游联动的文化空间，并延续光合谷项目中的“光”意象。",
@@ -33,7 +32,6 @@
       "outcomes": ["形成“和光美术馆”命名解析资料", "提出与生态、艺术和在地性关联的理念方向"],
       "deliverables": ["命名解析", "项目契合点说明", "生态关联策略", "风险与规避建议"],
       "images": [],
-      "sourceFiles": ["和光美术馆.docx"],
       "publicStatus": "public"
     },
     {
@@ -51,7 +49,6 @@
       "outcomes": ["形成柏典天津样板间艺术品方案", "完成入户、走廊、客房前厅等区域的点位与作品建议"],
       "deliverables": ["艺术品配置方案", "样板间点位图", "作品清单与说明"],
       "images": [],
-      "sourceFiles": ["柏典tianjin.pptx"],
       "publicStatus": "public"
     },
     {
@@ -59,7 +56,7 @@
       "title": "无锡 NEW 空间",
       "year": "2023",
       "location": "无锡惠山古街",
-      "services": ["art_and_space_rental", "cultural_tourism"],
+      "services": ["cultural_tourism"],
       "type": "艺术空间与城市更新策划",
       "summary": "围绕惠山古街的文化语境，提出以画廊等公共文化空间参与城市更新的策划方向。",
       "background": "资料聚焦惠山古街的宗祠文化、园林景观与文人雅趣，以及新业态与传统文化的共生。",
@@ -69,7 +66,6 @@
       "outcomes": ["形成无锡艺术空间策划资料", "明确画廊、书店、咖啡馆等公共空间的组合方向"],
       "deliverables": ["艺术空间策划说明", "在地性艺术方向", "公共文化业态建议"],
       "images": [],
-      "sourceFiles": ["无锡NEW空间.pptx"],
       "publicStatus": "public"
     },
     {
@@ -77,7 +73,7 @@
       "title": "团泊洼文旅项目",
       "year": "2022",
       "location": "天津市静海区团泊洼",
-      "services": ["cultural_tourism", "design", "landscape_art"],
+      "services": ["cultural_tourism", "design"],
       "type": "文旅项目可行性分析",
       "summary": "为团泊洼形成文旅项目可行性分析、文化项目与空间游线方向。",
       "background": "资料将基地定位为服务京津冀的郊野度假营地，并分析了团泊洼周边的生态、文化与旅游资源。",
@@ -87,7 +83,6 @@
       "outcomes": ["形成《团泊洼文旅项目可行性分析》资料", "提出田野里的美术馆、露营地等文化与空间方向"],
       "deliverables": ["可行性分析", "定位与工作框架", "文化项目方向", "游线与景观规划方向"],
       "images": [],
-      "sourceFiles": ["2022.8.23团泊洼文旅项目可行性分析.pptx", "2023.2 展览工作计划完整版(1).pptx"],
       "publicStatus": "public"
     },
     {
@@ -95,7 +90,7 @@
       "title": "中新生态城",
       "year": "2026",
       "location": "天津中新生态城",
-      "services": ["cultural_tourism", "art_and_space_rental", "design"],
+      "services": ["cultural_tourism", "design"],
       "type": "生态主题展览概念案",
       "summary": "以“咸土”为叙事起点，提出聚焦生态修复、城市生长与可持续未来的展览概念。",
       "background": "资料将中新天津生态城描述为中新两国政府间战略合作项目，并以其生态修复与绿色新城建设为展览背景。",
@@ -105,7 +100,6 @@
       "outcomes": ["形成《中新生态城项目概念案》资料", "明确生态修复、城市生长与可持续未来三项叙事维度"],
       "deliverables": ["展览概念案", "展览主题说明", "观众与叙事方向"],
       "images": [],
-      "sourceFiles": ["中新生态城(xu).pptx"],
       "publicStatus": "public"
     },
     {
@@ -113,7 +107,7 @@
       "title": "罗浮宫艺术、展览与活动策划",
       "year": "未注明",
       "location": "未注明",
-      "services": ["art_sales", "art_and_space_rental", "design"],
+      "services": ["design"],
       "type": "艺术合作框架方案",
       "summary": "为罗浮宫项目整理艺术品、展览、文化沙龙与品牌活动的合作框架。",
       "background": "资料以艺术品概念、展览预案、空间概念及文化活动为项目内容框架。",
@@ -123,7 +117,6 @@
       "outcomes": ["形成罗浮宫艺术合作框架方案", "明确艺术品、展览、文化沙龙与品牌活动四类内容方向"],
       "deliverables": ["艺术品概念框架", "展览预案", "空间概念资料", "活动策划方向"],
       "images": [],
-      "sourceFiles": ["罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx"],
       "publicStatus": "public"
     },
     {
@@ -131,7 +124,7 @@
       "title": "团泊艺术空间",
       "year": "2025",
       "location": "天津市静海区光合谷",
-      "services": ["cultural_tourism", "design", "art_and_space_rental"],
+      "services": ["cultural_tourism", "design"],
       "type": "艺术空间改造策划方案",
       "summary": "为团泊艺术空间提出以美术馆、艺术节、雕塑公园等为方向的改造策划方案。",
       "background": "资料围绕光合谷的文化艺术综合体方向，讨论艺术内容与环境、空间及运营的关联。",
@@ -141,7 +134,6 @@
       "outcomes": ["形成《团泊艺术空间改造策划方案》资料", "提出美术馆、艺术生活节与户外展示空间等方向"],
       "deliverables": ["改造策划方案", "项目构成分析", "空间与内容方向", "运营关联建议"],
       "images": [],
-      "sourceFiles": ["2025.05.20-团泊艺术空间 xu.pptx"],
       "publicStatus": "public"
     },
     {
@@ -159,7 +151,6 @@
       "outcomes": ["形成《天津中原百货美陈提升概念设计方案》资料", "完成两组概念设计方向及现状、改造后对比表达"],
       "deliverables": ["美陈提升概念方案", "设计手绘稿", "现状与改造后对比资料"],
       "images": [],
-      "sourceFiles": ["天津中原百货美陈提升概念设计方案.pptx"],
       "publicStatus": "public"
     },
     {
@@ -167,7 +158,7 @@
       "title": "全国青少年无人机大赛天津 IP 方案",
       "year": "未注明",
       "location": "天津",
-      "services": ["design", "cultural_tourism"],
+      "services": ["design"],
       "type": "赛事传播与 IP 衍生品方案",
       "summary": "为全国青少年无人机大赛天津场景提出“梦津津”IP及赛事传播、城市联动方向。",
       "background": "资料将全国青少年无人机大赛、天津城市文化和IP衍生品放在同一方案框架中。",
@@ -177,7 +168,6 @@
       "outcomes": ["形成赛事传播与IP衍生品方案资料", "提出“梦津津”IP形象及赛事体验触点方向"],
       "deliverables": ["IP命名与形象逻辑", "赛事传播触点方案", "城市联动方向", "衍生品品类清单"],
       "images": [],
-      "sourceFiles": ["让大赛被传播(1).pptx"],
       "publicStatus": "public"
     }
   ]
