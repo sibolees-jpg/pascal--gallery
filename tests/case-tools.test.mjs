@@ -20,11 +20,15 @@ test("按编号读取公开案例，不存在时返回 null", () => {
   assert.equal(getCaseById(cases, "missing-case"), null);
 });
 
-test("按服务筛选案例，未知服务返回全部公开案例", () => {
+test("按服务筛选案例，已知但零案例的服务返回空数组", () => {
   const filtered = filterCasesByService(cases, "landscape_art");
   assert.ok(filtered.some((item) => item.id === "mian-san-sculpture"));
   assert.ok(filtered.every((item) => item.publicStatus === "public"));
 
+  assert.deepEqual(filterCasesByService(cases, "art_and_space_rental"), []);
+});
+
+test("未知服务返回全部公开案例", () => {
   const allPublic = cases.filter((item) => item.publicStatus === "public");
   assert.deepEqual(filterCasesByService(cases, "unknown-service"), allPublic);
 });

@@ -1,12 +1,19 @@
+const KNOWN_SERVICE_IDS = new Set([
+  "art_sales",
+  "art_and_space_rental",
+  "cultural_tourism",
+  "design",
+  "landscape_art",
+]);
+
 export function getCaseById(cases, id) {
   return cases.find((item) => item.id === id && item.publicStatus === "public") ?? null;
 }
 
 export function filterCasesByService(cases, serviceId) {
   const publicCases = cases.filter((item) => item.publicStatus === "public");
-  const hasMatchingService = publicCases.some((item) => item.services.includes(serviceId));
 
-  if (!hasMatchingService) {
+  if (!KNOWN_SERVICE_IDS.has(serviceId)) {
     return publicCases;
   }
 
