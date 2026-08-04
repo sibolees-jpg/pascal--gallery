@@ -2,6 +2,7 @@
 node_modules/
 dist/
 .worktrees/
+.superpowers/
 generated/*
 !generated/README.md
 outputs/*.inspect.ndjson
