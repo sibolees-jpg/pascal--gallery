@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="帕斯卡画廊真实案例目录，按服务分类浏览公开项目。"
+    >
+    <meta property="og:title" content="帕斯卡画廊 | 案例目录">
+    <meta
+      property="og:description"
+      content="浏览帕斯卡画廊在艺术、文旅、设计与公共艺术领域的真实项目。"
+    >
+    <title>帕斯卡画廊 | 案例目录</title>
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="帕斯卡画廊首页">
+        <img
+          class="brand-logo"
+          src="assets/brand/pascal-gallery-logo.svg"
+          alt="帕斯卡画廊"
+        >
+      </a>
+      <nav class="nav-links" aria-label="主要导航">
+        <a href="index.html#services">服务</a>
+        <a href="cases.html" aria-current="page">案例</a>
+        <a href="works.html">在售作品</a>
+        <a href="index.html#contact">合作</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="page-hero case-page-hero" aria-labelledby="cases-title">
+        <div>
+          <p class="eyebrow">真实项目</p>
+          <h1 id="cases-title">案例目录</h1>
+          <p class="hero-lede">
+            从服务分类出发，浏览帕斯卡画廊已整理并适合公开呈现的真实项目。
+          </p>
+        </div>
+        <aside class="sales-note case-page-note">
+          <span>公开边界</span>
+          <strong>真实项目</strong>
+          <p>页面只呈现已核对的项目信息；资料不足的图片与细节将持续整理。</p>
+        </aside>
+      </section>
+
+      <section class="section case-directory" aria-labelledby="case-directory-title">
+        <div class="section-heading">
+          <p class="eyebrow">按服务浏览</p>
+          <h2 id="case-directory-title">项目列表</h2>
+          <p>同一项目可能关联多项服务，所有入口均进入同一份案例详情。</p>
+        </div>
+        <div id="case-filters" class="filters" aria-label="案例服务筛选"></div>
+        <div id="case-grid" class="project-grid" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <img class="footer-logo" src="assets/brand/pascal-gallery-logo.svg" alt="帕斯卡画廊">
+      <span>© <span id="year"></span> 帕斯卡画廊</span>
+      <a href="#top">返回顶部</a>
+    </footer>
+
+    <script type="module" src="cases.js"></script>
+  </body>
+</html>

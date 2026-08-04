@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="帕斯卡画廊真实项目案例详情。"
+    >
+    <meta property="og:title" content="帕斯卡画廊 | 案例详情">
+    <meta
+      property="og:description"
+      content="查看帕斯卡画廊真实项目的背景、工作内容、过程和公开交付物。"
+    >
+    <title>帕斯卡画廊 | 案例详情</title>
+    <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="帕斯卡画廊首页">
+        <img
+          class="brand-logo"
+          src="assets/brand/pascal-gallery-logo.svg"
+          alt="帕斯卡画廊"
+        >
+      </a>
+      <nav class="nav-links" aria-label="主要导航">
+        <a href="index.html#services">服务</a>
+        <a href="cases.html" aria-current="page">案例</a>
+        <a href="works.html">在售作品</a>
+        <a href="index.html#contact">合作</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <div id="case-detail" aria-live="polite">
+        <p class="empty-state">正在读取案例资料。</p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <img class="footer-logo" src="assets/brand/pascal-gallery-logo.svg" alt="帕斯卡画廊">
+      <span>© <span id="year"></span> 帕斯卡画廊</span>
+      <a href="#top">返回顶部</a>
+    </footer>
+
+    <script type="module" src="case-page.js"></script>
+  </body>
+</html>
