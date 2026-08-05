@@ -70,7 +70,7 @@ test("未知服务显示提示、回退全部案例并选中全部筛选", () =>
 
 test("无效案例编号与无图片案例生成明确中文状态", () => {
   const missingCase = getCaseDetailViewModel(cases, "missing-case");
-  const noImageCase = getCaseDetailViewModel(cases, "mian-san-sculpture");
+  const noImageCase = getCaseDetailViewModel(cases, "heguang-museum");
 
   assert.equal(missingCase.currentCase, null);
   assert.equal(missingCase.notFoundMessage, "未找到这个案例");

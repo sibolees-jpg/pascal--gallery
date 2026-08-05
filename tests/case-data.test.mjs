@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 
 const requiredStringFields = [
   "id",
@@ -67,4 +67,19 @@ test("罗浮宫艺术、展览与活动策划归入文旅项目策划并保留�
   assert.ok(louvreCase);
   assert.ok(louvreCase.services.includes("cultural_tourism"));
   assert.ok(louvreCase.services.includes("design"));
+});
+
+test("具备演示文稿来源的案例均使用项目原始封面", async () => {
+  const { cases } = JSON.parse(
+    await readFile(new URL("../data/cases.json", import.meta.url), "utf8"),
+  );
+  const casesWithDecks = cases.filter((item) => item.id !== "heguang-museum");
+
+  for (const item of casesWithDecks) {
+    assert.equal(item.images.length >= 1, true, `${item.title} 缺少项目封面`);
+    const cover = item.images[0];
+    assert.match(cover.src, new RegExp(`^assets/cases/${item.id}/`));
+    assert.ok(cover.alt && cover.caption);
+    await access(new URL(`../${cover.src}`, import.meta.url));
+  }
 });

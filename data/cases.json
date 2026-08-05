@@ -14,7 +14,13 @@
       "process": ["梳理街区地点与历史资料", "建立材料、永恒性与定制化的艺术方向", "形成征集、评选、展出及后续实施的方案流程"],
       "outcomes": ["形成《公共艺术雕塑方案》资料", "明确“破茧成蝶”主题及公共艺术征集流程"],
       "deliverables": ["公共艺术雕塑方案", "艺术概念说明", "作品征集与评选流程", "线下展览建议"],
-      "images": [],
+      "images": [
+        {
+          "src": "assets/cases/mian-san-sculpture/cover.jpg",
+          "alt": "棉3创意街区与公共艺术方向资料页",
+          "caption": "棉三雕塑方案中的街区现状与艺术方向资料"
+        }
+      ],
       "publicStatus": "public"
     },
     {
@@ -48,7 +54,13 @@
       "process": ["研究天津与意大利的历史关联", "分析酒店艺术场景", "在样板间平面中对应艺术品点位与作品"],
       "outcomes": ["形成柏典天津样板间艺术品方案", "完成入户、走廊、客房前厅等区域的点位与作品建议"],
       "deliverables": ["艺术品配置方案", "样板间点位图", "作品清单与说明"],
-      "images": [],
+      "images": [
+        {
+          "src": "assets/cases/patina-tianjin/cover.jpg",
+          "alt": "柏典天津样板间艺术空间参考页",
+          "caption": "柏典天津样板间艺术品方案中的空间研究资料"
+        }
+      ],
       "publicStatus": "public"
     },
     {
@@ -65,7 +77,13 @@
       "process": ["分析古街的历史与文化资源", "讨论艺术空间对业态组合的作用", "以既有展览资料说明持续运营方向"],
       "outcomes": ["形成无锡艺术空间策划资料", "明确画廊、书店、咖啡馆等公共空间的组合方向"],
       "deliverables": ["艺术空间策划说明", "在地性艺术方向", "公共文化业态建议"],
-      "images": [],
+      "images": [
+        {
+          "src": "assets/cases/wuxi-new-space/cover.jpg",
+          "alt": "无锡惠山古街空间环境",
+          "caption": "无锡 NEW 空间策划资料中的惠山古街场景"
+        }
+      ],
       "publicStatus": "public"
     },
     {
@@ -82,7 +100,13 @@
       "process": ["收集资料并进行现场踏勘", "进行规划解读、周边分析与 SWOT 分析", "形成产品、景观、游线及文化项目的分析框架"],
       "outcomes": ["形成《团泊洼文旅项目可行性分析》资料", "提出田野里的美术馆、露营地等文化与空间方向"],
       "deliverables": ["可行性分析", "定位与工作框架", "文化项目方向", "游线与景观规划方向"],
-      "images": [],
+      "images": [
+        {
+          "src": "assets/cases/tuanbo-cultural-tourism/cover.jpg",
+          "alt": "团泊洼文旅营地场景参考",
+          "caption": "团泊洼文旅项目可行性分析中的营地内容方向"
+        }
+      ],
       "publicStatus": "public"
     },
     {
@@ -99,7 +123,13 @@
       "process": ["提炼生态城发展背景", "以“咸土”建立展览叙事起点", "组织艺术表达、科技呈现与在地叙事的融合方向"],
       "outcomes": ["形成《中新生态城项目概念案》资料", "明确生态修复、城市生长与可持续未来三项叙事维度"],
       "deliverables": ["展览概念案", "展览主题说明", "观众与叙事方向"],
-      "images": [],
+      "images": [
+        {
+          "src": "assets/cases/sino-singapore-ecocity/cover.jpg",
+          "alt": "中新生态城区域环境资料",
+          "caption": "中新生态城概念案中的项目区域资料"
+        }
+      ],
       "publicStatus": "public"
     },
     {
@@ -116,7 +146,13 @@
       "process": ["建立艺术品与空间概念资料", "编制展览预案", "补充文化沙龙和品牌活动的内容方向"],
       "outcomes": ["形成罗浮宫艺术合作框架方案", "明确艺术品、展览、文化沙龙与品牌活动四类内容方向"],
       "deliverables": ["艺术品概念框架", "展览预案", "空间概念资料", "活动策划方向"],
-      "images": [],
+      "images": [
+        {
+          "src": "assets/cases/louvre-art-programming/cover.jpg",
+          "alt": "罗浮宫艺术合作框架概念图",
+          "caption": "罗浮宫艺术、展览与活动策划方案首页概念图"
+        }
+      ],
       "publicStatus": "public"
     },
     {
@@ -133,7 +169,13 @@
       "process": ["梳理项目现状与体验链", "研究艺术空间和文化场景案例", "形成改造、运营与内容策划方向"],
       "outcomes": ["形成《团泊艺术空间改造策划方案》资料", "提出美术馆、艺术生活节与户外展示空间等方向"],
       "deliverables": ["改造策划方案", "项目构成分析", "空间与内容方向", "运营关联建议"],
-      "images": [],
+      "images": [
+        {
+          "src": "assets/cases/tuanbo-art-space/cover.jpg",
+          "alt": "团泊艺术空间场地环境",
+          "caption": "团泊艺术空间改造策划中的场地环境资料"
+        }
+      ],
       "publicStatus": "public"
     },
     {
@@ -150,7 +192,13 @@
       "process": ["记录场地现状", "收集灵感来源", "形成设计手绘稿和改造后对比方案"],
       "outcomes": ["形成《天津中原百货美陈提升概念设计方案》资料", "完成两组概念设计方向及现状、改造后对比表达"],
       "deliverables": ["美陈提升概念方案", "设计手绘稿", "现状与改造后对比资料"],
-      "images": [],
+      "images": [
+        {
+          "src": "assets/cases/tianjin-zhongyuan-display/cover.jpg",
+          "alt": "天津中原百货美陈提升空间模型",
+          "caption": "天津中原百货美陈提升概念设计中的空间分析模型"
+        }
+      ],
       "publicStatus": "public"
     },
     {
@@ -167,7 +215,13 @@
       "process": ["分析赛事与城市文化的关联", "形成IP设计过程与变体方向", "组织赛前、赛中、城市联动和赛后触点"],
       "outcomes": ["形成赛事传播与IP衍生品方案资料", "提出“梦津津”IP形象及赛事体验触点方向"],
       "deliverables": ["IP命名与形象逻辑", "赛事传播触点方案", "城市联动方向", "衍生品品类清单"],
-      "images": [],
+      "images": [
+        {
+          "src": "assets/cases/tianjin-youth-drone-ip/cover.jpg",
+          "alt": "全国青少年无人机大赛天津 IP 角色方案",
+          "caption": "赛事传播与 IP 方案中的角色设计方向"
+        }
+      ],
       "publicStatus": "public"
     }
   ]
