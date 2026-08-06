@@ -41,7 +41,7 @@
           <p class="eyebrow">在售作品</p>
           <h1 id="works-title">在售作品</h1>
           <p class="hero-lede">
-            这里用于集中展示帕斯卡画廊可销售、可洽谈或待确认的作品。当前先搭建公开页面结构，真实作品图片和价格可在授权确认后逐步补充。
+            集中展示经画廊确认公开的作品与艺术衍生品，可按作品种类、艺术家和关键词查找。
           </p>
         </div>
         <aside class="sales-note">
@@ -55,7 +55,7 @@
         <div class="section-heading">
           <p class="eyebrow">重点推荐</p>
           <h2 id="recommended-title">推荐板块</h2>
-          <p>适合优先对外沟通、放在页面前部的重点作品。后续可换成真实高清图、艺术家介绍和收藏建议。</p>
+          <p>由画廊从已公开作品中选出的重点推荐。</p>
         </div>
         <div id="recommended-works" class="recommended-grid" aria-live="polite"></div>
       </section>
@@ -64,7 +64,17 @@
         <div class="section-heading">
           <p class="eyebrow">详细目录</p>
           <h2 id="catalog-title">详细目录</h2>
-          <p>按媒介和状态维护全部在售作品，方便后续替换真实作品资料、导出报价单或制作客户清单。</p>
+          <p>按作品种类或艺术家浏览，也可搜索作品名、编号和媒介。</p>
+        </div>
+        <div class="catalog-toolbar">
+          <div id="classification-modes" class="classification-modes" aria-label="分类方式">
+            <button type="button" data-mode="category" aria-pressed="true">艺术品种类</button>
+            <button type="button" data-mode="artist" aria-pressed="false">艺术家</button>
+          </div>
+          <label class="work-search" for="work-search">
+            <span>搜索作品</span>
+            <input id="work-search" type="search" placeholder="搜索艺术家、作品名或编号">
+          </label>
         </div>
         <div id="work-filters" class="filters" aria-label="在售作品筛选"></div>
         <div id="work-catalog" class="work-catalog" aria-live="polite"></div>
@@ -90,6 +100,6 @@
       <a href="#top">返回顶部</a>
     </footer>
 
-    <script src="works.js" defer></script>
+    <script type="module" src="works.js"></script>
   </body>
 </html>

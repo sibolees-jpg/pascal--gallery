@@ -1,150 +1,111 @@
-const year = document.querySelector("#year");
-const worksUpdated = document.querySelector("#works-updated");
-const recommendedWorks = document.querySelector("#recommended-works");
-const workFilters = document.querySelector("#work-filters");
-const workCatalog = document.querySelector("#work-catalog");
+import {
+  createFilterOptions,
+  filterWorks,
+  getPublishedWorks,
+  getRecommendedWorks,
+} from "./artwork-tools.mjs";
 
-year.textContent = new Date().getFullYear();
+const elements = {
+  year: document.querySelector("#year"),
+  updated: document.querySelector("#works-updated"),
+  recommended: document.querySelector("#recommended-works"),
+  modes: document.querySelector("#classification-modes"),
+  filters: document.querySelector("#work-filters"),
+  search: document.querySelector("#work-search"),
+  catalog: document.querySelector("#work-catalog"),
+};
+
+const state = { mode: "category", selectedId: "all", query: "", works: [] };
+elements.year.textContent = new Date().getFullYear();
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"]/g, (character) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;",
+  })[character]);
+}
 
 async function loadWorks() {
   try {
     const response = await fetch("data/works-for-sale.json");
-
-    if (!response.ok) {
-      throw new Error("在售作品数据请求失败");
-    }
-
+    if (!response.ok) throw new Error("在售作品数据请求失败");
     const data = await response.json();
-    renderWorksPage(data);
+    state.works = getPublishedWorks(data);
+    elements.updated.textContent = data.updatedAt;
+    renderRecommended(getRecommendedWorks(data));
+    renderControls();
   } catch (error) {
-    recommendedWorks.innerHTML = `
-      <p class="empty-state">在售作品数据暂时无法加载。请检查 data/works-for-sale.json 是否存在。</p>
-    `;
+    elements.recommended.innerHTML = '<p class="empty-state">在售作品数据暂时无法加载。</p>';
+    elements.catalog.innerHTML = '<p class="empty-state">请稍后重新访问。</p>';
     console.error(error);
   }
 }
 
-function renderWorksPage(data) {
-  worksUpdated.textContent = data.updatedAt;
-  const recommended = data.recommended
-    .map((id) => data.works.find((work) => work.id === id))
-    .filter(Boolean);
-
-  renderRecommended(recommended);
-  renderFilters(data.categories, data.works);
-  renderCatalog(data.works);
-}
-
 function renderRecommended(works) {
-  recommendedWorks.innerHTML = works.map((work) => createRecommendedCard(work)).join("");
+  elements.recommended.innerHTML = works.length
+    ? works.map(createRecommendedCard).join("")
+    : '<p class="empty-state">推荐作品正在整理。</p>';
 }
 
-function renderFilters(categories, works) {
-  workFilters.innerHTML = categories
-    .map((category, index) => {
-      const pressed = index === 0 ? "true" : "false";
-      const count = category.id === "all"
-        ? works.length
-        : works.filter((work) => work.category === category.id).length;
-      return `
-        <button class="filter-button" type="button" data-category="${category.id}" aria-pressed="${pressed}">
-          ${category.label} ${count}
-        </button>
-      `;
-    })
-    .join("");
-
-  workFilters.addEventListener("click", (event) => {
-    const button = event.target.closest("button[data-category]");
-    if (!button) return;
-
-    const activeCategory = button.dataset.category;
-    workFilters.querySelectorAll("button").forEach((filterButton) => {
-      filterButton.setAttribute("aria-pressed", String(filterButton === button));
-    });
-
-    const visibleWorks = activeCategory === "all"
-      ? works
-      : works.filter((work) => work.category === activeCategory);
-
-    renderCatalog(visibleWorks);
-  });
+function renderControls() {
+  const options = createFilterOptions(state.works, state.mode);
+  elements.filters.innerHTML = options.map((option) => `
+    <button class="filter-button" type="button" data-filter="${escapeHtml(option.id)}" aria-pressed="${option.id === state.selectedId}">
+      ${escapeHtml(option.label)} ${option.count}
+    </button>
+  `).join("");
+  const visible = filterWorks(state.works, state.mode, state.selectedId, state.query);
+  renderCatalog(visible);
 }
 
 function renderCatalog(works) {
   if (!works.length) {
-    workCatalog.innerHTML = `<p class="empty-state">当前分类暂无在售作品。</p>`;
+    elements.catalog.innerHTML = '<p class="empty-state">没有找到符合条件的作品，请调整分类或搜索词。</p>';
     return;
   }
-
-  workCatalog.innerHTML = `
-    <div class="catalog-head" role="row">
-      <span>编号</span>
-      <span>艺术家 / 作品</span>
-      <span>媒介与尺寸</span>
-      <span>价格与状态</span>
-      <span>备注</span>
-    </div>
-    ${works.map((work) => createCatalogRow(work)).join("")}
+  elements.catalog.innerHTML = `
+    <div class="catalog-head" role="row"><span>编号</span><span>艺术家 / 作品</span><span>媒介与尺寸</span><span>价格与状态</span><span>说明</span></div>
+    ${works.map(createCatalogRow).join("")}
   `;
 }
 
 function createRecommendedCard(work) {
-  return `
-    <article class="recommended-card">
-      <div class="work-artwork ${work.category}">
-        ${work.image ? `<img src="${work.image}" alt="${work.title}">` : `<span>${work.inventoryNo}</span>`}
-      </div>
-      <div class="recommended-body">
-        <span class="category-label">${work.categoryLabel} / ${work.status}</span>
-        <h3>${work.title}</h3>
-        <p>${work.description}</p>
-        <dl class="work-meta">
-          <div>
-            <dt>艺术家</dt>
-            <dd>${work.artist}</dd>
-          </div>
-          <div>
-            <dt>年份</dt>
-            <dd>${work.year}</dd>
-          </div>
-          <div>
-            <dt>媒介</dt>
-            <dd>${work.medium}</dd>
-          </div>
-          <div>
-            <dt>尺寸</dt>
-            <dd>${work.dimensions}</dd>
-          </div>
-        </dl>
-        <div class="work-price">
-          <strong>${work.price}</strong>
-          <span>${work.recommendedReason}</span>
-        </div>
-      </div>
-    </article>
-  `;
+  return `<article class="recommended-card">
+    <div class="work-artwork ${escapeHtml(work.category)}">${work.image ? `<img src="${escapeHtml(work.image)}" alt="${escapeHtml(work.title)}">` : `<span>${escapeHtml(work.inventoryNo)}</span>`}</div>
+    <div class="recommended-body"><span class="category-label">${escapeHtml(work.categoryLabel)} / ${escapeHtml(work.status)}</span>
+      <h3>${escapeHtml(work.title)}</h3><p>${escapeHtml(work.description)}</p>
+      <dl class="work-meta"><div><dt>艺术家</dt><dd>${escapeHtml(work.artist)}</dd></div><div><dt>年份</dt><dd>${escapeHtml(work.year)}</dd></div><div><dt>媒介</dt><dd>${escapeHtml(work.medium)}</dd></div><div><dt>尺寸</dt><dd>${escapeHtml(work.dimensions)}</dd></div></dl>
+      <div class="work-price"><strong>${escapeHtml(work.price)}</strong><span>${escapeHtml(work.recommendedReason)}</span></div>
+    </div></article>`;
 }
 
 function createCatalogRow(work) {
-  return `
-    <article class="catalog-row" id="${work.id}">
-      <span class="inventory-no">${work.inventoryNo}</span>
-      <div>
-        <strong>${work.artist}</strong>
-        <p>${work.title} · ${work.year}</p>
-      </div>
-      <div>
-        <strong>${work.categoryLabel}</strong>
-        <p>${work.medium} · ${work.dimensions}</p>
-      </div>
-      <div>
-        <strong>${work.price}</strong>
-        <p>${work.status}</p>
-      </div>
-      <p>${work.notes}</p>
-    </article>
-  `;
+  return `<article class="catalog-row" id="${escapeHtml(work.id)}">
+    <span class="inventory-no">${escapeHtml(work.inventoryNo)}</span>
+    <div><strong>${escapeHtml(work.artist)}</strong><p>${escapeHtml(work.title)} · ${escapeHtml(work.year)}</p></div>
+    <div><strong>${escapeHtml(work.categoryLabel)}</strong><p>${escapeHtml(work.medium)} · ${escapeHtml(work.dimensions)}</p></div>
+    <div><strong>${escapeHtml(work.price)}</strong><p>${escapeHtml(work.status)}</p></div>
+    <p>${escapeHtml(work.description)}</p></article>`;
 }
+
+elements.modes.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-mode]");
+  if (!button) return;
+  state.mode = button.dataset.mode;
+  state.selectedId = "all";
+  elements.modes.querySelectorAll("button").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+  renderControls();
+});
+
+elements.filters.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-filter]");
+  if (!button) return;
+  state.selectedId = button.dataset.filter;
+  renderControls();
+});
+
+elements.search.addEventListener("input", () => {
+  state.query = elements.search.value;
+  renderControls();
+});
 
 loadWorks();
