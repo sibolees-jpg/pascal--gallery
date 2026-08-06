@@ -2,6 +2,7 @@
 node_modules/
 dist/
 .worktrees/
+_site/
 .superpowers/
 generated/*
 !generated/README.md

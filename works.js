@@ -53,6 +53,10 @@ function renderControls() {
       ${escapeHtml(option.label)} ${option.count}
     </button>
   `).join("");
+  if (!state.works.length) {
+    elements.catalog.innerHTML = '<p class="empty-state">当前暂无已上架作品。</p>';
+    return;
+  }
   const visible = filterWorks(state.works, state.mode, state.selectedId, state.query);
   renderCatalog(visible);
 }

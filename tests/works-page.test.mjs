@@ -17,4 +17,5 @@ test("公开作品页只消费公开作品且不渲染内部字段", () => {
   assert.match(script, /getRecommendedWorks/);
   assert.doesNotMatch(script, /work\.source/);
   assert.doesNotMatch(script, /work\.notes/);
+  assert.match(script, /当前暂无已上架作品/);
 });

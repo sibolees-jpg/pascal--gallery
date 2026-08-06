@@ -21,6 +21,13 @@ test("校验拒绝重复作品编号和库存编号", () => {
   assert.throws(() => validateArtworkData({ works: [works[0], { ...works[1], inventoryNo: "PG-001" }] }), /库存编号重复/);
 });
 
+test("校验拒绝非法状态、分类和图片路径", () => {
+  const base = { ...works[0], image:"", recommended:true };
+  assert.throws(() => validateArtworkData({ works:[{ ...base, publishStatus:'draft\" onmouseover=\"alert(1)' }] }), /公开状态无效/);
+  assert.throws(() => validateArtworkData({ works:[{ ...base, category:"script" }] }), /作品分类无效/);
+  assert.throws(() => validateArtworkData({ works:[{ ...base, image:"javascript:alert(1)" }] }), /图片路径无效/);
+});
+
 test("公开目录和推荐目录都排除草稿", () => {
   assert.deepEqual(getPublishedWorks({ works }).map((work) => work.id), ["one", "three"]);
   assert.deepEqual(getRecommendedWorks({ works }).map((work) => work.id), ["one"]);
@@ -40,8 +47,8 @@ test("PPT 作品图片均以草稿录入并保留来源页码", async () => {
   const data = JSON.parse(await readFile(new URL("../data/works-for-sale.json", import.meta.url), "utf8"));
   assert.equal(data.works.length, 40);
   for (const work of data.works) {
-    assert.equal(work.publishStatus, "draft");
-    assert.equal(work.recommended, false);
+    assert.ok(["draft", "published"].includes(work.publishStatus));
+    assert.equal(typeof work.recommended, "boolean");
     assert.ok(work.source.deck.endsWith(".pptx"));
     assert.ok(Number.isInteger(work.source.slide));
     await access(new URL(`../${work.image}`, import.meta.url));

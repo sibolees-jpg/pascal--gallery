@@ -2,6 +2,9 @@ const SEARCH_FIELDS = [
   "inventoryNo", "artist", "title", "year", "medium", "dimensions",
   "categoryLabel", "price", "status", "notes",
 ];
+const CATEGORIES = new Set(["painting", "sculpture", "mixed-media", "paper", "photo-video", "art-derivative"]);
+const PUBLISH_STATUSES = new Set(["draft", "published"]);
+const IMAGE_PATH = /^assets\/works\/[a-z0-9-]+\/primary\.(?:jpe?g|png|webp)$/;
 
 function normalize(value) {
   return String(value ?? "").trim().toLocaleLowerCase("zh-CN");
@@ -12,8 +15,13 @@ export function validateArtworkData(data) {
   const ids = new Set();
   const inventoryNumbers = new Set();
   for (const work of data.works) {
+    if (!work || typeof work !== "object" || Array.isArray(work)) throw new Error("作品记录格式无效");
     if (!work.id) throw new Error("作品编号不能为空");
     if (!work.inventoryNo) throw new Error("库存编号不能为空");
+    if (!PUBLISH_STATUSES.has(work.publishStatus)) throw new Error(`公开状态无效：${work.publishStatus}`);
+    if (!CATEGORIES.has(work.category)) throw new Error(`作品分类无效：${work.category}`);
+    if (work.image && !IMAGE_PATH.test(work.image)) throw new Error(`图片路径无效：${work.image}`);
+    if (typeof work.recommended !== "boolean") throw new Error("推荐状态必须为布尔值");
     if (ids.has(work.id)) throw new Error(`作品编号重复：${work.id}`);
     if (inventoryNumbers.has(work.inventoryNo)) throw new Error(`库存编号重复：${work.inventoryNo}`);
     ids.add(work.id);

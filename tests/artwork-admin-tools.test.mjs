@@ -10,7 +10,7 @@ import {
   validateImage,
 } from "../admin/artwork-admin-tools.mjs";
 
-const data = { updatedAt: "2026-08-06", categories: [], works: [{ id: "ppt-artwork-040", inventoryNo: "PG-ART-040", title: "原作" }] };
+const data = { updatedAt: "2026-08-06", categories: [], works: [{ id: "ppt-artwork-040", inventoryNo: "PG-ART-040", title: "原作", category:"painting", publishStatus:"draft", recommended:false, image:"" }] };
 
 test("新增作品生成连续编号且不修改原数据", () => {
   const next = createArtwork(data);

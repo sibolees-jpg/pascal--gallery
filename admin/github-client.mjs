@@ -12,6 +12,11 @@ function textToBase64(text) {
   return bytesToBase64(new TextEncoder().encode(text));
 }
 
+export function decodeGitHubContent(file) {
+  const binary = atob(String(file?.content ?? "").replace(/\s/g, ""));
+  return new TextDecoder().decode(Uint8Array.from(binary, (character) => character.charCodeAt(0)));
+}
+
 export function createGitHubClient({ owner, repo, branch = "main", token, fetchImpl = fetch }) {
   const headers = {
     Accept: "application/vnd.github+json",
@@ -51,8 +56,8 @@ export function createGitHubClient({ owner, repo, branch = "main", token, fetchI
       return { headSha: ref.object.sha };
     },
 
-    async readFile(path) {
-      return request(`/contents/${path}?ref=${encodeURIComponent(branch)}`);
+    async readFile(path, ref = branch) {
+      return request(`/contents/${path}?ref=${encodeURIComponent(ref)}`);
     },
 
     async commitFiles(files, message, expectedHeadSha) {
