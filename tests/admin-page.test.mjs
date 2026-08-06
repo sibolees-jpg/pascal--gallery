@@ -23,4 +23,5 @@ test("管理脚本会话保存令牌并通过 GitHub 客户端提交", () => {
   assert.match(script, /createGitHubClient/);
   assert.match(script, /commitFiles/);
   assert.match(workflow, /- main/);
+  assert.match(workflow, /scripts\/build-public-site\.mjs/);
 });
