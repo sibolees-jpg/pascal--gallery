@@ -1,9 +1,9 @@
-const INTERNAL_FIELDS = new Set(["notes", "source"]);
+const PUBLIC_FIELDS = ["id", "inventoryNo", "artist", "title", "year", "medium", "dimensions", "category", "categoryLabel", "price", "status", "publishStatus", "recommended", "recommendedReason", "description", "image"];
 
 export function createPublicArtworkData(data) {
   const works = data.works
     .filter((work) => work.publishStatus === "published")
-    .map((work) => Object.fromEntries(Object.entries(work).filter(([key]) => !INTERNAL_FIELDS.has(key))));
+    .map((work) => Object.fromEntries(PUBLIC_FIELDS.map((key) => [key, work[key]])));
   return {
     updatedAt: data.updatedAt,
     categories: data.categories,

@@ -33,7 +33,7 @@ function fillForm(work) {
   form.elements.sourceSlide.value = work.source?.slide ?? 0;
   elements["image-preview"].hidden = !work.image;
   elements["image-empty"].hidden = Boolean(work.image);
-  if (work.image) elements["image-preview"].src = pendingImages.get(work.image)?.dataUrl ?? `../${work.image}`;
+  if (work.image) elements["image-preview"].src = pendingImages.get(work.image)?.dataUrl ?? (headSha ? `https://raw.githubusercontent.com/${REPOSITORY.owner}/${REPOSITORY.repo}/${headSha}/${work.image}` : `../${work.image}`);
 }
 
 function syncCurrentForm() {
@@ -70,13 +70,16 @@ async function connect() {
   const result = await client.verify();
   const remoteFile = await client.readFile("data/works-for-sale.json", result.headSha);
   data = importArtworkData(decodeGitHubContent(remoteFile));
+  pendingImages.clear(); dirty = false;
   headSha = result.headSha;
   selectedId = data.works[0]?.id ?? null;
   renderList(); fillForm(currentWork());
+  elements["save-button"].disabled = false;
   elements["github-token"].value = ""; elements["connection-status"].textContent = "已连接，已读取 GitHub 最新数据";
 }
 
 async function save() {
+  if (!headSha) throw new Error("请先连接 GitHub 并读取最新作品数据");
   syncCurrentForm();
   data.updatedAt = new Date().toISOString().slice(0,10);
   const files = [{ path:"data/works-for-sale.json", content:`${exportArtworkData(data)}\n` }];
@@ -93,9 +96,9 @@ elements["add-button"].addEventListener("click", () => { data=createArtwork(data
 elements["delete-button"].addEventListener("click", () => { const work=currentWork(); if(work && confirm(`确认删除 ${work.inventoryNo}「${work.title}」？`)){ data=removeArtwork(data,work.id); selectedId=data.works[0]?.id??null; fillForm(currentWork()); renderList(); markDirty(); } });
 elements["image-file"].addEventListener("change", async () => { const file=validateImage(elements["image-file"].files[0]); const dataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(file);}); const extension={"image/jpeg":"jpg","image/png":"png","image/webp":"webp"}[file.type]; const path=`assets/works/${currentWork().inventoryNo.toLowerCase()}/primary.${extension}`; pendingImages.set(path,{content:dataUrl.split(",")[1],dataUrl}); data=updateArtwork(data,selectedId,{image:path}); elements["image-preview"].src=dataUrl; elements["image-preview"].hidden=false; elements["image-empty"].hidden=true; markDirty(); });
 elements["connect-button"].addEventListener("click", () => connect().catch((error)=>elements["connection-status"].textContent=error.message));
-elements["logout-button"].addEventListener("click", () => { sessionStorage.removeItem("pascalGithubToken"); headSha=null; elements["connection-status"].textContent="未连接"; });
+elements["logout-button"].addEventListener("click", () => { sessionStorage.removeItem("pascalGithubToken"); headSha=null; elements["save-button"].disabled=true; elements["connection-status"].textContent="未连接"; });
 elements["save-button"].addEventListener("click", () => save().catch((error)=>setStatus(error.message)));
-elements["export-button"].addEventListener("click", () => { const blob=new Blob([exportArtworkData(data)],{type:"application/json"}); const link=document.createElement("a"); link.href=URL.createObjectURL(blob); link.download=`帕斯卡画廊作品数据-${data.updatedAt}.json`; link.click(); URL.revokeObjectURL(link.href); });
-elements["import-file"].addEventListener("change", async () => { try{ data=importArtworkData(await elements["import-file"].files[0].text()); selectedId=data.works[0]?.id??null; renderList(); fillForm(currentWork()); markDirty(); }catch(error){setStatus(error.message);} });
+elements["export-button"].addEventListener("click", () => { syncCurrentForm(); const blob=new Blob([exportArtworkData(data)],{type:"application/json"}); const link=document.createElement("a"); link.href=URL.createObjectURL(blob); link.download=`帕斯卡画廊作品数据-${data.updatedAt}.json`; link.click(); URL.revokeObjectURL(link.href); });
+elements["import-file"].addEventListener("change", async () => { try{ data=importArtworkData(await elements["import-file"].files[0].text()); pendingImages.clear(); selectedId=data.works[0]?.id??null; renderList(); fillForm(currentWork()); markDirty(); }catch(error){setStatus(error.message);} });
 
 loadData().then(() => { if(sessionStorage.getItem("pascalGithubToken")) connect().catch((error)=>elements["connection-status"].textContent=error.message); }).catch((error)=>setStatus(error.message));

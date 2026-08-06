@@ -14,6 +14,7 @@ test("管理页包含授权、检索、编辑、导入导出和状态区域", ()
   assert.match(html, /导入 JSON/);
   assert.match(html, /导出 JSON/);
   assert.match(html, /aria-live="polite"/);
+  assert.match(html, /id="save-button"[^>]*disabled/);
   assert.doesNotMatch(html, /主要导航/);
 });
 
