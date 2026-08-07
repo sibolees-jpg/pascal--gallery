@@ -11,7 +11,10 @@ let headSha = null;
 const pendingImages = new Map();
 let dirty = false;
 
-function setStatus(message) { elements["save-status"].textContent = message; }
+function setStatus(message, type = "info") {
+  elements["save-status"].textContent = message;
+  elements["save-status"].classList.toggle("error", type === "error");
+}
 function currentWork() { return data?.works.find((work) => work.id === selectedId) ?? null; }
 function markDirty() { dirty = true; setStatus("有未保存修改"); }
 
@@ -100,6 +103,7 @@ async function save(message = `更新作品资料：${currentWork().inventoryNo}
 async function publishCurrentWork() {
   if (!currentWork()) throw new Error("请先选择作品");
   if (!headSha) throw new Error("请先连接 GitHub");
+  const previousPublishStatus = currentWork().publishStatus;
   syncCurrentForm();
   data = updateArtwork(data, selectedId, { publishStatus: "published" });
   form.elements.publishStatus.value = "published";
@@ -109,6 +113,11 @@ async function publishCurrentWork() {
   try {
     await save(`上线作品：${currentWork().inventoryNo} ${currentWork().title}`);
     setStatus(`「${currentWork().title}」已提交上线，网站正在自动更新`);
+  } catch (error) {
+    data = updateArtwork(data, selectedId, { publishStatus: previousPublishStatus });
+    form.elements.publishStatus.value = previousPublishStatus;
+    renderList();
+    setStatus(`上线失败：${error.message}`, "error");
   } finally {
     updatePublishButton();
   }
@@ -122,8 +131,8 @@ elements["delete-button"].addEventListener("click", () => { const work=currentWo
 elements["image-file"].addEventListener("change", async () => { const file=validateImage(elements["image-file"].files[0]); const dataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(file);}); const extension={"image/jpeg":"jpg","image/png":"png","image/webp":"webp"}[file.type]; const path=`assets/works/${currentWork().inventoryNo.toLowerCase()}/primary.${extension}`; pendingImages.set(path,{content:dataUrl.split(",")[1],dataUrl}); data=updateArtwork(data,selectedId,{image:path}); elements["image-preview"].src=dataUrl; elements["image-preview"].hidden=false; elements["image-empty"].hidden=true; markDirty(); });
 elements["connect-button"].addEventListener("click", () => connect().catch((error)=>elements["connection-status"].textContent=error.message));
 elements["logout-button"].addEventListener("click", () => { sessionStorage.removeItem("pascalGithubToken"); headSha=null; elements["save-button"].disabled=true; updatePublishButton(); elements["connection-status"].textContent="未连接"; });
-elements["save-button"].addEventListener("click", () => save().catch((error)=>setStatus(error.message)));
-elements["publish-button"].addEventListener("click", () => publishCurrentWork().catch((error)=>setStatus(error.message)));
+elements["save-button"].addEventListener("click", () => save().catch((error)=>setStatus(`保存失败：${error.message}`, "error")));
+elements["publish-button"].addEventListener("click", () => publishCurrentWork().catch((error)=>setStatus(`上线失败：${error.message}`, "error")));
 elements["export-button"].addEventListener("click", () => { syncCurrentForm(); const blob=new Blob([exportArtworkData(data)],{type:"application/json"}); const link=document.createElement("a"); link.href=URL.createObjectURL(blob); link.download=`帕斯卡画廊作品数据-${data.updatedAt}.json`; link.click(); URL.revokeObjectURL(link.href); });
 elements["import-file"].addEventListener("change", async () => { try{ data=importArtworkData(await elements["import-file"].files[0].text()); pendingImages.clear(); selectedId=data.works[0]?.id??null; renderList(); fillForm(currentWork()); markDirty(); }catch(error){setStatus(error.message);} });
 

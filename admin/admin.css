@@ -6,6 +6,7 @@ button { cursor:pointer; }
 .admin-header { min-height:76px; display:grid; grid-template-columns:220px 1fr auto; align-items:center; gap:24px; padding:12px 24px; background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:4; }
 .admin-header img { width:180px; max-height:48px; object-fit:contain; object-position:left; }
 .admin-header div { display:grid; gap:3px; }.admin-header span,.connection-status { color:var(--muted); font-size:.82rem; }
+.admin-header #save-status.error { color:var(--danger); font-weight:700; }
 button,.upload-button,.data-actions>label { border:1px solid var(--line); border-radius:5px; background:#fff; padding:9px 13px; }
 .primary { background:var(--green); border-color:var(--green); color:#071408; font-weight:650; }.danger { color:var(--danger); border-color:#e7b6b6; }
 .auth-bar { display:grid; grid-template-columns:auto minmax(240px,480px) auto auto 1fr; align-items:center; gap:10px; padding:12px 24px; background:#fff; border-bottom:1px solid var(--line); }

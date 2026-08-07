@@ -27,6 +27,9 @@ test("管理脚本会话保存令牌并通过 GitHub 客户端提交", () => {
   assert.match(script, /commitFiles/);
   assert.match(script, /publishCurrentWork/);
   assert.match(script, /publishStatus:\s*"published"/);
+  assert.match(script, /previousPublishStatus/);
+  assert.match(script, /publishStatus:\s*previousPublishStatus/);
+  assert.match(script, /上线失败/);
   assert.match(workflow, /- main/);
   assert.match(workflow, /scripts\/build-public-site\.mjs/);
 });
