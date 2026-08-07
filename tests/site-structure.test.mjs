@@ -107,6 +107,14 @@ test("服务页导航均进入案例目录", async () => {
   for (const [path] of servicePages) {
     const html = await readFile(new URL(`../${path}`, import.meta.url), "utf8");
     assert.match(html, /href="\.\.\/cases\.html">案例<\/a>/);
+    assert.match(html, /href="\.\.\/about\.html">关于帕斯卡<\/a>/);
+  }
+});
+
+test("案例与作品页均可进入机构介绍", async () => {
+  for (const path of ["case.html", "cases.html", "works.html"]) {
+    const html = await readFile(new URL(`../${path}`, import.meta.url), "utf8");
+    assert.match(html, /href="about\.html">关于帕斯卡<\/a>/);
   }
 });
 
