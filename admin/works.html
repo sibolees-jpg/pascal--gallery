@@ -40,7 +40,10 @@
       <section class="editor" aria-labelledby="editor-title">
         <div class="editor-title-row">
           <div><span id="editor-number">请选择作品</span><h1 id="editor-title">作品信息</h1></div>
-          <button id="delete-button" class="danger" type="button">删除作品</button>
+          <div class="editor-actions">
+            <button id="publish-button" class="primary" type="button" disabled>提交当前作品上线</button>
+            <button id="delete-button" class="danger" type="button">删除作品</button>
+          </div>
         </div>
         <form id="work-form">
           <div class="image-editor">

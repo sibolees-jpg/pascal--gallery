@@ -15,6 +15,12 @@ function setStatus(message) { elements["save-status"].textContent = message; }
 function currentWork() { return data?.works.find((work) => work.id === selectedId) ?? null; }
 function markDirty() { dirty = true; setStatus("有未保存修改"); }
 
+function updatePublishButton(work = currentWork()) {
+  const button = elements["publish-button"];
+  button.disabled = !headSha || !work;
+  button.textContent = work?.publishStatus === "published" ? "更新已上线作品" : "提交当前作品上线";
+}
+
 function renderList() {
   const query = elements["admin-search"].value.trim().toLowerCase();
   const status = elements["admin-status"].value;
@@ -24,6 +30,7 @@ function renderList() {
 }
 
 function fillForm(work) {
+  updatePublishButton(work);
   if (!work) return;
   elements["editor-number"].textContent = work.inventoryNo;
   elements["editor-title"].textContent = work.title;
@@ -75,18 +82,36 @@ async function connect() {
   selectedId = data.works[0]?.id ?? null;
   renderList(); fillForm(currentWork());
   elements["save-button"].disabled = false;
+  updatePublishButton();
   elements["github-token"].value = ""; elements["connection-status"].textContent = "已连接，已读取 GitHub 最新数据";
 }
 
-async function save() {
+async function save(message = `更新作品资料：${currentWork().inventoryNo}`) {
   if (!headSha) throw new Error("请先连接 GitHub 并读取最新作品数据");
   syncCurrentForm();
   data.updatedAt = new Date().toISOString().slice(0,10);
   const files = [{ path:"data/works-for-sale.json", content:`${exportArtworkData(data)}\n` }];
   for (const [path, image] of pendingImages) files.push({ path, content:image.content, encoding:"base64" });
   setStatus("正在保存到 GitHub…");
-  const result = await getClient().commitFiles(files, `更新作品资料：${currentWork().inventoryNo}`, headSha);
-  headSha = result.headSha; pendingImages.clear(); dirty = false; setStatus("已保存，网站正在自动更新"); renderList();
+  const result = await getClient().commitFiles(files, message, headSha);
+  headSha = result.headSha; pendingImages.clear(); dirty = false; setStatus("已保存，网站正在自动更新"); renderList(); updatePublishButton();
+}
+
+async function publishCurrentWork() {
+  if (!currentWork()) throw new Error("请先选择作品");
+  if (!headSha) throw new Error("请先连接 GitHub");
+  syncCurrentForm();
+  data = updateArtwork(data, selectedId, { publishStatus: "published" });
+  form.elements.publishStatus.value = "published";
+  updatePublishButton();
+  elements["publish-button"].disabled = true;
+  setStatus(`正在提交「${currentWork().title}」上线…`);
+  try {
+    await save(`上线作品：${currentWork().inventoryNo} ${currentWork().title}`);
+    setStatus(`「${currentWork().title}」已提交上线，网站正在自动更新`);
+  } finally {
+    updatePublishButton();
+  }
 }
 
 form.addEventListener("input", markDirty);
@@ -96,8 +121,9 @@ elements["add-button"].addEventListener("click", () => { data=createArtwork(data
 elements["delete-button"].addEventListener("click", () => { const work=currentWork(); if(work && confirm(`确认删除 ${work.inventoryNo}「${work.title}」？`)){ data=removeArtwork(data,work.id); selectedId=data.works[0]?.id??null; fillForm(currentWork()); renderList(); markDirty(); } });
 elements["image-file"].addEventListener("change", async () => { const file=validateImage(elements["image-file"].files[0]); const dataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(file);}); const extension={"image/jpeg":"jpg","image/png":"png","image/webp":"webp"}[file.type]; const path=`assets/works/${currentWork().inventoryNo.toLowerCase()}/primary.${extension}`; pendingImages.set(path,{content:dataUrl.split(",")[1],dataUrl}); data=updateArtwork(data,selectedId,{image:path}); elements["image-preview"].src=dataUrl; elements["image-preview"].hidden=false; elements["image-empty"].hidden=true; markDirty(); });
 elements["connect-button"].addEventListener("click", () => connect().catch((error)=>elements["connection-status"].textContent=error.message));
-elements["logout-button"].addEventListener("click", () => { sessionStorage.removeItem("pascalGithubToken"); headSha=null; elements["save-button"].disabled=true; elements["connection-status"].textContent="未连接"; });
+elements["logout-button"].addEventListener("click", () => { sessionStorage.removeItem("pascalGithubToken"); headSha=null; elements["save-button"].disabled=true; updatePublishButton(); elements["connection-status"].textContent="未连接"; });
 elements["save-button"].addEventListener("click", () => save().catch((error)=>setStatus(error.message)));
+elements["publish-button"].addEventListener("click", () => publishCurrentWork().catch((error)=>setStatus(error.message)));
 elements["export-button"].addEventListener("click", () => { syncCurrentForm(); const blob=new Blob([exportArtworkData(data)],{type:"application/json"}); const link=document.createElement("a"); link.href=URL.createObjectURL(blob); link.download=`帕斯卡画廊作品数据-${data.updatedAt}.json`; link.click(); URL.revokeObjectURL(link.href); });
 elements["import-file"].addEventListener("change", async () => { try{ data=importArtworkData(await elements["import-file"].files[0].text()); pendingImages.clear(); selectedId=data.works[0]?.id??null; renderList(); fillForm(currentWork()); markDirty(); }catch(error){setStatus(error.message);} });
 
