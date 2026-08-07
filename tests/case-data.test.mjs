@@ -83,3 +83,26 @@ test("具备演示文稿来源的案例均使用项目原始封面", async () =>
     await access(new URL(`../${cover.src}`, import.meta.url));
   }
 });
+
+test("商业宣传资料中的五个合作项目已建立完整公开案例", async () => {
+  const { cases } = JSON.parse(
+    await readFile(new URL("../data/cases.json", import.meta.url), "utf8"),
+  );
+  const expected = new Map([
+    ["lv-book-pop-up", "路易威登书籍限时店项目"],
+    ["lv-shanghai-pop-up", "路易威登《侬好·上海》限时空间项目"],
+    ["lv-trunk-home", "路易威登硬箱家居展项目"],
+    ["under-clouds-restaurant", "云下餐厅项目"],
+    ["sunset-sphere", "Sunset Sphere 品牌标识项目"],
+  ]);
+
+  for (const [id, title] of expected) {
+    const item = cases.find((candidate) => candidate.id === id);
+    assert.ok(item, `${title} 未录入`);
+    assert.equal(item.title, title);
+    assert.ok(item.images.length >= 3, `${title} 的项目影像不足`);
+    for (const image of item.images) {
+      await access(new URL(`../${image.src}`, import.meta.url));
+    }
+  }
+});

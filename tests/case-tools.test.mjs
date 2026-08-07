@@ -25,7 +25,10 @@ test("按服务筛选案例，已知但零案例的服务返回空数组", () =>
   assert.ok(filtered.some((item) => item.id === "mian-san-sculpture"));
   assert.ok(filtered.every((item) => item.publicStatus === "public"));
 
-  assert.deepEqual(filterCasesByService(cases, "art_and_space_rental"), []);
+  const casesWithoutRental = cases.filter(
+    (item) => !item.services.includes("art_and_space_rental"),
+  );
+  assert.deepEqual(filterCasesByService(casesWithoutRental, "art_and_space_rental"), []);
 });
 
 test("未知服务返回全部公开案例", () => {

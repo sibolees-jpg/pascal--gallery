@@ -223,6 +223,112 @@
         }
       ],
       "publicStatus": "public"
+    },
+    {
+      "id": "lv-book-pop-up",
+      "title": "路易威登书籍限时店项目",
+      "year": "未注明",
+      "location": "未注明",
+      "services": ["design", "art_and_space_rental"],
+      "type": "品牌书店与限时空间项目",
+      "summary": "围绕路易威登出版物与品牌文化内容，形成具有鲜明色彩、书籍陈列和现场体验的限时店项目。",
+      "background": "项目资料呈现了独立限时建筑、室内书店空间、主题书架和书籍陈列等多种现场形态。",
+      "challenge": "限时空间需要在有限周期内同时建立品牌识别、清楚的书籍分类、舒适的浏览动线与可传播的视觉记忆。",
+      "responsibilities": ["组织品牌出版物与书籍内容的空间呈现", "建立书架、展台和浏览动线的现场关系", "协调限时空间的色彩、视觉与陈列体验"],
+      "process": ["梳理出版物和品牌文化内容", "将内容对应到书架、展台和空间节点", "形成室内外视觉及现场陈列", "根据限时运营需求完成空间呈现"],
+      "outcomes": ["形成可独立识别的书籍限时店空间", "建立从外部识别到内部浏览和选购的完整体验", "以书籍和出版物延展品牌文化内容"],
+      "deliverables": ["限时空间内容结构", "书籍陈列系统", "空间视觉呈现", "现场体验节点"],
+      "images": [
+        {"src": "assets/cases/lv-book-pop-up/cover.jpg", "alt": "路易威登书籍限时店彩色室内空间", "caption": "以高饱和色彩和线性灯光组织的书籍限时店内部空间"},
+        {"src": "assets/cases/lv-book-pop-up/interior.jpg", "alt": "路易威登书籍限时店主题书架", "caption": "品牌图形与书籍陈列结合的主题书架"},
+        {"src": "assets/cases/lv-book-pop-up/books.jpg", "alt": "路易威登出版物陈列", "caption": "不同色彩与规格的出版物在展台上集中呈现"}
+      ],
+      "publicStatus": "public"
+    },
+    {
+      "id": "lv-shanghai-pop-up",
+      "title": "路易威登《侬好·上海》限时空间项目",
+      "year": "未注明",
+      "location": "上海",
+      "services": ["design", "art_and_space_rental", "cultural_tourism"],
+      "type": "城市文化主题限时空间",
+      "summary": "以《侬好·上海》为主题，将上海城市景观、品牌内容、出版物和休憩体验组织进临水历史建筑中的限时空间。",
+      "background": "项目资料显示限时空间位于上海城市滨水环境，以大面积蓝色外立面、城市线描和室内主题陈列形成整体识别。",
+      "challenge": "项目需要把城市文化主题、历史建筑环境与品牌体验统一起来，并兼顾外部传播、室内游逛和停留体验。",
+      "responsibilities": ["提炼上海城市主题与空间视觉关系", "组织建筑外立面、室内陈列和休憩区的体验层次", "将品牌出版物与城市文化内容融入现场"],
+      "process": ["研究城市环境与建筑条件", "建立《侬好·上海》的蓝色主题识别", "规划室内陈列、游逛和停留节点", "完成室内外一体化的限时空间呈现"],
+      "outcomes": ["形成面向滨水城市界面的高识别度限时空间", "建立城市文化、品牌出版物与现场体验的内容联系", "形成可游逛、可停留、可传播的复合场景"],
+      "deliverables": ["城市主题视觉", "外立面呈现", "室内陈列与动线", "休憩体验节点"],
+      "images": [
+        {"src": "assets/cases/lv-shanghai-pop-up/cover.jpg", "alt": "路易威登侬好上海限时空间室内", "caption": "蓝色城市主题与书籍陈列构成的限时空间内部"},
+        {"src": "assets/cases/lv-shanghai-pop-up/exterior.jpg", "alt": "路易威登侬好上海蓝色外立面", "caption": "历史建筑外部形成连续的蓝色城市主题界面"},
+        {"src": "assets/cases/lv-shanghai-pop-up/lounge.jpg", "alt": "路易威登侬好上海限时空间休憩区", "caption": "结合植物、家具和建筑结构的室内停留空间"}
+      ],
+      "publicStatus": "public"
+    },
+    {
+      "id": "lv-trunk-home",
+      "title": "路易威登硬箱家居展项目",
+      "year": "未注明",
+      "location": "未注明",
+      "services": ["art_sales", "design", "art_and_space_rental"],
+      "type": "品牌家居与收藏展览",
+      "summary": "围绕路易威登硬箱、家居与收藏对象，形成具有住宅尺度、场景化陈列和艺术观看体验的展览项目。",
+      "background": "项目资料以庭院、客厅和陈列空间等多种环境，展示硬箱、家具、器物与艺术作品之间的关系。",
+      "challenge": "展览需要避免单一商品陈列，让硬箱与家居对象在空间、生活方式和收藏语境中被完整理解。",
+      "responsibilities": ["组织硬箱、家具、器物与艺术对象的主题关系", "建立庭院、客厅和展厅等场景化陈列", "协调作品尺度、观看距离、灯光和空间氛围"],
+      "process": ["梳理展品类别与叙事主题", "将展品对应到不同生活场景", "调整尺度、材质、灯光与观看动线", "形成连续的家居与收藏展览体验"],
+      "outcomes": ["形成从入口到室内场景的完整展览叙事", "呈现硬箱与家具、艺术作品和生活空间的多重关系", "提升展品的收藏与文化观看维度"],
+      "deliverables": ["展览内容结构", "场景化陈列", "展品与空间关系", "现场视觉呈现"],
+      "images": [
+        {"src": "assets/cases/lv-trunk-home/cover.jpg", "alt": "路易威登硬箱家居展客厅场景", "caption": "硬箱、家具与艺术对象共同构成的室内生活场景"},
+        {"src": "assets/cases/lv-trunk-home/entrance.jpg", "alt": "路易威登硬箱家居展入口", "caption": "植物与建筑空间中的展览入口和硬箱陈列"},
+        {"src": "assets/cases/lv-trunk-home/display.jpg", "alt": "路易威登硬箱家居展艺术陈列", "caption": "艺术作品、器物与硬箱在展览空间中的组合呈现"}
+      ],
+      "publicStatus": "public"
+    },
+    {
+      "id": "under-clouds-restaurant",
+      "title": "云下餐厅项目",
+      "year": "未注明",
+      "location": "未注明",
+      "services": ["design"],
+      "type": "餐饮品牌与空间视觉项目",
+      "summary": "围绕“云下”餐厅建立品牌标识、视觉语言、包装应用与实体空间之间的一体化表达。",
+      "background": "项目资料呈现了餐厅建筑与室内环境、品牌符号、菜单与包装、酒饮及咖啡等多类视觉应用。",
+      "challenge": "项目需要让品牌名称和自然意象转化为可识别的图形系统，并在餐厅空间与多种消费触点中保持一致。",
+      "responsibilities": ["提炼“云下”名称的自然意象与图形语言", "建立品牌标识、字体、色彩和版式应用", "将视觉系统延展到菜单、包装、酒饮和餐厅空间"],
+      "process": ["研究餐厅定位与空间气质", "形成山、云、雨等图形母题", "测试不同包装和物料应用", "协调品牌视觉与实体空间的呈现"],
+      "outcomes": ["形成具有连续自然意象的品牌视觉系统", "完成从平面物料到餐厅空间的多触点延展", "让品牌识别与用餐体验建立一致关系"],
+      "deliverables": ["品牌标识", "基础视觉系统", "菜单与包装应用", "空间视觉应用"],
+      "images": [
+        {"src": "assets/cases/under-clouds-restaurant/cover.jpg", "alt": "云下餐厅建筑与入口", "caption": "餐厅入口及其与环境结合的外部空间"},
+        {"src": "assets/cases/under-clouds-restaurant/identity.png", "alt": "云下餐厅品牌与空间视觉", "caption": "餐厅空间、品牌标识和消费物料的整体视觉资料"},
+        {"src": "assets/cases/under-clouds-restaurant/exterior.jpg", "alt": "云下餐厅临街外立面", "caption": "品牌标识应用于餐厅临街入口"}
+      ],
+      "publicStatus": "public"
+    },
+    {
+      "id": "sunset-sphere",
+      "title": "Sunset Sphere 品牌标识项目",
+      "year": "2023",
+      "location": "未注明",
+      "services": ["design"],
+      "type": "文化空间品牌标识设计",
+      "summary": "为 Sunset Sphere 建立具有落日、球体和流动感的品牌标识，并延展到空间、活动、印刷品与导视应用。",
+      "background": "项目资料呈现了球形建筑概念、品牌标识、活动屏幕、投影、票卡、手提袋和现场标牌等应用。",
+      "challenge": "品牌需要回应独特建筑形态和日落体验，同时适应数字屏幕、空间装置、印刷品与现场导视等不同媒介。",
+      "responsibilities": ["提炼落日与球体的核心品牌意象", "建立标识、字体、色彩和动态应用方向", "完成空间、活动和印刷传播物料的应用延展"],
+      "process": ["研究建筑形态与品牌命名", "形成球体与水平流动关系的标识", "测试深色与浅色环境中的应用", "延展到现场屏幕、票卡、标牌和传播物料"],
+      "outcomes": ["形成高识别度的 Sunset Sphere 品牌标识", "建立适应空间与数字媒介的视觉系统", "完成从建筑体验到活动传播的连续品牌表达"],
+      "deliverables": ["品牌标识", "字体与色彩规范", "空间及活动应用", "印刷与导视应用"],
+      "images": [
+        {"src": "assets/cases/sunset-sphere/cover.png", "alt": "Sunset Sphere 品牌视觉应用", "caption": "紫色品牌标识在票卡、屏幕和印刷物料中的应用"},
+        {"src": "assets/cases/sunset-sphere/space.png", "alt": "Sunset Sphere 球形空间概念", "caption": "品牌标识与球形建筑空间概念的结合"},
+        {"src": "assets/cases/sunset-sphere/event.png", "alt": "Sunset Sphere 活动现场视觉", "caption": "品牌视觉在活动屏幕与现场投影中的应用"},
+        {"src": "assets/cases/sunset-sphere/sign.jpg", "alt": "Sunset Sphere 现场标牌", "caption": "品牌标识应用于现场落地标牌"}
+      ],
+      "publicStatus": "public"
     }
   ]
 }

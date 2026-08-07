@@ -38,8 +38,11 @@ test("案例目录与详情模板使用统一数据和中文状态", () => {
 });
 
 test("有效但没有公开案例的服务保留筛选态并显示整理提示", () => {
+  const casesWithoutRental = cases.filter(
+    (item) => !item.services.includes("art_and_space_rental"),
+  );
   const viewModel = getCaseListViewModel(
-    cases,
+    casesWithoutRental,
     services,
     "art_and_space_rental",
   );
