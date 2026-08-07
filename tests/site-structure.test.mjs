@@ -39,6 +39,26 @@ test("首页包含四类需求入口和五阶段工作链", () => {
   }
 });
 
+test("首页呈现画廊定位、四部分方法与专业网络", () => {
+  assert.match(index, /画廊是城市不可或缺的文化风景/);
+  assert.match(index, /城市文化基础设施/);
+  assert.match(index, /艺术 × 商业 × 消费 × 服务/);
+  for (const text of [
+    "艺术家与作品",
+    "品牌与空间",
+    "收藏、体验与衍生品",
+    "策划、设计与落地",
+    "策展人",
+    "批评家",
+    "收藏家",
+    "艺术院校",
+  ]) {
+    assert.match(index, new RegExp(text));
+  }
+  assert.match(index, /href="about\.html"/);
+  assert.match(index, /assets\/about\/gallery-exhibitions\.png/);
+});
+
 test("现有在售作品页也使用正式标志和完整 favicon", () => {
   assert.ok(
     (works.match(/assets\/brand\/pascal-gallery-logo\.svg/g) ?? []).length >= 2
