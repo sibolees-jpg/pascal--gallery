@@ -9,6 +9,7 @@ const workflow = await readFile(new URL("../.github/workflows/pages.yml", import
 
 test("管理页包含授权、检索、编辑、导入导出和状态区域", () => {
   assert.match(html, /type="password"/);
+  assert.match(html, /href="admin\.css\?v=20260807-full-images"/);
   assert.match(html, /搜索作品/);
   assert.match(html, /新增作品/);
   assert.match(html, /上架公开/);
@@ -18,6 +19,9 @@ test("管理页包含授权、检索、编辑、导入导出和状态区域", ()
   assert.match(html, /id="save-button"[^>]*disabled/);
   assert.match(html, /id="publish-button"[^>]*disabled[^>]*>提交当前作品上线</);
   assert.match(styles, /@media\(max-width:1100px\).*?\.editor-title-row\{display:grid\}/s);
+  assert.match(styles, /\.work-list-item img\s*\{[^}]*object-fit:contain/);
+  assert.match(styles, /\.image-preview img\s*\{[^}]*max-width:100%[^}]*height:auto/);
+  assert.doesNotMatch(styles, /\.image-preview\s*\{[^}]*aspect-ratio:4\/3/);
   assert.doesNotMatch(html, /主要导航/);
 });
 

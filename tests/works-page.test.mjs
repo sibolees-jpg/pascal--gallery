@@ -4,9 +4,11 @@ import { readFile } from "node:fs/promises";
 
 const html = await readFile(new URL("../works.html", import.meta.url), "utf8");
 const script = await readFile(new URL("../works.js", import.meta.url), "utf8");
+const styles = await readFile(new URL("../styles.css", import.meta.url), "utf8");
 
 test("公开作品页提供双分类和搜索", () => {
   assert.match(html, /艺术品种类/);
+  assert.match(html, /href="styles\.css\?v=20260807-full-images"/);
   assert.match(html, /艺术家/);
   assert.match(html, /id="work-search"/);
   assert.match(html, /type="module" src="works\.js\?v=20260807"/);
@@ -22,4 +24,8 @@ test("公开作品页只消费公开作品且不渲染内部字段", () => {
 
 test("公开作品页每次都跳过旧作品数据缓存", () => {
   assert.match(script, /fetch\("data\/works-for-sale\.json",\s*\{\s*cache:\s*"no-store"\s*\}\)/);
+});
+
+test("公开作品推荐图按原比例完整显示", () => {
+  assert.match(styles, /\.work-artwork img\s*\{[^}]*object-fit:\s*contain/);
 });
