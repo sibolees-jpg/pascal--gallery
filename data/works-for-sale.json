@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-06",
+  "updatedAt": "2026-08-07",
   "categories": [
     {
       "id": "all",
@@ -54,7 +54,9 @@
         "deck": "帕斯卡画廊商业宣传.pptx",
         "slide": 36,
         "mediaFile": "slide-036-06.jpeg"
-      }
+      },
+      "sourceDeck": "帕斯卡画廊商业宣传.pptx",
+      "sourceSlide": "36"
     },
     {
       "id": "ppt-artwork-002",
@@ -476,8 +478,8 @@
       "categoryLabel": "综合材料",
       "price": "询价",
       "status": "待整理",
-      "publishStatus": "draft",
-      "recommended": false,
+      "publishStatus": "published",
+      "recommended": true,
       "recommendedReason": "",
       "description": "作品资料由历史方案文件整理，详细信息与销售状态待画廊确认。",
       "image": "assets/works/pg-art-019/primary.jpg",
@@ -486,7 +488,9 @@
         "deck": "柏典tianjin.pptx",
         "slide": 40,
         "mediaFile": "slide-040-01.png"
-      }
+      },
+      "sourceDeck": "柏典tianjin.pptx",
+      "sourceSlide": "40"
     },
     {
       "id": "ppt-artwork-020",
@@ -774,7 +778,9 @@
         "deck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
         "slide": 86,
         "mediaFile": "slide-086-01.png"
-      }
+      },
+      "sourceDeck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "sourceSlide": "86"
     },
     {
       "id": "ppt-artwork-032",
@@ -870,7 +876,9 @@
         "deck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
         "slide": 115,
         "mediaFile": "slide-115-01.jpeg"
-      }
+      },
+      "sourceDeck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "sourceSlide": "115"
     },
     {
       "id": "ppt-artwork-036",
@@ -894,7 +902,9 @@
         "deck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
         "slide": 132,
         "mediaFile": "slide-132-01.jpeg"
-      }
+      },
+      "sourceDeck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "sourceSlide": "132"
     },
     {
       "id": "ppt-artwork-037",
