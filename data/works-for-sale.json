@@ -346,7 +346,9 @@
         "deck": "柏典tianjin.pptx",
         "slide": 31,
         "mediaFile": "slide-031-01.png"
-      }
+      },
+      "sourceDeck": "柏典tianjin.pptx",
+      "sourceSlide": "31"
     },
     {
       "id": "ppt-artwork-014",
@@ -360,8 +362,8 @@
       "categoryLabel": "绘画",
       "price": "询价",
       "status": "待整理",
-      "publishStatus": "draft",
-      "recommended": false,
+      "publishStatus": "published",
+      "recommended": true,
       "recommendedReason": "",
       "description": "作品资料由历史方案文件整理，详细信息与销售状态待画廊确认。",
       "image": "assets/works/pg-art-014/primary.jpg",
@@ -370,7 +372,9 @@
         "deck": "柏典tianjin.pptx",
         "slide": 32,
         "mediaFile": "slide-032-01.png"
-      }
+      },
+      "sourceDeck": "柏典tianjin.pptx",
+      "sourceSlide": "32"
     },
     {
       "id": "ppt-artwork-015",
@@ -394,7 +398,9 @@
         "deck": "柏典tianjin.pptx",
         "slide": 34,
         "mediaFile": "slide-034-01.png"
-      }
+      },
+      "sourceDeck": "柏典tianjin.pptx",
+      "sourceSlide": "34"
     },
     {
       "id": "ppt-artwork-016",
@@ -442,7 +448,9 @@
         "deck": "柏典tianjin.pptx",
         "slide": 37,
         "mediaFile": "slide-037-01.png"
-      }
+      },
+      "sourceDeck": "柏典tianjin.pptx",
+      "sourceSlide": "37"
     },
     {
       "id": "ppt-artwork-018",
@@ -466,7 +474,9 @@
         "deck": "柏典tianjin.pptx",
         "slide": 39,
         "mediaFile": "slide-039-01.png"
-      }
+      },
+      "sourceDeck": "柏典tianjin.pptx",
+      "sourceSlide": "39"
     },
     {
       "id": "ppt-artwork-019",
@@ -540,7 +550,9 @@
         "deck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
         "slide": 14,
         "mediaFile": "slide-014-01.jpeg"
-      }
+      },
+      "sourceDeck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "sourceSlide": "14"
     },
     {
       "id": "ppt-artwork-022",
@@ -564,7 +576,9 @@
         "deck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
         "slide": 16,
         "mediaFile": "slide-016-01.jpeg"
-      }
+      },
+      "sourceDeck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "sourceSlide": "16"
     },
     {
       "id": "ppt-artwork-023",
@@ -588,7 +602,9 @@
         "deck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
         "slide": 18,
         "mediaFile": "slide-018-01.jpeg"
-      }
+      },
+      "sourceDeck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "sourceSlide": "18"
     },
     {
       "id": "ppt-artwork-024",
@@ -612,7 +628,9 @@
         "deck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
         "slide": 21,
         "mediaFile": "slide-021-01.png"
-      }
+      },
+      "sourceDeck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "sourceSlide": "21"
     },
     {
       "id": "ppt-artwork-025",
@@ -660,7 +678,9 @@
         "deck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
         "slide": 32,
         "mediaFile": "slide-032-01.jpeg"
-      }
+      },
+      "sourceDeck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "sourceSlide": "32"
     },
     {
       "id": "ppt-artwork-027",
@@ -756,7 +776,9 @@
         "deck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
         "slide": 65,
         "mediaFile": "slide-065-01.jpeg"
-      }
+      },
+      "sourceDeck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "sourceSlide": "65"
     },
     {
       "id": "ppt-artwork-031",
@@ -934,7 +956,9 @@
         "deck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
         "slide": 135,
         "mediaFile": "slide-135-01.jpeg"
-      }
+      },
+      "sourceDeck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "sourceSlide": "135"
     },
     {
       "id": "ppt-artwork-038",
@@ -958,7 +982,9 @@
         "deck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
         "slide": 156,
         "mediaFile": "slide-156-01.png"
-      }
+      },
+      "sourceDeck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "sourceSlide": "156"
     },
     {
       "id": "ppt-artwork-039",
@@ -982,7 +1008,9 @@
         "deck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
         "slide": 163,
         "mediaFile": "slide-163-01.jpeg"
-      }
+      },
+      "sourceDeck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "sourceSlide": "163"
     },
     {
       "id": "ppt-artwork-040",
