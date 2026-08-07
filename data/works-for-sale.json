@@ -176,7 +176,9 @@
         "deck": "柏典tianjin.pptx",
         "slide": 20,
         "mediaFile": "slide-020-01.png"
-      }
+      },
+      "sourceDeck": "柏典tianjin.pptx",
+      "sourceSlide": "20"
     },
     {
       "id": "ppt-artwork-007",
@@ -768,7 +770,7 @@
       "categoryLabel": "综合材料",
       "price": "询价",
       "status": "待整理",
-      "publishStatus": "draft",
+      "publishStatus": "published",
       "recommended": false,
       "recommendedReason": "",
       "description": "作品资料由历史方案文件整理，详细信息与销售状态待画廊确认。",
@@ -804,7 +806,9 @@
         "deck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
         "slide": 94,
         "mediaFile": "slide-094-01.png"
-      }
+      },
+      "sourceDeck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "sourceSlide": "94"
     },
     {
       "id": "ppt-artwork-033",
@@ -828,7 +832,9 @@
         "deck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
         "slide": 101,
         "mediaFile": "slide-101-01.png"
-      }
+      },
+      "sourceDeck": "罗浮宫 艺术、展览、活动策划 概念框架方案（1）.pptx",
+      "sourceSlide": "101"
     },
     {
       "id": "ppt-artwork-034",
