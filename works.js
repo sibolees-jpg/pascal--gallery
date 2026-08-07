@@ -26,7 +26,7 @@ function escapeHtml(value) {
 
 async function loadWorks() {
   try {
-    const response = await fetch("data/works-for-sale.json");
+    const response = await fetch("data/works-for-sale.json", { cache: "no-store" });
     if (!response.ok) throw new Error("在售作品数据请求失败");
     const data = await response.json();
     state.works = getPublishedWorks(data);
