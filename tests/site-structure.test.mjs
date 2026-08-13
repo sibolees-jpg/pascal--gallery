@@ -32,6 +32,14 @@ test("首页首屏以完整 Logo 建立品牌层级", () => {
   assert.doesNotMatch(index, /<h1 id="hero-title">帕斯卡画廊<\/h1>/);
 });
 
+test("首页右侧包含无障碍隐藏的建筑几何线稿", () => {
+  assert.match(index, /class="architectural-linework[^"]*"[\s\S]*aria-hidden="true"/);
+  assert.match(index, /class="roof-line"/);
+  assert.match(index, /class="round-window"/);
+  assert.match(index, /class="geometry-line-a"/);
+  assert.match(index, /class="geometry-line-b"/);
+});
+
 test("首页采用最新内容和服务文字目录", () => {
   assert.match(index, /id="editorial-grid"/);
   assert.match(index, /id="service-index"/);

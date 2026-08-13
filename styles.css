@@ -24,6 +24,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--paper);
   color: var(--ink);
   font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -47,6 +48,32 @@ a {
   background: rgba(255, 255, 255, 0.94);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(18px);
+}
+
+.architectural-linework {
+  position: fixed;
+  top: 20vh;
+  right: clamp(12px, 2.2vw, 42px);
+  z-index: 4;
+  width: min(25vw, 360px);
+  height: auto;
+  overflow: visible;
+  color: var(--fresh-green);
+  opacity: 0.34;
+  pointer-events: none;
+}
+
+.architectural-linework polyline,
+.architectural-linework circle,
+.architectural-linework line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  vector-effect: non-scaling-stroke;
+}
+
+.architectural-linework .roof-line {
+  stroke-width: 3;
 }
 
 .brand {
@@ -1099,6 +1126,13 @@ h3 {
 }
 
 @media (max-width: 560px) {
+  .architectural-linework {
+    top: 34vh;
+    right: -48px;
+    width: 190px;
+    opacity: 0.16;
+  }
+
   .editorial-hero {
     min-height: 72vh;
   }
