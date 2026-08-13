@@ -109,3 +109,12 @@ test("页面脚本消费无 DOM 依赖的视图模型", () => {
   assert.match(casesJs, /getCaseListViewModel/);
   assert.match(casePageJs, /getCaseDetailViewModel/);
 });
+
+test("案例详情采用首图、事实栏、叙事正文和完整图片序列", () => {
+  assert.match(casePageJs, /case-editorial-hero/);
+  assert.match(casePageJs, /case-story/);
+  assert.match(casePageJs, /case-image-sequence/);
+  assert.match(casePageJs, /currentCase\.images\[0\]/);
+  assert.match(casePageJs, /currentCase\.responsibilities/);
+  assert.match(casePageJs, /currentCase\.deliverables/);
+});

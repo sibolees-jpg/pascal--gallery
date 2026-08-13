@@ -54,16 +54,27 @@ function renderMissingCase(message = "未找到这个案例") {
 
 function renderCaseDetail(cases, services, currentCase, imageMessage) {
   const relatedCases = getRelatedCases(cases, currentCase, 3);
+  const heroImage = currentCase.images[0];
   const relatedServices = currentCase.services
     .map((id) => services.find((service) => service.id === id))
     .filter(Boolean);
 
   caseDetail.innerHTML = `
-    <section class="case-detail-hero" aria-labelledby="case-title">
-      <a class="breadcrumb" href="cases.html">案例目录</a>
-      <p class="eyebrow">真实项目</p>
-      <h1 id="case-title">${currentCase.title}</h1>
-      <p class="hero-lede">${currentCase.summary}</p>
+    <section class="case-editorial-hero" aria-labelledby="case-title">
+      <div class="case-editorial-heading">
+        <a class="breadcrumb" href="cases.html">案例目录</a>
+        <p class="eyebrow">真实项目</p>
+        <h1 id="case-title">${currentCase.title}</h1>
+        <p class="hero-lede">${currentCase.summary}</p>
+      </div>
+      <div class="case-hero-media">
+        ${heroImage
+          ? `<img src="${heroImage.src}" alt="${heroImage.alt}">`
+          : `<p class="empty-state">${imageMessage}</p>`}
+      </div>
+    </section>
+
+    <section class="case-fact-band" aria-label="项目基础信息">
       <dl class="case-facts case-detail-facts">
         ${createFact("年份", currentCase.year)}
         ${createFact("地点", currentCase.location)}
@@ -71,65 +82,14 @@ function renderCaseDetail(cases, services, currentCase, imageMessage) {
       </dl>
     </section>
 
-    <section class="section case-overview" aria-labelledby="overview-title">
-      <div class="section-heading compact">
-        <p class="eyebrow">项目概览</p>
-        <h2 id="overview-title">从问题到可公开的项目成果</h2>
-      </div>
-      <p class="case-lede">${currentCase.summary}</p>
-    </section>
-
-    <div class="case-detail-pair">
-      <section class="section" aria-labelledby="background-title">
-        <div class="section-heading compact">
-          <p class="eyebrow">项目背景</p>
-          <h2 id="background-title">项目背景</h2>
-        </div>
-        <p>${currentCase.background}</p>
-      </section>
-      <section class="section" aria-labelledby="challenge-title">
-        <div class="section-heading compact">
-          <p class="eyebrow">核心问题</p>
-          <h2 id="challenge-title">核心问题</h2>
-        </div>
-        <p>${currentCase.challenge}</p>
-      </section>
-    </div>
-
-    <section class="section" aria-labelledby="responsibilities-title">
-      <div class="section-heading compact">
-        <p class="eyebrow">帕斯卡负责的工作</p>
-        <h2 id="responsibilities-title">职责</h2>
-      </div>
-      ${createContentList(currentCase.responsibilities, "case-content-list")}
-    </section>
-
-    <section class="section" aria-labelledby="process-title">
-      <div class="section-heading compact">
-        <p class="eyebrow">工作方法</p>
-        <h2 id="process-title">过程</h2>
-      </div>
-      ${createContentList(currentCase.process, "case-process-list", true)}
-    </section>
-
-    <div class="case-detail-pair">
-      <section class="section" aria-labelledby="outcomes-title">
-        <div class="section-heading compact">
-          <p class="eyebrow">项目成果</p>
-          <h2 id="outcomes-title">成果</h2>
-        </div>
-        ${createContentList(currentCase.outcomes, "case-content-list")}
-      </section>
-      <section class="section" aria-labelledby="deliverables-title">
-        <div class="section-heading compact">
-          <p class="eyebrow">公开交付物</p>
-          <h2 id="deliverables-title">交付物</h2>
-        </div>
-        <div class="deliverables">
-          ${currentCase.deliverables.map((item) => `<span>${item}</span>`).join("")}
-        </div>
-      </section>
-    </div>
+    <article class="case-story">
+      ${createStorySection("01", "项目背景", currentCase.background)}
+      ${createStorySection("02", "核心问题", currentCase.challenge)}
+      ${createStoryList("03", "帕斯卡负责的工作", currentCase.responsibilities)}
+      ${createStoryList("04", "工作过程", currentCase.process, true)}
+      ${createStoryList("05", "项目成果", currentCase.outcomes)}
+      ${createStoryList("06", "公开交付物", currentCase.deliverables)}
+    </article>
 
     <section class="section" aria-labelledby="images-title">
       <div class="section-heading compact">
@@ -161,6 +121,26 @@ function renderCaseDetail(cases, services, currentCase, imageMessage) {
   `;
 }
 
+function createStorySection(number, title, content) {
+  return `
+    <section class="case-story-section">
+      <span>${number}</span>
+      <h2>${title}</h2>
+      <p>${content}</p>
+    </section>
+  `;
+}
+
+function createStoryList(number, title, items, ordered = false) {
+  return `
+    <section class="case-story-section">
+      <span>${number}</span>
+      <h2>${title}</h2>
+      ${createContentList(items, "case-story-list", ordered)}
+    </section>
+  `;
+}
+
 function createFact(label, value) {
   return `
     <div>
@@ -185,7 +165,7 @@ function createImageGallery(images, emptyMessage) {
   }
 
   return `
-    <div class="case-gallery">
+    <div class="case-image-sequence">
       ${images.map((image) => `
         <figure>
           <img src="${image.src}" alt="${image.alt}">
