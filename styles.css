@@ -1084,6 +1084,7 @@ h3 {
   }
 
   .editorial-grid {
+    grid-template-columns: 1fr;
     gap: 36px;
   }
 
@@ -1383,6 +1384,7 @@ h3 {
 
 @media (max-width: 560px) {
   .case-archive-grid {
+    grid-template-columns: 1fr;
     gap: 3.5rem;
   }
 
