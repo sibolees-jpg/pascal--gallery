@@ -52,7 +52,7 @@
     </svg>
 
     <main id="top">
-      <section class="hero editorial-hero" aria-labelledby="hero-title">
+      <section class="hero editorial-hero" data-linework-stage="0" aria-labelledby="hero-title">
         <div class="hero-media" aria-hidden="true">
           <img src="assets/about/gallery-exhibitions.png" alt="">
         </div>
@@ -75,7 +75,7 @@
         </div>
       </section>
 
-      <section id="latest" class="section latest-section" aria-labelledby="latest-title">
+      <section id="latest" class="section latest-section" data-linework-stage="1" aria-labelledby="latest-title">
         <div class="editorial-heading">
           <div><p class="eyebrow">正在发生</p><h2 id="latest-title">展览与动态</h2></div>
           <a class="text-arrow" href="cases.html">查看全部案例</a>
@@ -83,13 +83,13 @@
         <div id="editorial-grid" class="editorial-grid" aria-live="polite"></div>
       </section>
 
-      <section class="method-line" aria-labelledby="method-title">
+      <section class="method-line" data-linework-stage="2" aria-labelledby="method-title">
         <p class="eyebrow">帕斯卡的方法</p>
         <h2 id="method-title">艺术 × 商业 × 消费 × 服务</h2>
         <p>从艺术家与作品出发，连接品牌与空间，形成收藏、体验与衍生品，并完成策划、设计与落地。</p>
       </section>
 
-      <section id="services" class="section services-section" aria-labelledby="services-title">
+      <section id="services" class="section services-section" data-linework-stage="3" aria-labelledby="services-title">
         <div class="editorial-heading">
           <div><p class="eyebrow">综合艺术服务机构</p><h2 id="services-title">我们可以做什么</h2></div>
           <p>从艺术资源组织到现场呈现，五项服务可独立使用，也可以组合为完整项目。</p>
@@ -118,7 +118,7 @@
         </dl>
       </section>
 
-      <section class="network-band" aria-labelledby="network-title">
+      <section class="network-band" data-linework-stage="4" aria-labelledby="network-title">
         <div>
           <p class="eyebrow">专业资源网络</p>
           <h2 id="network-title">长期画廊运营，是项目能力的底座。</h2>
@@ -129,7 +129,7 @@
         </div>
       </section>
 
-      <section id="contact" class="contact-section" aria-labelledby="contact-title">
+      <section id="contact" class="contact-section" data-linework-stage="5" aria-labelledby="contact-title">
         <div>
           <p class="eyebrow">合作</p>
           <h2 id="contact-title">告诉我们你的空间、预算、时间和目标。</h2>
@@ -152,6 +152,7 @@
       <a href="#top">返回顶部</a>
     </footer>
 
+    <script type="module" src="homepage-motion.js"></script>
     <script src="app.js" defer></script>
   </body>
 </html>
