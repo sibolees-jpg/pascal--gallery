@@ -1,7 +1,6 @@
 const year = document.querySelector("#year");
-const serviceGrid = document.querySelector("#service-grid");
-const caseMatrix = document.querySelector("#case-matrix");
-const projectGrid = document.querySelector("#project-grid");
+const serviceIndex = document.querySelector("#service-index");
+const editorialGrid = document.querySelector("#editorial-grid");
 
 year.textContent = new Date().getFullYear();
 
@@ -22,10 +21,8 @@ async function loadArchive() {
     ]);
     renderArchive(services, cases);
   } catch (error) {
-    caseMatrix.innerHTML = '<p class="empty-state">案例资料暂时无法加载，请稍后再试。</p>';
-    projectGrid.innerHTML = `
-      <p class="empty-state">代表案例暂时无法加载，请稍后再试。</p>
-    `;
+    editorialGrid.innerHTML = '<p class="empty-state">最新内容暂时无法加载，请稍后再试。</p>';
+    serviceIndex.innerHTML = '<p class="empty-state">服务资料暂时无法加载，请稍后再试。</p>';
     console.error(error);
   }
 }
@@ -35,8 +32,7 @@ function renderArchive(services, cases) {
 
   updateStats(services, publicCases);
   renderServices(services, publicCases);
-  renderCaseMatrix(services, publicCases);
-  renderProjects(publicCases, services);
+  renderEditorial(publicCases, services);
 }
 
 function updateStats(services, cases) {
@@ -53,71 +49,46 @@ function setOptionalText(selector, value) {
 }
 
 function renderServices(services, cases) {
-  serviceGrid.innerHTML = services
-    .map((service) => {
+  serviceIndex.innerHTML = services
+    .map((service, index) => {
       const count = cases.filter((item) => item.services.includes(service.id)).length;
       const detailUrl = `services/${service.slug}.html`;
       return `
-        <a class="service-card" href="${detailUrl}">
-          <span class="service-count">${count} 个相关项目</span>
+        <a class="service-index-row" href="${detailUrl}">
+          <span class="service-number">${String(index + 1).padStart(2, "0")}</span>
           <h3>${service.title}</h3>
           <p>${service.summary}</p>
-          <span class="text-link">查看服务详情</span>
+          <span class="service-count">${count} 个案例</span>
         </a>
       `;
     })
     .join("");
 }
 
-function renderCaseMatrix(services, cases) {
-  caseMatrix.innerHTML = services
-    .map((service) => {
-      const relatedCases = cases.filter((item) => item.services.includes(service.id));
-      return `
-        <article class="case-group">
-          <header>
-            <span>${relatedCases.length} 个公开案例</span>
-            <h3>${service.title}</h3>
-          </header>
-          <div class="case-list">
-            <a href="cases.html?service=${service.id}">
-              <strong>浏览相关案例</strong>
-              <small>查看${service.title}的真实项目</small>
-            </a>
-          </div>
-        </article>
-      `;
-    })
+function renderEditorial(cases, services) {
+  editorialGrid.innerHTML = cases.slice(0, 6)
+    .map((item, index) => createEditorialItem(item, services, index))
     .join("");
 }
 
-function renderProjects(cases, services) {
-  projectGrid.innerHTML = cases.map((item) => createProject(item, services)).join("");
-}
-
-function createProject(item, services) {
+function createEditorialItem(item, services, index) {
   const serviceLabels = item.services
     .map((serviceId) => services.find((service) => service.id === serviceId)?.title)
     .filter(Boolean);
-  const initials = item.title.slice(0, 2);
+  const cover = item.images[0];
+  const media = cover
+    ? `<img src="${cover.src}" alt="${cover.alt}">`
+    : `<span class="editorial-placeholder">${item.title.slice(0, 2)}</span>`;
 
   return `
-    <article class="project-card case-card">
-      <div class="project-cover">
-        <span aria-hidden="true">${initials}</span>
-      </div>
-      <div class="project-content">
-        <span class="category-label">${serviceLabels.join(" / ")}</span>
+    <a class="editorial-item editorial-item-${(index % 4) + 1}" href="case.html?id=${item.id}">
+      <figure>${media}</figure>
+      <div class="editorial-caption">
+        <span>${serviceLabels.join(" / ")}</span>
         <h3>${item.title}</h3>
-        <p>${item.summary}</p>
-        <div class="archive-card-meta">
-          <span>${item.year}</span>
-          <span>${item.location}</span>
-          <span>${item.type}</span>
-        </div>
-        <a class="button case-card-link" href="case.html?id=${item.id}">查看案例</a>
+        <p>${item.year} · ${item.location}</p>
       </div>
-    </article>
+    </a>
   `;
 }
 

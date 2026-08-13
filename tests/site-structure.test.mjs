@@ -23,20 +23,13 @@ test("首页使用正式完整标志和中文定位", () => {
   assert.match(index, /公共艺术制作落地服务/);
 });
 
-test("首页包含四类需求入口和五阶段工作链", () => {
-  for (const text of [
-    "购买或租赁艺术品",
-    "空间、商业或文旅项目",
-    "艺术家或机构合作",
-    "了解帕斯卡的发展与能力",
-    "需求诊断",
-    "艺术资源组织",
-    "策划与设计",
-    "制作与施工",
-    "展示与运营"
-  ]) {
-    assert.match(index, new RegExp(text));
-  }
+test("首页采用最新内容和服务文字目录", () => {
+  assert.match(index, /id="editorial-grid"/);
+  assert.match(index, /id="service-index"/);
+  assert.match(index, /展览与动态/);
+  assert.doesNotMatch(index, /class="case-matrix"/);
+  assert.doesNotMatch(index, /class="scenario-grid"/);
+  assert.doesNotMatch(index, /class="audience-grid"/);
 });
 
 test("首页呈现画廊定位、四部分方法与专业网络", () => {
@@ -86,20 +79,12 @@ test("五个服务二级页具有固定服务编号和完整品牌标志", async
   }
 });
 
-test("首页分类和主导航均进入真实案例库", async () => {
-  for (const serviceId of [
-    "art_sales",
-    "art_and_space_rental",
-    "cultural_tourism",
-    "design",
-    "landscape_art",
-  ]) {
-    assert.match(index, new RegExp(`cases\\.html\\?service=${serviceId}`));
-  }
+test("首页服务目录和主导航进入对应内容", async () => {
   assert.match(index, /href="cases\.html">案例<\/a>/);
   assert.match(works, /href="cases\.html">案例<\/a>/);
   assert.match(appJs, /data\/cases\.json/);
   assert.match(appJs, /case\.html\?id=/);
+  assert.match(appJs, /services\/\$\{service\.slug\}\.html/);
   assert.doesNotMatch(appJs, /href="#case-/);
 });
 
@@ -132,7 +117,7 @@ test("首页仅统计和渲染公开案例", async () => {
   };
   const designService = services.find((service) => service.id === "design");
   const elements = new Map(
-    ["#year", "#service-grid", "#case-matrix", "#project-grid", "#stat-count", "#stat-categories", "#stat-sources"]
+    ["#year", "#service-index", "#editorial-grid", "#stat-count", "#stat-categories", "#stat-sources"]
       .map((selector) => [selector, { innerHTML: "", textContent: "" }]),
   );
   const responseFor = (data) => ({ ok: true, json: async () => data });
@@ -148,10 +133,8 @@ test("首页仅统计和渲染公开案例", async () => {
   await new Promise((resolve) => setImmediate(resolve));
 
   assert.equal(elements.get("#stat-count").textContent, 1);
-  assert.match(elements.get("#service-grid").innerHTML, /1 个相关项目/);
-  assert.doesNotMatch(elements.get("#service-grid").innerHTML, /2 个相关项目/);
-  assert.match(elements.get("#case-matrix").innerHTML, /1 个公开案例/);
-  assert.doesNotMatch(elements.get("#case-matrix").innerHTML, /2 个公开案例/);
-  assert.match(elements.get("#project-grid").innerHTML, /公开测试案例/);
-  assert.doesNotMatch(elements.get("#project-grid").innerHTML, /内部待审核案例/);
+  assert.match(elements.get("#service-index").innerHTML, /1 个案例/);
+  assert.doesNotMatch(elements.get("#service-index").innerHTML, /2 个案例/);
+  assert.match(elements.get("#editorial-grid").innerHTML, /公开测试案例/);
+  assert.doesNotMatch(elements.get("#editorial-grid").innerHTML, /内部待审核案例/);
 });

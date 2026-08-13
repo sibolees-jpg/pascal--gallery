@@ -16,7 +16,7 @@
     <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml">
     <link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
-    <link rel="stylesheet" href="styles.css?v=20260808-commercial">
+    <link rel="stylesheet" href="styles.css?v=20260813-editorial">
   </head>
   <body>
     <header class="site-header">
@@ -28,16 +28,16 @@
         >
       </a>
       <nav class="nav-links" aria-label="主要导航">
-        <a href="#services">服务</a>
+        <a href="#latest">展览与动态</a>
+        <a href="works.html">艺术家与作品</a>
         <a href="cases.html">案例</a>
-        <a href="works.html">在售作品</a>
-        <a href="about.html">关于帕斯卡</a>
+        <a href="about.html">关于</a>
         <a href="#contact">合作</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
+      <section class="hero editorial-hero" aria-labelledby="hero-title">
         <div class="hero-media" aria-hidden="true">
           <img src="assets/about/gallery-exhibitions.png" alt="">
         </div>
@@ -48,10 +48,32 @@
             画廊是城市不可或缺的文化风景。帕斯卡以长期积累的艺术家、作品、展览与专业协作资源为基础，为个人、企业、商业空间和城市项目提供从内容到落地的综合艺术服务。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#services">了解服务</a>
-            <a class="button" href="works.html">浏览在售作品</a>
+            <a class="text-arrow" href="#latest">查看最新内容</a>
+            <a class="text-arrow" href="works.html">浏览艺术家与作品</a>
           </div>
         </div>
+      </section>
+
+      <section id="latest" class="section latest-section" aria-labelledby="latest-title">
+        <div class="editorial-heading">
+          <div><p class="eyebrow">正在发生</p><h2 id="latest-title">展览与动态</h2></div>
+          <a class="text-arrow" href="cases.html">查看全部案例</a>
+        </div>
+        <div id="editorial-grid" class="editorial-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="method-line" aria-labelledby="method-title">
+        <p class="eyebrow">帕斯卡的方法</p>
+        <h2 id="method-title">艺术 × 商业 × 消费 × 服务</h2>
+        <p>从艺术家与作品出发，连接品牌与空间，形成收藏、体验与衍生品，并完成策划、设计与落地。</p>
+      </section>
+
+      <section id="services" class="section services-section" aria-labelledby="services-title">
+        <div class="editorial-heading">
+          <div><p class="eyebrow">综合艺术服务机构</p><h2 id="services-title">我们可以做什么</h2></div>
+          <p>从艺术资源组织到现场呈现，五项服务可独立使用，也可以组合为完整项目。</p>
+        </div>
+        <div id="service-index" class="service-index" aria-live="polite"></div>
       </section>
 
       <section class="proof-band" aria-label="画廊数据概览">
@@ -75,20 +97,6 @@
         </dl>
       </section>
 
-      <section class="section method-section" aria-labelledby="method-title">
-        <div class="section-heading">
-          <p class="eyebrow">帕斯卡的方法</p>
-          <h2 id="method-title">艺术 × 商业 × 消费 × 服务</h2>
-          <p>让专业艺术内容进入真实场景，并形成可体验、可购买、可传播、可持续运营的项目。</p>
-        </div>
-        <div class="method-grid">
-          <article><span>01</span><h3>艺术</h3><p>组织艺术家与作品、展览主题和学术内容。</p></article>
-          <article><span>02</span><h3>商业</h3><p>连接品牌与空间、文旅目的地和城市更新需求。</p></article>
-          <article><span>03</span><h3>消费</h3><p>形成收藏、体验与衍生品等多层次内容入口。</p></article>
-          <article><span>04</span><h3>服务</h3><p>提供策划、设计与落地，并衔接制作、施工和运营。</p></article>
-        </div>
-      </section>
-
       <section class="network-band" aria-labelledby="network-title">
         <div>
           <p class="eyebrow">专业资源网络</p>
@@ -98,141 +106,6 @@
           <p>艺术家 · 策展人 · 批评家 · 收藏家 · 艺术院校与机构 · 设计与制作伙伴</p>
           <a class="text-link" href="about.html">查看机构历程与资源网络</a>
         </div>
-      </section>
-
-      <section class="section audience-section" aria-labelledby="audience-title">
-        <div class="section-heading">
-          <p class="eyebrow">从你的需求出发</p>
-          <h2 id="audience-title">无论是寻找作品、启动项目还是建立合作，都可以从这里开始。</h2>
-        </div>
-        <div class="audience-grid">
-          <a href="works.html">
-            <span>01</span>
-            <h3>购买或租赁艺术品</h3>
-            <p>查看在售作品，或根据预算、空间和收藏方向获得独立推荐。</p>
-            <strong>浏览作品</strong>
-          </a>
-          <a href="#services">
-            <span>02</span>
-            <h3>空间、商业或文旅项目</h3>
-            <p>从项目定位、艺术内容和空间设计开始，衔接制作与现场落地。</p>
-            <strong>选择服务</strong>
-          </a>
-          <a href="#contact">
-            <span>03</span>
-            <h3>艺术家或机构合作</h3>
-            <p>围绕作品、展览、场地、学术活动和项目资源建立长期合作。</p>
-            <strong>发起合作</strong>
-          </a>
-          <a href="about.html">
-            <span>04</span>
-            <h3>了解帕斯卡的发展与能力</h3>
-            <p>了解画廊资源积累、项目经验、完整服务链和公开发展方向。</p>
-            <strong>了解机构</strong>
-          </a>
-        </div>
-      </section>
-
-      <section id="services" class="section services-section" aria-labelledby="services-title">
-        <div class="section-heading">
-          <p class="eyebrow">五项服务能力</p>
-          <h2 id="services-title">从艺术资源到现场呈现，提供可以组合的服务模块。</h2>
-          <p>
-            根据客户、场景和项目阶段选择单项服务，也可以由帕斯卡组织策划、设计、作品、制作与施工的完整交付。
-          </p>
-        </div>
-        <div id="service-grid" class="service-grid" aria-live="polite"></div>
-      </section>
-
-      <section id="logic" class="section chain-section" aria-labelledby="chain-title">
-        <div class="section-heading compact">
-          <p class="eyebrow">完整工作链</p>
-          <h2 id="chain-title">把艺术想法转化成可执行、可交付的项目。</h2>
-        </div>
-        <ol class="service-chain">
-          <li>
-            <span>01</span>
-            <h3>需求诊断</h3>
-            <p>明确目标、客群、预算、场地条件和项目时间。</p>
-          </li>
-          <li>
-            <span>02</span>
-            <h3>艺术资源组织</h3>
-            <p>匹配艺术家、作品、主题、活动和合作资源。</p>
-          </li>
-          <li>
-            <span>03</span>
-            <h3>策划与设计</h3>
-            <p>形成内容结构、空间关系、视觉方案和执行清单。</p>
-          </li>
-          <li>
-            <span>04</span>
-            <h3>制作与施工</h3>
-            <p>协调材料、工艺、预算、制作、运输和安装。</p>
-          </li>
-          <li>
-            <span>05</span>
-            <h3>展示与运营</h3>
-            <p>完成现场呈现，并为传播、活动和持续运营提供内容。</p>
-          </li>
-        </ol>
-      </section>
-
-      <section class="section scenario-section" aria-labelledby="scenario-title">
-        <div class="section-heading">
-          <p class="eyebrow">适用场景</p>
-          <h2 id="scenario-title">服务可以进入不同空间，也可以贯穿项目的不同阶段。</h2>
-        </div>
-        <div class="scenario-grid">
-          <a href="cases.html?service=design"><span>酒店与商业空间</span><small>作品配置、艺术氛围与空间更新</small></a>
-          <a href="cases.html?service=cultural_tourism"><span>文旅目的地与城市活动</span><small>主题策划、体验内容与运营节奏</small></a>
-          <a href="cases.html?service=landscape_art"><span>街区、园区与公共空间</span><small>公共艺术、景观装置与现场落地</small></a>
-          <a href="cases.html?service=art_sales"><span>企业收藏与艺术配置</span><small>作品选择、预算匹配与陈列建议</small></a>
-          <a href="cases.html?service=art_and_space_rental"><span>展览、品牌活动与临时场地</span><small>内容组织、展陈设计与布撤展</small></a>
-        </div>
-      </section>
-
-      <section id="projects" class="section projects-section" aria-labelledby="projects-title">
-        <div class="section-heading">
-          <p class="eyebrow">代表案例</p>
-          <h2 id="projects-title">每个案例都说明问题、工作内容和可交付成果。</h2>
-          <p>
-            当前公开版本只展示获得授权或可概括的项目信息，不使用未经授权的客户名称、作品图片和第三方材料。
-          </p>
-        </div>
-        <div id="case-matrix" class="case-matrix" aria-live="polite">
-          <article class="case-group"><header><span>案例分类</span><h3>艺术品销售</h3></header><div class="case-list"><a href="cases.html?service=art_sales"><strong>浏览相关案例</strong><small>作品配置与艺术项目</small></a></div></article>
-          <article class="case-group"><header><span>案例分类</span><h3>艺术品与场地租赁</h3></header><div class="case-list"><a href="cases.html?service=art_and_space_rental"><strong>浏览相关案例</strong><small>展览与空间合作</small></a></div></article>
-          <article class="case-group"><header><span>案例分类</span><h3>文旅项目策划</h3></header><div class="case-list"><a href="cases.html?service=cultural_tourism"><strong>浏览相关案例</strong><small>目的地与城市活动</small></a></div></article>
-          <article class="case-group"><header><span>案例分类</span><h3>设计</h3></header><div class="case-list"><a href="cases.html?service=design"><strong>浏览相关案例</strong><small>空间、视觉与美陈</small></a></div></article>
-          <article class="case-group"><header><span>案例分类</span><h3>景观艺术品制作施工</h3></header><div class="case-list"><a href="cases.html?service=landscape_art"><strong>浏览相关案例</strong><small>公共艺术与景观装置</small></a></div></article>
-        </div>
-        <div id="project-grid" class="project-grid"></div>
-      </section>
-
-      <section id="development" class="section development-section" aria-labelledby="development-title">
-        <div class="section-heading">
-          <p class="eyebrow">机构实力与发展</p>
-          <h2 id="development-title">长期画廊运营，为跨场景的艺术项目提供资源基础。</h2>
-          <p>
-            艺术家、作品和内容资源持续积累，服务模块可以在商业、酒店、文旅、街区与公共空间中复用，业务覆盖销售、租赁、策划设计和制作施工。
-          </p>
-        </div>
-        <div class="development-grid">
-          <article>
-            <h3>持续积累</h3>
-            <p>画廊运营沉淀艺术家、作品、展览主题和专业合作网络。</p>
-          </article>
-          <article>
-            <h3>跨场景复用</h3>
-            <p>艺术资源与策划方法能够进入收藏、商业、文旅和公共空间。</p>
-          </article>
-          <article>
-            <h3>完整交付</h3>
-            <p>从内容策划延伸到设计、制作、施工与现场呈现。</p>
-          </article>
-        </div>
-        <a class="button" href="about.html">查看画廊历程与完整介绍</a>
       </section>
 
       <section id="contact" class="contact-section" aria-labelledby="contact-title">
