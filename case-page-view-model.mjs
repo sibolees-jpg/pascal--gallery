@@ -5,17 +5,33 @@ export const UNKNOWN_SERVICE_MESSAGE = "未找到对应服务，已展示全部�
 export const MISSING_CASE_MESSAGE = "未找到这个案例";
 export const MISSING_IMAGE_MESSAGE = "项目影像资料正在整理。";
 
-export function getCaseListViewModel(cases, services, requestedService) {
+export function getCaseListViewModel(cases, services, requestedService, searchTerm = "") {
   const hasRequestedService = Boolean(requestedService);
   const isValidService = hasRequestedService && isKnownService(services, requestedService);
   const activeService = isValidService ? requestedService : null;
-  const visibleCases = filterCasesByService(cases, activeService);
+  const normalizedSearch = searchTerm.trim().toLocaleLowerCase("zh-CN");
+  const serviceCases = filterCasesByService(cases, activeService);
+  const visibleCases = normalizedSearch
+    ? serviceCases.filter((item) =>
+        [item.title, item.location, item.type, item.summary, item.year]
+          .filter(Boolean)
+          .join(" ")
+          .toLocaleLowerCase("zh-CN")
+          .includes(normalizedSearch),
+      )
+    : serviceCases;
   const publicCases = filterCasesByService(cases, null);
 
   return {
     activeService,
     cases: visibleCases,
-    emptyMessage: activeService && !visibleCases.length ? EMPTY_SERVICE_MESSAGE : null,
+    emptyMessage: !visibleCases.length
+      ? normalizedSearch
+        ? "没有符合当前条件的公开案例。"
+        : activeService
+          ? EMPTY_SERVICE_MESSAGE
+          : null
+      : null,
     filters: [
       {
         id: null,

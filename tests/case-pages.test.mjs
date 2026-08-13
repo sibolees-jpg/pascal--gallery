@@ -31,10 +31,34 @@ const { services } = JSON.parse(
 
 test("案例目录与详情模板使用统一数据和中文状态", () => {
   assert.match(casesHtml, /id="case-grid"/);
+  assert.match(casesHtml, /id="case-search"/);
+  assert.match(casesHtml, /class="case-archive-grid"/);
   assert.match(casesHtml, /案例目录/);
   assert.match(caseHtml, /id="case-detail"/);
   assert.match(casePageJs, /未找到这个案例/);
   assert.match(casePageJs, /返回案例目录/);
+});
+
+test("案例目录可按项目名、地点、类型和摘要搜索", () => {
+  const byTitle = getCaseListViewModel(cases, services, null, "棉三");
+  const byLocation = getCaseListViewModel(cases, services, null, "惠山古街");
+  const byType = getCaseListViewModel(cases, services, null, "可行性分析");
+  const bySummary = getCaseListViewModel(cases, services, null, "可持续未来");
+
+  assert.deepEqual(byTitle.cases.map((item) => item.id), ["mian-san-sculpture"]);
+  assert.deepEqual(byLocation.cases.map((item) => item.id), ["wuxi-new-space"]);
+  assert.ok(byType.cases.some((item) => item.id === "tuanbo-cultural-tourism"));
+  assert.deepEqual(bySummary.cases.map((item) => item.id), ["sino-singapore-ecocity"]);
+});
+
+test("搜索与服务分类组合生效", () => {
+  const matching = getCaseListViewModel(cases, services, "design", "天津");
+  const empty = getCaseListViewModel(cases, services, "art_sales", "惠山古街");
+
+  assert.ok(matching.cases.length > 0);
+  assert.ok(matching.cases.every((item) => item.services.includes("design")));
+  assert.deepEqual(empty.cases, []);
+  assert.equal(empty.emptyMessage, "没有符合当前条件的公开案例。");
 });
 
 test("有效但没有公开案例的服务保留筛选态并显示整理提示", () => {

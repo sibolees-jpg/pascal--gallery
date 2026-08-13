@@ -1109,6 +1109,146 @@ h3 {
   }
 }
 
+/* Case archive */
+.archive-hero {
+  align-items: end;
+  min-height: 56vh;
+  padding-top: 10rem;
+}
+
+.archive-hero h1 {
+  font-size: clamp(4.5rem, 11vw, 10rem);
+  line-height: 0.86;
+}
+
+.archive-intro {
+  max-width: 28rem;
+  margin: 0 0 0 auto;
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+
+.case-archive-tools {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem);
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 4rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.case-search-label {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.case-search-label input {
+  width: 100%;
+  padding: 0.8rem 0;
+  border: 0;
+  border-bottom: 2px solid var(--ink);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+}
+
+.case-search-label input:focus {
+  outline: 0;
+  border-color: var(--green-dark);
+}
+
+.case-archive-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 5rem 2rem;
+}
+
+.case-archive-item {
+  grid-column: span 4;
+}
+
+.case-archive-item-1,
+.case-archive-item-4 {
+  grid-column: span 7;
+}
+
+.case-archive-item-2,
+.case-archive-item-5 {
+  grid-column: span 5;
+}
+
+.case-archive-item .case-cover {
+  display: grid;
+  min-height: 18rem;
+  margin-bottom: 1.2rem;
+  background: #f3f3f0;
+  place-items: center;
+}
+
+.case-archive-item .case-cover img {
+  width: 100%;
+  height: auto;
+  max-height: 34rem;
+  object-fit: contain;
+}
+
+.case-archive-content h3 {
+  max-width: 22ch;
+  margin: 0.7rem 0 0;
+  font-size: clamp(1.4rem, 2.3vw, 2.35rem);
+  line-height: 1.08;
+}
+
+.case-archive-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid var(--green);
+  font-weight: 700;
+}
+
+@media (max-width: 800px) {
+  .archive-hero {
+    min-height: auto;
+    padding-top: 7rem;
+  }
+
+  .archive-intro {
+    margin-left: 0;
+  }
+
+  .case-archive-tools {
+    grid-template-columns: 1fr;
+  }
+
+  .case-archive-item,
+  .case-archive-item-1,
+  .case-archive-item-2,
+  .case-archive-item-4,
+  .case-archive-item-5 {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 560px) {
+  .case-archive-grid {
+    gap: 3.5rem;
+  }
+
+  .case-archive-item,
+  .case-archive-item-1,
+  .case-archive-item-2,
+  .case-archive-item-4,
+  .case-archive-item-5 {
+    grid-column: 1 / -1;
+  }
+}
+
 .catalog-head,
 .catalog-row {
   display: grid;

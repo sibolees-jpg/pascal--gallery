@@ -3,6 +3,7 @@ import { getCaseListViewModel } from "./case-page-view-model.mjs";
 const year = document.querySelector("#year");
 const caseFilters = document.querySelector("#case-filters");
 const caseGrid = document.querySelector("#case-grid");
+const caseSearch = document.querySelector("#case-search");
 
 year.textContent = new Date().getFullYear();
 
@@ -32,9 +33,10 @@ async function loadCases() {
 
 function renderCasesPage(cases, services) {
   let requestedService = new URLSearchParams(window.location.search).get("service");
+  let searchTerm = "";
 
   const render = () => {
-    const viewModel = getCaseListViewModel(cases, services, requestedService);
+    const viewModel = getCaseListViewModel(cases, services, requestedService, searchTerm);
     renderFilters(viewModel.filters);
     renderCaseGrid(viewModel.cases, viewModel.notice, viewModel.emptyMessage);
   };
@@ -45,6 +47,11 @@ function renderCasesPage(cases, services) {
 
     requestedService = button.dataset.service || null;
     updateServiceUrl(requestedService);
+    render();
+  });
+
+  caseSearch.addEventListener("input", (event) => {
+    searchTerm = event.target.value;
     render();
   });
 
@@ -81,26 +88,25 @@ function renderCaseGrid(cases, notice, emptyMessage) {
     return;
   }
 
-  caseGrid.innerHTML = `${noticeMarkup}${cases.map((item) => createCaseCard(item)).join("")}`;
+  caseGrid.innerHTML = `${noticeMarkup}${cases.map((item, index) => createCaseCard(item, index)).join("")}`;
 }
 
-function createCaseCard(item) {
+function createCaseCard(item, index) {
   const cover = item.images[0]
     ? `<img src="${item.images[0].src}" alt="${item.images[0].alt}">`
     : `<span class="case-cover-placeholder">项目封面正在整理</span>`;
 
   return `
-    <article class="project-card case-card">
+    <article class="case-archive-item case-archive-item-${(index % 5) + 1}">
       <div class="project-cover case-cover">${cover}</div>
-      <div class="project-content">
+      <div class="case-archive-content">
         <div class="archive-card-meta" aria-label="项目基础信息">
           <span>${item.year}</span>
           <span>${item.location}</span>
           <span>${item.type}</span>
         </div>
         <h3>${item.title}</h3>
-        <p>${item.summary}</p>
-        <a class="button case-card-link" href="case.html?id=${item.id}">查看案例</a>
+        <a class="case-archive-link" href="case.html?id=${item.id}" aria-label="查看案例：${item.title}">查看案例</a>
       </div>
     </article>
   `;
