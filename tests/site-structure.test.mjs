@@ -23,6 +23,15 @@ test("首页使用正式完整标志和中文定位", () => {
   assert.match(index, /公共艺术制作落地服务/);
 });
 
+test("首页首屏以完整 Logo 建立品牌层级", () => {
+  assert.match(index, /class="hero-brand-mark"/);
+  assert.match(
+    index,
+    /class="hero-brand-logo"[\s\S]*src="assets\/brand\/pascal-gallery-logo\.svg"/,
+  );
+  assert.doesNotMatch(index, /<h1 id="hero-title">帕斯卡画廊<\/h1>/);
+});
+
 test("首页采用最新内容和服务文字目录", () => {
   assert.match(index, /id="editorial-grid"/);
   assert.match(index, /id="service-index"/);
