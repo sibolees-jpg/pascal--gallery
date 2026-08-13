@@ -25,6 +25,14 @@ test("首页加载观察器并标记滚动区段", () => {
   assert.match(html, /type="module" src="homepage-motion\.js"/);
 });
 
+test("长内容区一进入中央观察带就触发线稿状态", async () => {
+  assert.match(source, /export const LINEWORK_OBSERVER_OPTIONS/);
+  const { LINEWORK_OBSERVER_OPTIONS } = await import(moduleUrl);
+
+  assert.equal(LINEWORK_OBSERVER_OPTIONS.threshold, 0);
+  assert.equal(LINEWORK_OBSERVER_OPTIONS.rootMargin, "-18% 0px -48%");
+});
+
 test("线稿动画支持减少动态效果", () => {
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(styles, /\.architectural-linework[\s\S]*transition:/);

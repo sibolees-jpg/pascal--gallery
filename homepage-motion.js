@@ -4,6 +4,11 @@ const LINEWORK_STATES = [
   "linework-state-2",
 ];
 
+export const LINEWORK_OBSERVER_OPTIONS = {
+  rootMargin: "-18% 0px -48%",
+  threshold: 0,
+};
+
 export function getLineworkState(sectionIndex) {
   const normalizedIndex = Number.isFinite(sectionIndex) && sectionIndex >= 0
     ? sectionIndex
@@ -31,7 +36,7 @@ function setupLineworkMotion() {
       linework.classList.remove(...LINEWORK_STATES);
       linework.classList.add(getLineworkState(stage));
     },
-    { rootMargin: "-18% 0px -48%", threshold: [0.2, 0.45, 0.7] },
+    LINEWORK_OBSERVER_OPTIONS,
   );
 
   sections.forEach((section) => observer.observe(section));
