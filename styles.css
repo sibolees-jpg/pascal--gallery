@@ -1395,6 +1395,135 @@ h3 {
   }
 }
 
+/* Works and institutional archive */
+.works-editorial .sales-hero {
+  min-height: 58vh;
+  align-items: end;
+  padding-top: 9rem;
+}
+
+.works-editorial .sales-hero h1 {
+  font-size: clamp(4.5rem, 11vw, 10rem);
+  line-height: 0.86;
+}
+
+.works-editorial .sales-note {
+  border: 0;
+  border-left: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+
+.works-editorial .recommended-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5rem 2rem;
+}
+
+.works-editorial .recommended-card {
+  border: 0;
+  background: transparent;
+}
+
+.works-editorial .work-artwork {
+  min-height: 28rem;
+  padding: 0;
+  border: 0;
+  background: #f3f3f0;
+}
+
+.works-editorial .work-artwork::before {
+  display: none;
+}
+
+.works-editorial .work-artwork img {
+  max-height: 68vh;
+}
+
+.works-editorial .recommended-body {
+  padding: 1.25rem 0 0;
+}
+
+.works-editorial .work-meta div {
+  padding: 0.65rem 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+}
+
+.works-editorial .catalog-toolbar,
+.works-editorial .filters {
+  border-radius: 0;
+}
+
+.works-editorial .catalog-head {
+  background: transparent;
+  color: var(--ink);
+  border-top: 2px solid var(--ink);
+}
+
+.works-editorial .catalog-row {
+  padding: 1.35rem 1.1rem;
+}
+
+.profile-archive .about-hero-copy h1 {
+  max-width: 12ch;
+  font-size: clamp(3.5rem, 7vw, 7.2rem);
+  line-height: 0.96;
+}
+
+.profile-archive .method-grid > article,
+.profile-archive .selection-process li {
+  border-radius: 0;
+  background: transparent;
+}
+
+.profile-archive .archive-visual img {
+  border: 0;
+}
+
+.profile-archive .profile-timeline {
+  grid-template-columns: 1fr;
+  border-left: 0;
+}
+
+.profile-archive .profile-timeline article {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr);
+  gap: 2rem;
+  padding: 2.5rem 0;
+  border-right: 0;
+}
+
+.profile-archive .profile-timeline h3 {
+  margin: 0;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  line-height: 0.9;
+}
+
+.profile-archive .profile-timeline ul {
+  columns: 2;
+  column-gap: 3rem;
+}
+
+@media (max-width: 700px) {
+  .works-editorial .recommended-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .works-editorial .sales-note {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .profile-archive .profile-timeline article {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-archive .profile-timeline ul {
+    columns: 1;
+  }
+}
+
 .catalog-head,
 .catalog-row {
   display: grid;

@@ -24,6 +24,7 @@ test("机构发展时间线完整覆盖2017至2024年", () => {
 
 test("关于页使用机构数据和真实展览图片", async () => {
   assert.match(html, /关于帕斯卡/);
+  assert.match(html, /class="profile-archive"/);
   assert.match(html, /id="profile-timeline"/);
   assert.match(html, /id="profile-network"/);
   assert.match(script, /data\/gallery-profile\.json/);
