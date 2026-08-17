@@ -81,17 +81,27 @@ a {
   transform: translate3d(-14px, -20px, 0) scale(0.95);
 }
 
-.architectural-linework polyline,
+.architectural-linework path,
 .architectural-linework circle,
 .architectural-linework line {
   fill: none;
   stroke: currentColor;
-  stroke-width: 2.4;
+  stroke-width: 2.2;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
   vector-effect: non-scaling-stroke;
 }
 
-.architectural-linework .roof-line {
+.architectural-linework .building-roofline {
   stroke-width: 3;
+}
+
+.architectural-linework .facade-band {
+  stroke-width: 1.5;
+}
+
+.architectural-linework .entrance-portal {
+  stroke-width: 2.2;
 }
 
 .brand {
